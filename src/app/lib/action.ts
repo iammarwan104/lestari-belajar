@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 import { redirect } from "next/navigation";
 
-export async function quesionerSubmit(formData: FormData) {
+export async function quesionerSubmit(prevState: any, formData: FormData) {
   console.log(formData);
   const answerQuesioner = {
     // staff lembaga kursus start
@@ -62,10 +62,19 @@ export async function quesionerSubmit(formData: FormData) {
         komentar: answerQuesioner.komentar_pelayanan_jadwal_belajar as string,
       },
     });
-  } catch (error) {
-
-  }finally{
     revalidatePath("/")
+    return{
+      message:"Input success",
+      success: true,
+      redirect:true
+    }
     redirect("/")
+  } catch (error) {
+      return{
+        message:"Input gagal",
+        success: false,
+      redirect:false
+      }
+    
   }
 }

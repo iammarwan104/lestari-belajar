@@ -1,13 +1,26 @@
+"use client"
 import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 import { quesionerSubmit } from "../lib/action";
 import Quesioner from "./components/Quesioner";
+import { redirect } from "next/navigation";
 
 export default function Page() {
+  const initialState = {
+    success: false,
+    message: "",
+    redirect:false
+  }
+  const [state, action] = useFormState(quesionerSubmit, initialState)
+  console.log(state)
+  if(state.redirect === true){
+    redirect("/")
+  }
   return (
     <>
       quesioner page
-      <form className="grid grid-cols-1 gap-6" action={quesionerSubmit}>
+      <form className="grid grid-cols-1 gap-6" action={action}>
+        <div className={`${state.success===false&&state.redirect===false?"bg-red-400":"bg-green-400"}`}>{state.message}</div>
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Fasilitas Mobil Kursus
@@ -65,7 +78,7 @@ export default function Page() {
         <div>
           <button
             type="submit"
-            className={`w-full text-white bg-cuslor-4 hover:bg-yellow-400 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
+            className={`w-full text-white bg-cuslor-4 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
             Kirim
           </button>
         </div>
