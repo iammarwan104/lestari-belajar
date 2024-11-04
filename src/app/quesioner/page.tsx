@@ -27,7 +27,7 @@ export default function Page() {
             <form className="grid grid-cols-1 gap-6" action={action} 
             onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
         <div
-          className={`fixed top-0 left-0 w-full text-center uppercase font-semibold ${
+          className={`fixed  z-50 top-0 left-0 w-full text-center uppercase font-semibold ${
             state.success === false && state.redirect === false
               ? "bg-red-400"
               : "bg-green-400"
@@ -71,7 +71,7 @@ export default function Page() {
         </div> */}
 
         <div>
-          <h1 className="text-xl font-semibold text-center mb-4">
+          <h1 className="text-xl font-semibold text-center mb-4 text-white">
             Layanan Staff Lembaga kursus
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">

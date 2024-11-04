@@ -14,7 +14,7 @@ export default function StarRating({name, id, value, rating, setRating}: {name :
           />
           <label
             htmlFor={id}
-            className={`peer-checked/${value}:text-yellow-300 ${value <= rating ? "text-yellow-300" :""} block absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2`}>
+            className={`peer-checked/${value}:text-yellow-300 ${value <= rating ? "text-yellow-300" :""} block absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 text-white`}>
             <svg
               className="w-6 h-6 ms-1"
               aria-hidden="true"
