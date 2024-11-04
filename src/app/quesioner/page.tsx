@@ -17,9 +17,15 @@ export default function Page() {
   if (state.redirect === true) {
     redirect("/");
   }
+  useEffect(() => {
+    if (state.success === false && state.redirect === false) {
+      setHandleClickBeriNilai(true);
+    }
+  }, [state]);
   return (
     <>
-      <form className="grid grid-cols-1 gap-6" action={action}>
+            <form className="grid grid-cols-1 gap-6" action={action} 
+            onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
         <div
           className={`fixed top-0 left-0 w-full text-center uppercase font-semibold ${
             state.success === false && state.redirect === false
@@ -87,11 +93,8 @@ export default function Page() {
         <div>
           <button
             type="submit"
-            onClick={(prev) => setHandleClickBeriNilai(!prev)}
             className={`w-full text-white bg-cuslor-4 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
             {handleClickBeriNilai ? (
-              "Kirim"
-            ) : state.success === false ? (
               "Kirim"
             ) : (
               <span>
