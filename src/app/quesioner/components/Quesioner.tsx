@@ -27,7 +27,7 @@ export default function Quesioner({ name }: { name: string }) {
           </div>
         </div>
         <div className="md:px-10" >
-          <h3 className="block mb-4 md:mb-6 text-sm font-medium text-gray-900 dark:text-white">Kinerja<span className="text-red-500">*</span></h3>
+          <h3 className="block mb-4 md:mb-6 text-sm font-medium text-gray-900 dark:text-white">Kepuasan<span className="text-red-500">*</span></h3>
           <div className="grid grid-cols-5 mt-2 items-center">
             {skeletonArray.map((star) => (
               <StarRating

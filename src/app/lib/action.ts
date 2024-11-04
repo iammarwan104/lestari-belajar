@@ -83,7 +83,7 @@ if(isInvalid){
     redirect("/")
   } catch (error) {
       return{
-        message:"Input gagal",
+        message:"Inputan gagal",
         success: false,
       redirect:false
       }
