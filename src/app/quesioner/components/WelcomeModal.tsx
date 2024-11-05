@@ -19,9 +19,9 @@ export default function WelcomeModal() {
         Panduan
       </Button>
 
-      <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header>Panduan Quesioner</Modal.Header>
-        <Modal.Body className="text-center text-white">
+      <Modal dismissible show={openModal} className="rounded-xl" onClose={() => setOpenModal(false)}>
+        <Modal.Header className="bg-cuslor-4">Panduan Quesioner</Modal.Header>
+        <Modal.Body className="text-center text-white bg-cuslor-1">
           <h1 className="mb-4 text-white font-bold text-2xl">
             Hi, {name}
           </h1>
