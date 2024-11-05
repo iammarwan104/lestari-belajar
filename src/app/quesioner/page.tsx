@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 import { quesionerSubmit } from "../lib/action";
 import Quesioner from "./components/Quesioner";
 import { redirect } from "next/navigation";
+import WelcomeModal from "./components/WelcomeModal";
 
 export default function Page() {
   const initialState = {
@@ -24,8 +25,11 @@ export default function Page() {
   }, [state]);
   return (
     <>
-            <form className="grid grid-cols-1 gap-6" action={action} 
-            onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
+      <WelcomeModal />
+      <form
+        className="grid grid-cols-1 gap-6"
+        action={action}
+        onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
         <div
           className={`fixed  z-50 top-0 left-0 w-full text-center uppercase font-semibold ${
             state.success === false && state.redirect === false
@@ -75,9 +79,21 @@ export default function Page() {
             Layanan Staff Lembaga kursus
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <Quesioner name="etika-sopan-santun" />
-            <Quesioner name="pelayanan-administrasi" />
-            <Quesioner name="pelayanan-jadwal-belajar" />
+            <Quesioner
+              name="etika-sopan-santun"
+              kepentingan="Seberapa penting menurut anda staff kantor melayani siswa dengan penuh sopan santun"
+              kepuasan="Seberapa baik sopan santun staff kantor dalam melayani anda"
+            />
+            <Quesioner
+              name="keterampilan-komunikasi"
+              kepentingan="Seberapa penting staff kantor memiliki skill komunikasi yang baik menurut anda"
+              kepuasan="Seberapa baik skill komunikasi yang dimiliki staff kantor dalam melayani anda"
+            />
+            <Quesioner
+              name="pelayanan-jadwal-belajar"
+              kepentingan="Seberapa penting menurut anda kemudahan dalam menghubungi staff kantor untuk memperoleh informasi terkait kursus mengemudi seperti jadwal belajar, konsultasi, dll"
+              kepuasan="Seberapa mudah yang anda rasakan dalam menghubungi staff kantor untuk memperoleh informasi terkait kursus mengemudi"
+            />
           </div>
         </div>
 
