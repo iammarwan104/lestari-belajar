@@ -2,7 +2,7 @@
 import { useState } from "react";
 import StarRating from "./StarRating";
 
-export default function Quesioner({ name }: { name: string }) {
+export default function Quesioner({ name,kepentingan, kepuasan }: { name: string,kepentingan: string, kepuasan:string }) {
   const skeletonArray = Array.from({ length: 5 }, (_, i) => i);
   const [ratingKepentingan, setRatingKepentingan]=useState(0)
   const [ratingKinerja, setRatingKinerja]=useState(0)
@@ -10,9 +10,9 @@ export default function Quesioner({ name }: { name: string }) {
     <div className="bg-cuslor-2 rounded-lg p-2 text-center">
       <h2 className="uppercase mb-2 text-white">{name.replace("-", " ")}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2">
-      <div className="grid grid-cols-2 md:grid-cols-1 md:grid-rows-2 justify-center gap-3">
-        <div className="md:px-10" >
-          <h3 className="block mb-4 md:mb-6 text-sm font-medium text-white">Kepentingan<span className="text-red-500">*</span></h3>
+      <div className="grid grid-cols-2 md:grid-cols-1 md:pb-5 md:grid-rows-2 justify-center gap-3 md:gap-6">
+        <div className="md:px-2 lg:px-4" >
+          <h3 className="block min-h-[5rem] max-h-[12rem] md:h-fit w-full mb-4 md:mb-6 text-sm font-medium text-white">{kepentingan}</h3>
           <div className="grid grid-cols-5 mt-2 items-center">
             {skeletonArray.map((star) => (
               <StarRating
@@ -26,9 +26,9 @@ export default function Quesioner({ name }: { name: string }) {
             ))}
           </div>
         </div>
-        <div className="md:px-10" >
-          <h3 className="block mb-4 md:mb-6 text-sm font-medium text-white">Kepuasan<span className="text-red-500">*</span></h3>
-          <div className="grid grid-cols-5 mt-2 items-center">
+        <div className="md:px-2 lg:px-4" >
+          <h3 className="min-h-[5rem] max-h-[12rem] md:h-fit md:min-h-fit block mb-4 md:mb-6 text-sm font-medium text-white">{kepuasan}</h3>
+          <div className="grid grid-cols-5 items-center">
             {skeletonArray.map((star) => (
               <StarRating
                 key={star}
@@ -54,7 +54,7 @@ export default function Quesioner({ name }: { name: string }) {
           rows={4}
           minLength={3}
           maxLength={100}
-          className="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
+          className="block p-2.5 w-full md:h-[86%] lg:h-[75%] xl:h-[80%] text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
           placeholder="Ini boleh tidak di isi"
         />
       </div>
