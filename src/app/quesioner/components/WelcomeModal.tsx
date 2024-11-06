@@ -27,13 +27,12 @@ export default function WelcomeModal() {
           </h1>
           <div className="text-justify text-white">
             <p>Senang bisa melihat anda meluangkan waktu untuk
-            ikut andil dalam upaya evaluasi ini:)</p>
-            <p>Tujuan dari quesioner ini untuk menumpulkan presepsi <strong>{name}</strong> terkait seberapa penting suatu fasilitas dan pelayanan diadakan dan seberapa puaskah <strong>{name}</strong> menggunakan fasilitas dan pelayanan yang ada, </p>
-            <p>Berikut demonstrasi cara menjawab quesioner:</p>
-            <p className="text-red-400 text-center">Jika video ini tidak jalan, silahkan tutup jendela ini dan masuk kembali dengan tombol petunjuk</p>
+            ikut andil dalam upaya evaluasi ini.</p>
+            <p>Tujuan dari evaluasi ini untuk mengumpulkan presepsi <strong>{name}</strong> terkait seberapa penting suatu fasilitas dan pelayanan diadakan dan seberapa puaskah <strong>{name}</strong> setelah menggunakan fasilitas dan mendapatkan pelayanan yang ada. </p>
+            <p>Berikut demonstrasi cara menjawab quesioner :</p>
+            <p className="text-red-400 text-center">Jika video ini tidak berfungsi, silahkan tutup jendela ini dan masuk kembali dengan tombol panduan</p>
             <video src="/image/demo.mp4" autoPlay loop ></video>
-            <p>Kami sangat menghargai komentar <strong>{name}</strong> maka dari itu anda tidak perlu ragu dalam memberi komentar karena komentar anda tidak akan diketahui oleh pihak manapun termasuk pihak
-            Lestari Belajar.</p>
+            <p>Jika <strong>{name}</strong> berkenan memberikan komentar, kami akan sangat menghargai komentar anda maka dari itu anda tidak perlu ragu dalam memberi komentar dan komentar yang telah tersimpan tidak akan diketahui siapa penulisnya oleh pihak Lestari Belajar.</p>
           </div>
         </Modal.Body>
       </Modal>
