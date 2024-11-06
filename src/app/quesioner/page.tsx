@@ -85,9 +85,9 @@ export default function Page() {
               kepuasan="Seberapa baik sopan santun staff kantor dalam melayani anda"
             />
             <Quesioner
-              name="keterampilan-komunikasi"
-              kepentingan="Seberapa penting staff kantor memiliki skill komunikasi yang baik menurut anda"
-              kepuasan="Seberapa baik skill komunikasi yang dimiliki staff kantor dalam melayani anda"
+              name="pelayanan-administrasi"
+              kepentingan="Seberapa penting bagi anda staff kantor memberi pelayanan administrasi yang baik"
+              kepuasan="Seberapa baik staff kantor memberi pelayanan administrasi kepada anda"
             />
             <Quesioner
               name="pelayanan-jadwal-belajar"
