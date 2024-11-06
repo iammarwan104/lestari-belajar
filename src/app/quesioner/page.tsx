@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 import { quesionerSubmit } from "../lib/action";
 import Quesioner from "./components/Quesioner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import WelcomeModal from "./components/WelcomeModal";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Page() {
   const initialState = {
@@ -14,32 +15,36 @@ export default function Page() {
   };
   const [state, action] = useFormState(quesionerSubmit, initialState);
   const [handleClickBeriNilai, setHandleClickBeriNilai] = useState(true);
+  const router = useRouter();
   console.log(state);
-  if (state.redirect === true) {
-    redirect("/");
-  }
   useEffect(() => {
     if (state.success === false && state.redirect === false) {
       setHandleClickBeriNilai(true);
     }
+    if (state.success === true && state.redirect === true) {
+      setHandleClickBeriNilai(true);
+    }
+    if (state.success === false && state.redirect === false && state.message.length > 0) {
+      toast.error(state.message);
+    } 
+    if(state.success === true && state.redirect === true) {
+      toast.success(state.message);
+    }
   }, [state]);
+  if (state.redirect === true) {
+    setTimeout(() => {
+      router.push("/")
+    }, 3000);
+  }
+
   return (
     <>
       <WelcomeModal />
+        <Toaster position="top-right" />
       <form
         className="grid grid-cols-1 gap-6"
         action={action}
         onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
-        <div
-          className={`fixed  z-50 top-0 left-0 w-full text-center uppercase font-semibold ${
-            state.success === false && state.redirect === false
-              ? "bg-red-400"
-              : "bg-green-400"
-          }`}>
-          <p className={`${state.message.length > 0 ? "py-1.5" : null}`}>
-            {state.message}
-          </p>
-        </div>
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Fasilitas Mobil Kursus
@@ -109,7 +114,7 @@ export default function Page() {
         <div>
           <button
             type="submit"
-            className={`w-full text-white bg-cuslor-4 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
+            className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
             {handleClickBeriNilai ? (
               "Kirim"
             ) : (
