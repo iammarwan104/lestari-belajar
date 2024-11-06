@@ -41,7 +41,7 @@ const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_sa
 if(isInvalid){
     return{
         success: false,
-        message : "Invalid characters detected. Please enter only allowed characters.",
+        message : "Karakter tidak valid terdeteksi. Harap masukkan hanya karakter yang diizinkan",
         redirect: false
     }
 }
@@ -76,14 +76,13 @@ if(isInvalid){
     });
     revalidatePath("/")
     return{
-      message:"Input success",
+      message:"Input anda success tersimpan",
       success: true,
       redirect:true
     }
-    redirect("/")
   } catch (error) {
       return{
-        message:"Inputan gagal",
+        message:"Inputan anda gagal tersimpan",
         success: false,
       redirect:false
       }

@@ -27,8 +27,8 @@ export default function WelcomeModal() {
           </h1>
           <div className="text-justify text-white">
             <p>Senang bisa melihat anda meluangkan waktu untuk
-            ikut andil dalam upaya evaluasi ini.</p>
-            <p>Tujuan dari evaluasi ini untuk mengumpulkan presepsi <strong>{name}</strong> terkait seberapa penting suatu fasilitas dan pelayanan diadakan dan seberapa puaskah <strong>{name}</strong> setelah menggunakan fasilitas dan mendapatkan pelayanan yang ada. </p>
+            ikut andil dalam upaya peningkatan kualitas pelayanan kami.</p>
+            <p>Tujuan dari quesioner ini untuk mengumpulkan presepsi <strong>{name}</strong> terkait seberapa penting suatu fasilitas dan pelayanan diadakan dan seberapa puaskah <strong>{name}</strong> setelah menggunakan fasilitas dan mendapatkan pelayanan yang ada. </p>
             <p>Berikut demonstrasi cara menjawab quesioner :</p>
             <p className="text-red-400 text-center">Jika video ini tidak berfungsi, silahkan tutup jendela ini dan masuk kembali dengan tombol panduan</p>
             <video src="/image/demo.mp4" autoPlay loop ></video>
