@@ -54,7 +54,7 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
           rows={4}
           minLength={3}
           maxLength={100}
-          className="block p-2.5 w-full md:h-[86%] lg:h-[75%] xl:h-[80%] text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
+          className="block p-2.5 w-full md:h-[86%] lg:h-[75%] xl:h-[80%] text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
           placeholder="Ini boleh tidak di isi"
         />
       </div>
