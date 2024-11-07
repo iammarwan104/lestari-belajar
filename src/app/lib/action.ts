@@ -3,7 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 import { redirect } from "next/navigation";
-import { quesionerValidation } from "./schemaZod";
+import { Gender, PrismaClient } from '@prisma/client'
+import { Item, tambahDataSiswaInterface } from "./interface";
+import { quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
   console.log(formData);
@@ -89,3 +91,284 @@ if(isInvalid){
     
   }
 }
+
+export async function getAllQuesionerAnswer(){
+  function getAverangeValue(arr: Item[], name: string): {kepentingan: number, kinerja: number, nama: string, komentar: (string|null)[]}{
+      const totalKepentingan = arr.reduce((sum: number, item) => sum + item.kepentingan, 0)
+      const rataRataKepentingan = (totalKepentingan / arr.length).toFixed(1);
+      const totalKinerja = arr.reduce((sum: number, item) => sum + item.kinerja, 0)
+      const rataRataKinerja = (totalKinerja / arr.length).toFixed(1);
+      let fiveKomentar: (string|null)[] = [];
+      arr.map((data, index) => {
+          index >= (arr.length - 5) ? fiveKomentar.push(data.komentar) : null
+      })
+      return {
+          nama : name,
+          kepentingan : Number(rataRataKepentingan),
+          kinerja: Number(rataRataKinerja),
+          komentar: fiveKomentar
+      }
+  }
+  const kebersihan_mobil = await prisma.kebersihan_mobil.findMany();
+  const kelengkapan_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
+  const kebersihan_kelas_mengemudi = await prisma.kebersihan_kelas_mengemudi.findMany();
+  const kelengkapan_alat_kelas_mengemudi = await prisma.kelengkapan_alat_kelas_mengemudi.findMany();
+  const performa_alat_kelas_mengemudi = await prisma.performa_alat_kelas_mengemudi.findMany();
+  const kebersihan_lembaga_kursus = await prisma.kebersihan_lembaga_kursus.findMany();
+  const kelengkapan_alat_lembaga_kursus = await prisma.kelengkapan_alat_lembaga_kursus.findMany();
+  const performa_alat_lembaga_kursus = await prisma.performa_alat_lembaga_kursus.findMany();
+  const performa_alat_mobil = await prisma.performa_alat_mobil.findMany();
+  const performa_mobil = await prisma.performa_mobil.findMany();
+  const etika_sopan_santun = await prisma.etika_SopanSantun.findMany();    
+  const etika_sopan_santun_mentor_mengemudi = await prisma.etika_sopan_santun_mentor.findMany();    
+  const pembawaan_materi_belajar_mentor_mengemudi = await prisma.pembawaan_materi_belajar_mentor.findMany();    
+  const pelayanan_administrasi = await prisma.pelayanan_administrasi.findMany();    
+  const pelayanan_jadwal_belajar = await prisma.pelayanan_jadwal_belajar.findMany();    
+
+
+  const kordinatKebersihanMobil = getAverangeValue(kebersihan_mobil, "Kebersihan Mobil")
+  const kordinatKelengkapanAlatMobil = getAverangeValue(kelengkapan_alat_mobil, "Kelengkapan Alat Mobil")
+  const kordinatKebersihanKelasMengemudi = getAverangeValue(kebersihan_kelas_mengemudi, "Kebersihan Kelas Mengamudi")
+  const kordinatKelengkapanAlatKelasMengemudi = getAverangeValue(kelengkapan_alat_kelas_mengemudi, "Kelengkapan Alat Kelas Mengemudi")
+  const kordinatPerformaAlatKelasMengemudi = getAverangeValue(performa_alat_kelas_mengemudi, "Performa Alat Kelas Mengemudi")
+  const kordinatKebersihanLembagaKursus = getAverangeValue(kebersihan_lembaga_kursus, "Kebersihan Lembaga Kursus")
+  const kordinatKelengkapanAlatLembagaKursus = getAverangeValue(kelengkapan_alat_lembaga_kursus, "Kelengkapan Alat Lembaga Kursus")
+  const kordinatPerformaAlatLembagaKursus = getAverangeValue(performa_alat_lembaga_kursus, "Performa Alat Lembaga Kursus")
+  const kordinatPerformaAlatMobil = getAverangeValue(performa_alat_mobil, "Performa Alat Mobil")
+  const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
+  const kordinatEtikaSopanSantun = getAverangeValue(etika_sopan_santun, "Etika dan Sopan Santun")
+  const kordinatPelayananAdministrasi = getAverangeValue(pelayanan_administrasi, "Pelayanan Administrasi")
+  const kordinatPelayananJadwalBelajar = getAverangeValue(pelayanan_jadwal_belajar, "Pelayanan Jadwal Belajar")
+  const kordinatEtikaSopanSantunMentorMengemudi = getAverangeValue(etika_sopan_santun_mentor_mengemudi, "Etika dan Sopan Santun Mentor Mengemudi")
+  const kordinatPembawaanMateriBelajarMentorMengemudi = getAverangeValue(pembawaan_materi_belajar_mentor_mengemudi, "Pembawaan Materi Belajar Mentor Megemudi")
+
+  const sumbuY = [
+    kordinatKebersihanMobil.kepentingan, 
+    kordinatKelengkapanAlatMobil.kepentingan, 
+    kordinatPerformaAlatMobil.kepentingan, 
+    kordinatPerformaMobil.kepentingan, 
+    kordinatKebersihanKelasMengemudi.kepentingan, 
+    kordinatKelengkapanAlatKelasMengemudi.kepentingan, 
+    kordinatPerformaAlatKelasMengemudi.kepentingan,
+    kordinatKebersihanLembagaKursus.kepentingan, 
+    kordinatKelengkapanAlatLembagaKursus.kepentingan, 
+    kordinatPerformaAlatLembagaKursus.kepentingan,
+    kordinatEtikaSopanSantun.kepentingan,
+    kordinatPelayananAdministrasi.kepentingan,
+    kordinatPelayananJadwalBelajar.kepentingan,
+    kordinatEtikaSopanSantunMentorMengemudi.kepentingan,
+    kordinatPembawaanMateriBelajarMentorMengemudi.kepentingan,
+    3.5, 5, 4]
+
+
+  const sumbux = [
+    kordinatKebersihanMobil.kinerja, 
+    kordinatKelengkapanAlatMobil.kinerja, 
+    kordinatPerformaAlatMobil.kinerja, 
+    kordinatPerformaMobil.kinerja, 
+    kordinatKebersihanKelasMengemudi.kinerja, 
+    kordinatKelengkapanAlatKelasMengemudi.kinerja, 
+    kordinatPerformaAlatKelasMengemudi.kinerja,
+    kordinatKebersihanLembagaKursus.kinerja, 
+    kordinatKelengkapanAlatLembagaKursus.kinerja, 
+    kordinatPerformaAlatLembagaKursus.kinerja,
+    kordinatEtikaSopanSantun.kinerja,
+    kordinatPelayananAdministrasi.kinerja,
+    kordinatPelayananJadwalBelajar.kinerja,
+    kordinatEtikaSopanSantunMentorMengemudi.kinerja,
+    kordinatPembawaanMateriBelajarMentorMengemudi.kinerja,
+    4, 4, 5]
+
+  function getSumbuYX(sumbuY: number[], sumbuX: number[]): {sumbuY : number, sumbuX: number}{
+      const totalSumbuY = sumbuY.reduce((sum: number, item) => sum + item, 0)
+      const rataRataSumbuY = (totalSumbuY / sumbuY.length).toFixed(1);
+      const totalSumbuX = sumbuX.reduce((sum: number, item) => sum + item, 0)
+      const rataRataSumbuX = (totalSumbuX / sumbuX.length).toFixed(1);
+      return {
+          sumbuY : Number(rataRataSumbuY),
+          sumbuX: Number(rataRataSumbuX)
+      }
+  }
+
+  const garisPerbatasan = getSumbuYX(sumbuY, sumbux);
+
+  return{
+      kebersihanMobil: kordinatKebersihanMobil,
+      kelengkapanAlatMobil: kordinatKelengkapanAlatMobil,
+      kebersihanKelasMengemudi: kordinatKebersihanKelasMengemudi,
+      kelengkapanAlatKelasMengemudi: kordinatKelengkapanAlatKelasMengemudi,
+      performaAlatKelasMengemudi: kordinatPerformaAlatKelasMengemudi,
+      kebersihanLembagaKursus: kordinatKebersihanLembagaKursus,
+      kelengkapanAlatLembagaKursus: kordinatKelengkapanAlatLembagaKursus,
+      performaAlatLembagaKursus: kordinatPerformaAlatLembagaKursus,
+      performaAlatMobil: kordinatPerformaAlatMobil,
+      performaMobil: kordinatPerformaMobil,
+      etikaSopanSantun: kordinatEtikaSopanSantun,
+      pelayananAdministrasi: kordinatPelayananAdministrasi,
+      pelayananJadwalBelajar: kordinatPelayananJadwalBelajar,
+      etikaSopanSantunMentorMengemudi: kordinatEtikaSopanSantunMentorMengemudi,
+      pembawaanMateriBelajarMentorMengemudi: kordinatPembawaanMateriBelajarMentorMengemudi,
+      garisPerbatasan: garisPerbatasan
+  }
+}
+
+export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formData: FormData): Promise<tambahDataSiswaInterface>{
+  const siswa = {
+    nama : formData.get("nama-siswa"),
+    gender : formData.get("gender"),
+    number : formData.get("phoneNumber"),
+  }
+  try{
+  const dataSiswa = tambahDataSiswaSchema.safeParse({
+    nama: siswa.nama as string,
+    gender: siswa.gender as string,
+    phoneNumber: siswa.number
+
+  })
+
+  if(dataSiswa.success === false){
+    return {
+      success: false,
+      errors: dataSiswa.error.flatten().fieldErrors
+    }
+  }
+
+  await prisma.siswaKursusMengemudi.create({
+    data: {
+      name: dataSiswa.data.nama,
+      gender: dataSiswa.data.gender as Gender,
+      phoneNumber: String(dataSiswa.data.phoneNumber),
+      status: false,
+    }
+  })
+
+  return {
+    success: true,
+    data : {
+    nama: siswa.nama as string,
+    gender: siswa.gender as string,
+    phoneNumber: Number(siswa.number)
+    }
+  }
+}catch(error){
+    if(error instanceof Error){
+      return {
+        success: false,
+        error: error.message
+      }
+    }else{
+      return {
+        success: false,
+        error: "Terjadi Kesalahan"
+      }
+    }
+  }finally{
+    revalidatePath('/admin')
+  }
+}
+
+export async function updateDataSiswa( prevState: tambahDataSiswaInterface, formData: FormData): Promise<tambahDataSiswaInterface> {
+  const siswa = {
+    id : formData.get("id"),
+    nama : formData.get("nama-siswa"),
+    gender : formData.get("gender"),
+    number : formData.get("phoneNumber"),
+  }
+  try{
+  const dataSiswa = updateDataSiswaSchema.safeParse({
+    id: Number(siswa.id),
+    nama: siswa.nama as string,
+    gender: siswa.gender as string,
+    phoneNumber: Number(siswa.number),
+    
+  })
+
+  if(dataSiswa.success === false){
+    return {
+      success: false,
+      errors: dataSiswa.error.flatten().fieldErrors
+    }
+  }
+  console.log(dataSiswa)
+
+  await prisma.siswaKursusMengemudi.update({
+    where:{
+      id: dataSiswa.data.id
+    },
+    data: {
+      name: dataSiswa.data.nama,
+      gender: dataSiswa.data.gender as Gender,
+      phoneNumber: String(dataSiswa.data.phoneNumber),
+      status: false,
+    }
+  })
+
+  return {
+success: true,
+data : {
+ nama: siswa.nama as string,
+ gender: siswa.gender as string,
+ phoneNumber: Number(siswa.number)
+}
+}
+  }catch(error){
+    if(error instanceof Error){
+      return {
+        success: false,
+        error: error.message
+      }
+    }else{
+      return {
+        success: false,
+        error: "Terjadi Kesalahan"
+    }
+  }
+}finally{
+  revalidatePath('/admin')
+}
+}
+
+export async function deleteSiswa(id: number){
+  try {
+    const data = await prisma.siswaKursusMengemudi.delete({
+      where: {
+        id: id
+      }
+    })
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error)
+      return error
+    }else{
+      return `Error tidak dikenali`
+    }
+  }finally{
+    revalidatePath('/admin')
+  }
+}
+
+export async function getDataSiswa(page: number){
+  try {
+    console.log(page, " page in action")
+    const totalData = await prisma.siswaKursusMengemudi.count()
+    const take = 10
+    const totalPage = Math.ceil(totalData/take)
+    if(page < 1){
+      throw new Error("Halaman tidak diketahui") 
+    }
+      if(page > totalPage){
+      throw new Error("Halaman tidak diketahui") 
+    }
+    const skip = (page - 1)*take;
+    const datas = await prisma.siswaKursusMengemudi.findMany({
+      take: take,
+      skip: skip
+    })
+    return {success: true, data: datas, totalSiswa: totalData,totalPages : totalPage}
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error.message, " error message ini action");
+      return {success: false, message : error.message}
+    }
+  }
+  }
