@@ -4,9 +4,9 @@ import { type NextRequest } from "next/server"
 export async function GET(request: NextRequest){
     try{const searchParams = request.nextUrl.searchParams;
         const page = searchParams.get("page");
-        console.log(page, "params in route")
+        // console.log(page, "params in route")
         const data = await getDataSiswa(Number(page))
-        console.log(data, "data in route")
+        // console.log(data, "data in route")
         return Response.json(data)
     }catch(error){
         if (error instanceof Error) {

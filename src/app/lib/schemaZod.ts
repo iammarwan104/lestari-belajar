@@ -21,12 +21,12 @@ export const quesionerValidation = z.object({
 export const tambahDataSiswaSchema = z.object({
    nama : z.string().min(3, {message: "nama harus lebih dari 3 huruf!"}),
    gender: z.string(),
-   phoneNumber: z.number().gte(12)
+   phoneNumber: z.string()
 }).required()
 
 export const updateDataSiswaSchema = z.object({
  id: z.number(),
  nama : z.string().min(3, {message: "nama harus lebih dari 3 huruf!"}),
  gender: z.string(),
- phoneNumber: z.number().gte(12)
+ phoneNumber: z.string()
 }).required()

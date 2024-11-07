@@ -219,13 +219,13 @@ const ScatterChart = ({
       scales: {
         x: {
           beginAtZero: false,
-          min: 0,
-          max: 5,
+          min: 3,
+          max: 6,
         },
         y: {
           beginAtZero: false,
-          min: 0,
-          max: 5,
+          min: 3,
+          max: 6,
         },
       },
     };
