@@ -7,12 +7,6 @@ interface quesionerSubmitInitial{
       }
 }
 
-export interface ScatterData {
-  name: string;
-  x: number;
-  y: number;
-  komentars: (string|null)[];
-}
 
 export interface Item {
   id: number,
@@ -53,3 +47,21 @@ export interface tambahDataSiswaInterface{
    error?: string;
  }
  
+ export interface ScatterData {
+  name: string;
+  x: number;
+  y: number;
+  komentars: (string|null)[];
+}
+
+export interface GarisPerbatasan {
+  sumbuY : number;
+  sumbuX: number;
+}
+
+export interface Item {
+  id: number,
+  kepentingan: number,
+  kinerja: number,
+  komentar: string | null
+}
