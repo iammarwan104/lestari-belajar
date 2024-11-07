@@ -34,13 +34,13 @@ export default function Page() {
   if (state.redirect === true) {
     setTimeout(() => {
       router.push("/")
-    }, 2500);
+    }, 2200);
   }
 
   return (
     <>
       <WelcomeModal />
-        <Toaster position="top-right" />
+        <Toaster position="top-right" toastOptions={{duration: 3000}} />
       <form
         className="grid grid-cols-1 gap-6"
         action={action}
@@ -114,6 +114,7 @@ export default function Page() {
         <div>
           <button
             type="submit"
+            disabled={!handleClickBeriNilai}
             className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
             {handleClickBeriNilai ? (
               "Kirim"

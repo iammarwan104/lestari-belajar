@@ -12,13 +12,7 @@ return(
     setLoadingDelete(true)
     DeleteSiswaById()
 }}>
-    <Button type="submit"  className="bg-red-500 hover:bg-red-600">
-        {
-    loadingDelete? 
-    (<Spinner color="warning" aria-label="Warning spinner example" />)
-    : "Delete"
-    }
-    </Button>
+    <Button type="submit"  className="bg-red-500 hover:bg-red-600">Delete</Button>
 </form>
 )
 }

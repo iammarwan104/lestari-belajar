@@ -222,16 +222,16 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
   const dataSiswa = tambahDataSiswaSchema.safeParse({
     nama: siswa.nama as string,
     gender: siswa.gender as string,
-    phoneNumber: siswa.number
-
+    phoneNumber: siswa.number as string
   })
+  console.log(dataSiswa, dataSiswa.error?.flatten().fieldErrors)
 
   if(dataSiswa.success === false){
     return {
       success: false,
       errors: dataSiswa.error.flatten().fieldErrors
     }
-  }
+  } 
 
   await prisma.siswaKursusMengemudi.create({
     data: {
@@ -279,7 +279,7 @@ export async function updateDataSiswa( prevState: tambahDataSiswaInterface, form
     id: Number(siswa.id),
     nama: siswa.nama as string,
     gender: siswa.gender as string,
-    phoneNumber: Number(siswa.number),
+    phoneNumber: siswa.number,
     
   })
 
@@ -349,7 +349,7 @@ export async function deleteSiswa(id: number){
 
 export async function getDataSiswa(page: number){
   try {
-    console.log(page, " page in action")
+    // console.log(page, " page in action")
     const totalData = await prisma.siswaKursusMengemudi.count()
     const take = 10
     const totalPage = Math.ceil(totalData/take)
@@ -367,7 +367,7 @@ export async function getDataSiswa(page: number){
     return {success: true, data: datas, totalSiswa: totalData,totalPages : totalPage}
   } catch (error) {
     if(error instanceof Error){
-      console.error(error.message, " error message ini action");
+      // console.error(error.message, " error message ini action");
       return {success: false, message : error.message}
     }
   }
