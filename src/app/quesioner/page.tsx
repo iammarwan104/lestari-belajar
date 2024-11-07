@@ -34,7 +34,7 @@ export default function Page() {
   if (state.redirect === true) {
     setTimeout(() => {
       router.push("/")
-    }, 2200);
+    }, 1200);
   }
 
   return (
