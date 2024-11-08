@@ -335,12 +335,19 @@ export async function deleteSiswa(id: number){
         id: id
       }
     })
+    return {
+      success: true
+    }
   } catch (error) {
     if(error instanceof Error){
       console.error(error)
-      return error
+      return {
+        success: false
+      }
     }else{
-      return `Error tidak dikenali`
+      return{
+        success: false
+      }
     }
   }finally{
     revalidatePath('/admin')

@@ -5,7 +5,7 @@ import useSWR from "swr";
 import ModalAdd from "./ModalAdd";
 import DeleteSiswaButton from "./DeleteSiswaButton";
 import ModalUpdate from "./ModalUpdate";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ComponentPagination from "./Pagination";
 import { Button, Spinner } from "flowbite-react";
 import SearchInput from "./SearchInput";
@@ -14,9 +14,10 @@ export default function TebleStudents() {
   const params = useSearchParams();
   const queryParams = params.get("query");
   const pageParams = params.get("page");
-  const fetcher = () => fetch(`/api/siswa?query=${queryParams}&page=${pageParams || 1}`).then((res) => res.json());
+
+  const fetcher = () => fetch(`/api/siswa?page=${pageParams || 1}&query=${queryParams}`).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
-    `/api/siswa?query=${queryParams}&page=${pageParams || 1}`,
+    `/api/siswa?page=${pageParams || 1}&query=${queryParams}`,
     fetcher
   );
 
