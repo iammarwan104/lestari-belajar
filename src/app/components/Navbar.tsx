@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
   const pathname = usePathname();
 
   useEffect(() => {
+    setShowNavbar(false)
     setWaitDashboard(false);
     setWaitMengemudi(false);
     setWaitKomputer(false);
@@ -33,8 +34,8 @@ import { useEffect, useState } from "react";
     <>
       <nav className="bg-cuslor-1 border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a
-            href="https://flowbite.com/"
+          <Link
+            href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
@@ -44,9 +45,9 @@ import { useEffect, useState } from "react";
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
               Lestari Belajar
             </span>
-          </a>
+          </Link>
           <button
-            onClick={() => handleClick("")}
+            onClick={() => setShowNavbar(!showNavbar)}
             data-collapse-toggle="navbar-default"
             type="button"
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -88,7 +89,7 @@ import { useEffect, useState } from "react";
                     <svg
                       aria-hidden="true"
                       role="status"
-                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                      className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +121,7 @@ import { useEffect, useState } from "react";
                     <svg
                       aria-hidden="true"
                       role="status"
-                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                      className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +153,7 @@ import { useEffect, useState } from "react";
                     <svg
                       aria-hidden="true"
                       role="status"
-                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                      className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -184,7 +185,7 @@ import { useEffect, useState } from "react";
                     <svg
                       aria-hidden="true"
                       role="status"
-                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                      className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -216,7 +217,7 @@ import { useEffect, useState } from "react";
                     <svg
                       aria-hidden="true"
                       role="status"
-                      className="inline w-4 h-4 me-3 text-white animate-spin"
+                      className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -249,7 +250,7 @@ import { useEffect, useState } from "react";
                       <svg
                         aria-hidden="true"
                         role="status"
-                        className="inline w-4 h-4 me-3 text-white animate-spin"
+                        className="inline w-4 h-4 me-3 text-cuslor-1 animate-spin"
                         viewBox="0 0 100 101"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg">

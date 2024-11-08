@@ -45,7 +45,7 @@ export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Update Data Siswa</Modal.Header>
         <Modal.Body>
-        <Toaster position="top-right" toastOptions={{duration: 3000}} />
+        <Toaster position="top-center" toastOptions={{duration: 3000}} />
           <form id="form" className="space-y-4 md:space-y-6" action={action} onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
           <input type="hidden" name="id" value={dataSiswa.id} />
             <div>

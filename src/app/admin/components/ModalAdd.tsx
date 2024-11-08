@@ -15,6 +15,7 @@ export default function ModalAdd() {
   };
 
   const formRef = useRef<HTMLFormElement>(null)
+  const nameRef = useRef<HTMLInputElement>(null)
 
   const [openModal, setOpenModal] = useState(false);
   const [state, action] = useFormState<tambahDataSiswaInterface, FormData>(
@@ -43,16 +44,17 @@ export default function ModalAdd() {
     <>
       <Button
         onClick={() => setOpenModal(true)}
-        className="bg-green-400 hover:bg-green-500 mb-4">
+        className="bg-green-400 hover:bg-green-500">
         Tambah
       </Button>
 
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Tambah Data Siswa</Modal.Header>
         <Modal.Body>
-        <Toaster position="top-right" toastOptions={{duration: 3000}} />
+        <Toaster position="top-center" toastOptions={{duration: 3000}} />
           <form ref={formRef} id="form" className="space-y-4 md:space-y-6" action={async (formData)=>{
             formRef.current?.reset()
+            nameRef.current?.focus()
             await action(formData)
           }} onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
             <div>
@@ -62,6 +64,7 @@ export default function ModalAdd() {
                 Nama Siswa
               </label>
               <input
+                ref={nameRef}
                 type="text"
                 name="nama-siswa"
                 id="nama-siswa"
