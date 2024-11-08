@@ -9,8 +9,9 @@ export default function ComponentPagination({
 }: {
   totalPages: number;
 }) {
-  const params = useSearchParams();
-  const page = Number(params.get("page"));
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query')
+  const page = Number(searchParams.get("page"));
   const [currentPage, setCurrentPage] = useState(page || 1);
   const router = useRouter();
 
@@ -18,7 +19,7 @@ export default function ComponentPagination({
     setCurrentPage(page);
   };
   useEffect(() => {
-    router.push(`/admin?page=${currentPage}`);
+    router.push(`/admin?page=${currentPage}&query=${query||""}`)
   }, [currentPage]);
 
   return (

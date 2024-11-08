@@ -21,6 +21,7 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "swr": "^2.2.5",
+    "use-debounce": "^10.0.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {

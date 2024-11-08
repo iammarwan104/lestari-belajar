@@ -372,3 +372,79 @@ export async function getDataSiswa(page: number){
     }
   }
   }
+
+  export async function getDataStudentsFilter(query: string, page: number){
+
+    // logic data skip result 0, 5, 10, 15, ...
+    let skipData;
+    if(page >= 1){
+        skipData = (page - 1) * 5;
+    }
+
+    // logic if input search is empty
+    if(!query){
+        const dataCount = await prisma.siswaKursusMengemudi.count()
+        const getStudents = await prisma.siswaKursusMengemudi.findMany({
+        skip: skipData,
+        take: 5
+        })
+    
+        if(!getStudents){
+            return {
+                success: false
+            }
+        }
+
+        return{
+            success: true,
+            data: getStudents,
+            totalSiswa: dataCount,
+            totalPages : Math.ceil(dataCount/5)
+        }
+    }
+
+    //logic if  query params isn't empty
+    let dataCount;
+    if(query){
+    dataCount = await prisma.siswaKursusMengemudi.count({
+        where : {
+            name : {
+                contains : query,
+                mode: "insensitive"
+            }
+        }
+    })}
+
+    const getStudentsQuery = await prisma.siswaKursusMengemudi.findMany({
+        where: {
+            name: {
+                contains: query,
+                mode: "insensitive"
+            }
+        },
+        skip: skipData,
+        take: 5
+    })
+
+    if(!getStudentsQuery){
+        return {
+            success: false
+        }
+    }
+
+    if(dataCount){
+        return{
+            success: true,
+            data: getStudentsQuery,
+            totalSiswa: dataCount,
+            totalPages : Math.ceil(dataCount/5)
+        }
+    }else{
+        return{
+            success: true,
+            data: getStudentsQuery,
+            totalSiswa: dataCount,
+            totalPages: 0
+        }
+    }
+}

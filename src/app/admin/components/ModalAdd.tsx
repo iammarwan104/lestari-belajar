@@ -43,7 +43,7 @@ export default function ModalAdd() {
     <>
       <Button
         onClick={() => setOpenModal(true)}
-        className="bg-green-400 hover:bg-green-500 mb-4">
+        className="bg-green-400 hover:bg-green-500">
         Tambah
       </Button>
 

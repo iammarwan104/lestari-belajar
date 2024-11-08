@@ -1,6 +1,6 @@
 "use client";
 
-import { DataSiswa, SWRFetchData } from "@/app/lib/interface";
+import { DataSiswa } from "@/app/lib/interface";
 import useSWR from "swr";
 import ModalAdd from "./ModalAdd";
 import DeleteSiswaButton from "./DeleteSiswaButton";
@@ -8,16 +8,18 @@ import ModalUpdate from "./ModalUpdate";
 import { useSearchParams } from "next/navigation";
 import ComponentPagination from "./Pagination";
 import { Button, Spinner } from "flowbite-react";
+import SearchInput from "./SearchInput";
 
 export default function TebleStudents() {
   const params = useSearchParams();
-  const page = params.get("page");
-  const fetcher = () =>
-    fetch(`/api/siswa?page=${page || 1}`).then((res) => res.json());
+  const queryParams = params.get("query");
+  const pageParams = params.get("page");
+  const fetcher = () => fetch(`/api/siswa?query=${queryParams}&page=${pageParams || 1}`).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
-    `/api/siswa?page=${page || 1}`,
+    `/api/siswa?query=${queryParams}&page=${pageParams || 1}`,
     fetcher
   );
+
   if (error)
     return (
       <div className="flex justify-center items-center w-screen h-[60vh] text-center mt-4">
@@ -48,26 +50,9 @@ export default function TebleStudents() {
   return (
     <>
       <div className="md:col-start-1 md:col-end-3">
-        <div className="w-full flex gap-4">
-          <div>
-            <ModalAdd />
-          </div>
-          <form action="" className="flex gap-4 w-full">
-            <div className="w-full">
-              <input
-                type="search"
-                name=""
-                id=""
-                autoFocus
-                className="w-full font-normal text-black rounded-lg"
-              />
-            </div>
-            <Button
-              type="submit"
-              className="bg-green-400 hover:bg-green-500 mb-4">
-              Cari
-            </Button>
-          </form>
+        <div className="w-full flex gap-4 items-center mb-4">
+          <ModalAdd />
+          <SearchInput />
         </div>
         <div className="relative overflow-x-auto rounded-xl mb-2">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -116,7 +101,9 @@ export default function TebleStudents() {
             </tbody>
           </table>
         </div>
+        <div className="flex justify-center">
         <ComponentPagination totalPages={totalPages} />
+        </div>
         <p className="mt-2 text-center">{totalSiswa} siswa terdaftar</p>
       </div>
     </>
