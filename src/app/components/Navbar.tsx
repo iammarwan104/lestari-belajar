@@ -3,8 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// export default function Navbar({session}: {session: any}) {
-  export default function Navbar() {
+export default function Navbar({session}: {session: any}) {
+  // export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [waitDashboard, setWaitDashboard] = useState(false);
   const [waitMengemudi, setWaitMengemudi] = useState(false);
@@ -235,7 +235,7 @@ import { useEffect, useState } from "react";
                   )}
                 </Link>
               </li>
-              {/* {!session ? null : (
+              {!session ? null : (
                 <li>
                   <Link
                     onClick={() => handleClick("signOut")}
@@ -268,7 +268,7 @@ import { useEffect, useState } from "react";
                     )}
                   </Link>
                 </li>
-              )} */}
+              )}
             </ul>
           </div>
         </div>

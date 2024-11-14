@@ -3,16 +3,16 @@ import { getAllQuesionerAnswer } from "../lib/action";
 import ScatterChart from "./components/ScatterChart";
 import PelPal from "./components/PelPal";
 import TableStudents from "./components/TableStudents";
-// import { auth } from "../../../auth";
 import { redirect } from "next/navigation";
 import { Spinner } from "flowbite-react";
 import { ScatterData } from "../lib/interface";
+import { auth } from "../../../auth";
 
 export default async function Page() {
-  // const session = await auth();
-  // if (!session) {
-  //   redirect("/api/auth/signin");
-  // }
+  const session = await auth();
+  if (!session) {
+    redirect("/api/auth/signin");
+  }
 
   const {
     // kebersihan,

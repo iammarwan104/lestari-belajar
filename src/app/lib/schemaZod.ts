@@ -30,3 +30,14 @@ export const updateDataSiswaSchema = z.object({
  gender: z.string(),
  phoneNumber: z.string()
 }).required()
+
+export const mySchema = z.object({
+   username: z.string({
+   required_error: "Username is required",
+   invalid_type_error: "Username must be a string",
+ }).min(3, {message: "Username harus lebih dari 3 huruf!"}),
+   password: z.string({
+   required_error: "Password is required",
+   invalid_type_error: "Password must be a string",
+ }).min(3, {message: "Password harus lebih dari 3 huruf!"})
+ })
