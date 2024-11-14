@@ -65,3 +65,16 @@ export interface Item {
   kinerja: number,
   komentar: string | null
 }
+
+export interface Login{
+  errors?: {
+         username?: string[] | string;
+         password?: string[] | string;
+     };
+   success?: boolean
+   data? : {
+     username: string;
+     password: string;
+   };
+   error?: string;
+ }

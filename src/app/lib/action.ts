@@ -4,8 +4,11 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 import { redirect } from "next/navigation";
 import { Gender, PrismaClient } from '@prisma/client'
-import { Item, tambahDataSiswaInterface } from "./interface";
-import { quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { Item, Login, tambahDataSiswaInterface } from "./interface";
+import { mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { signIn } from "../../../auth";
+import { AuthError } from 'next-auth'
+
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
   console.log(formData);
@@ -454,4 +457,96 @@ export async function getDataSiswa(page: number){
             totalPages: 0
         }
     }
+}
+
+export async function getUserFromDb(username: string, password: string): Promise<Login>{
+  try {
+    const [result] = await prisma.admin.findMany({
+    where: {
+      username: username,
+      password: password
+    },
+  })
+
+  if(!result){
+    throw Error('Username dan password anda salah')
+  }
+  return {
+    success: true,
+    data: {
+      username: result.username,
+    password: result.password
+    }
+  };
+  } catch (error) {
+    if(error instanceof Error){
+      return {
+        success: false,
+        error: error.message
+      };
+    } else {
+      return {
+        success: false,
+        error: 'An unknown error occurred',
+      };
+    }
+  }
+ }
+
+export async function login(prevState: Login, formData: FormData): Promise<Login>{
+
+  const username = formData.get('username') as string
+  const password = formData.get('password') as string
+  const admin = {
+    username: username,
+    password: password
+  }
+
+  const result = mySchema.safeParse(admin)
+  if(!result.success){
+    const message = {
+      errors: result.error.flatten().fieldErrors
+    }
+    return message
+  }else{
+    const hasil = await getUserFromDb(username, password)
+    if(hasil.success === false){
+    return {
+      success: hasil.success,
+      error: hasil.error
+  }
+  }else{
+    try {
+      await signIn("credentials", {
+        ...Object.fromEntries(formData),
+        callbackUrl: "/admin",
+        redirect: true,
+      });
+      return {
+        success:true
+      }
+    } catch (error) {
+      if (error instanceof AuthError) {
+        return redirect(`${"/error-page"}?error=${error.type}`);
+      }
+      return {
+        error: "An unknown error occurred"
+      }
+    }
+}}
+}
+
+export async function handleSignIn(formData: FormData){
+  try {
+    await signIn("credentials", {
+      ...Object.fromEntries(formData),
+      callbackUrl: "/admin",
+      redirect: true,
+    });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      return redirect(`${"/error-page"}?error=${error.type}`);
+    }
+    throw error;
+  }
 }
