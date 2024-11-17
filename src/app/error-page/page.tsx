@@ -20,7 +20,7 @@ export default function Page() {
   const error = searchParams.get("error") as Error;
   return (
     <section className="fixed w-screen h-screen flex items-center justify-center bg-cuslor-1">
-    <div className="w-[40%] bg-white p-4 rounded-xl text-black text-center">
+    <div className="w-[80%] md:w-[35%] lg:w-[25%] bg-white p-4 rounded-xl text-black text-center">
       <h1>Terjadi Kesalahan!</h1>
       <p className="text-2xl font-semibold mt-4 mb-6 text-red-500">{errorMap[error] ?? "An unknown error occurred."}</p>
       <Link 
