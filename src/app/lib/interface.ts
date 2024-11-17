@@ -78,3 +78,11 @@ export interface Login{
    };
    error?: string;
  }
+
+ export interface CheckNumberPhone{
+  success: boolean | null
+  id?: number| null
+  phoneNumber?: string | null
+  name?: string | null 
+  errorMessage? : string[] | string
+}

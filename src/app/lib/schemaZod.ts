@@ -16,6 +16,7 @@ export const quesionerValidation = z.object({
    komentar_pelayanan_jadwal_belajar: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
 
    // staff lembaga kursus end
+   id_siswa: z.number()
 })
 
 export const tambahDataSiswaSchema = z.object({
@@ -41,3 +42,7 @@ export const mySchema = z.object({
    invalid_type_error: "Password must be a string",
  }).min(3, {message: "Password harus lebih dari 3 huruf!"})
  })
+
+ export const checkPhoneNumberZod = z.object({
+   phoneNumber: z.number({invalid_type_error: "Kami mengharapkan angka, tapi anda memasukkan huruf",required_error: "ok"}).gte(12, {message: "Inputan tidak boleh kosong atau kurang dari 12 angka, "})
+ }).required()

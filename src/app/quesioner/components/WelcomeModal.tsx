@@ -7,10 +7,10 @@ import { useFormState } from "react-dom";
 
 export default function WelcomeModal() {
   const [openModal, setOpenModal] = useState(true);
-  const [name, setName] = useState("Wawan");
-  // useEffect(() => {
-  //   setName(String(sessionStorage.getItem("name")))
-  // }, []);
+  const [name, setName] = useState("");
+  useEffect(() => {
+    setName(String(sessionStorage.getItem("name")))
+  }, []);
   return (
     <>
       <Button

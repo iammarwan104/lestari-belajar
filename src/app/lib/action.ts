@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 import { redirect } from "next/navigation";
 import { Gender, PrismaClient } from '@prisma/client'
-import { Item, Login, tambahDataSiswaInterface } from "./interface";
-import { mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
+import { checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 import { signIn } from "../../../auth";
 import { AuthError } from 'next-auth'
 
@@ -28,6 +28,8 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            komentar_pelayanan_jadwal_belajar : formData.get('komentar-pelayanan-jadwal-belajar'),
            
            // staff lembaga kursus end
+          id_siswa : Number(formData.get("id-siswa"))
+
   });
 
   if (!answerQuesioner.success) {
@@ -79,6 +81,14 @@ if(isInvalid){
         komentar: komentarPelayananJadwalBelajar || null,
       }
     });
+    await prisma.siswaKursusMengemudi.update({
+      where: {
+        id: answerQuesioner.data.id_siswa,
+      },
+      data:{
+        status: true
+      }
+    })
     revalidatePath("/")
     return{
       message:"Input anda success tersimpan",
@@ -550,3 +560,56 @@ export async function handleSignIn(formData: FormData){
     throw error;
   }
 }
+
+export async function checkPhoneNumberSignIn(prevState: CheckNumberPhone, formData: FormData) : Promise<CheckNumberPhone>{
+  const phoneNumber = await Number(formData.get("phone-number"));
+  const resultCheckPhoneNumberZod = checkPhoneNumberZod.safeParse({
+    phoneNumber: phoneNumber
+  })
+  console.log(phoneNumber, "phoneNumber")
+  if(resultCheckPhoneNumberZod.success === false){
+    console.log(resultCheckPhoneNumberZod?.error.flatten().fieldErrors)
+    return {
+      success: false,
+      errorMessage: resultCheckPhoneNumberZod?.error.flatten().fieldErrors.phoneNumber
+    }
+  }
+  const addZero = `${0}${resultCheckPhoneNumberZod.data.phoneNumber}`;
+  console.log(addZero, typeof addZero);
+  const resultCheckDataByPrisma = await prisma.siswaKursusMengemudi.findFirst({
+    where: {
+      phoneNumber: addZero,
+      status: false
+    }
+  })
+
+  console.log(resultCheckDataByPrisma, "resultCheckDataByPrisma")
+  if(!resultCheckDataByPrisma){
+    return {
+      success: false,
+      errorMessage: "Nomor anda tidak terdaftar atau anda sudah pernah menjawab quesioner, silahkan hubungi admin!"
+    }
+  }
+
+  return {
+    success: true,
+    id: resultCheckDataByPrisma.id,
+    name: resultCheckDataByPrisma.name,
+    phoneNumber: String(resultCheckDataByPrisma.phoneNumber)
+  }
+}
+
+export async function checkPhoneNumberInQuesionerPage(id: number){
+  try{  
+    const result = await prisma.siswaKursusMengemudi.findFirst({
+      where: {
+        id: id
+      }
+    })
+    return result
+  }catch(error){
+      if(error instanceof Error){
+        console.log(error)
+      }
+    }
+  }

@@ -1,9 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
-import { quesionerSubmit } from "../lib/action";
+import {
+  checkPhoneNumberInQuesionerPage,
+  quesionerSubmit,
+} from "../lib/action";
 import Quesioner from "./components/Quesioner";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import WelcomeModal from "./components/WelcomeModal";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -24,27 +27,52 @@ export default function Page() {
     if (state.success === true && state.redirect === true) {
       setHandleClickBeriNilai(true);
     }
-    if (state.success === false && state.redirect === false && state.message.length > 0) {
+    if (
+      state.success === false &&
+      state.redirect === false &&
+      state.message.length > 0
+    ) {
       toast.error(state.message);
-    } 
-    if(state.success === true && state.redirect === true) {
+    }
+    if (state.success === true && state.redirect === true) {
       toast.success(state.message);
+      sessionStorage.removeItem("id");
+      sessionStorage.removeItem("phone-number");
+      sessionStorage.removeItem("name");
     }
   }, [state]);
   if (state.redirect === true) {
     setTimeout(() => {
-      router.push("/")
+      router.push("/");
     }, 1200);
+  }
+
+  const [status, setStatus] = useState<boolean | undefined>(false);
+  const getSessionId = Number(sessionStorage.getItem("id"));
+  const getSessionNumber = sessionStorage.getItem("phone-number");
+  const getSessionName = sessionStorage.getItem("name");
+  async function checkStatusByID(id: number) {
+    const result = await checkPhoneNumberInQuesionerPage(id);
+    setStatus(result?.status);
+    return result;
+  }
+  useEffect(() => {
+    checkStatusByID(getSessionId);
+  }, []);
+  console.log(status);
+  if (!getSessionName || !getSessionNumber || !getSessionId) {
+    redirect("/signin-quesioner");
   }
 
   return (
     <>
       <WelcomeModal />
-        <Toaster position="top-center" toastOptions={{duration: 3000}} />
+      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
       <form
         className="grid grid-cols-1 gap-6"
         action={action}
         onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
+        <input type="hidden" name="id-siswa" defaultValue={getSessionId} />
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Fasilitas Mobil Kursus
