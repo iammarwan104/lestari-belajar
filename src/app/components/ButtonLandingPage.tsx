@@ -27,7 +27,7 @@ export default function ButtonLandingPage({
             <button
               disabled
               type="button"
-              className="w-fit text-white text-base font-semibold bg-cuslor-4 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full px-5 py-2.5 bg-yellow-400 text-center me-2 mb-2 bg-color-400">
+              className="w-fit text-white text-base font-semibold bg-cuslor-4 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full px-5 py-2.5 text-center me-2 mb-2 bg-color-400">
               <svg
                 aria-hidden="true"
                 role="status"
@@ -61,7 +61,7 @@ export default function ButtonLandingPage({
             <button
               disabled
               type="button"
-              className="w-fit text-white text-base font-semibold bg-cuslor-4 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full px-5 py-2.5 bg-yellow-400 text-center me-2 mb-2 bg-color-400 ">
+              className="w-fit text-white text-base font-semibold bg-cuslor-4 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full px-5 py-2.5 text-center me-2 mb-2 bg-color-400 ">
               <svg
                 aria-hidden="true"
                 role="status"
