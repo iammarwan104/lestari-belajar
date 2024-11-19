@@ -587,7 +587,7 @@ export async function checkPhoneNumberSignIn(prevState: CheckNumberPhone, formDa
   if(!resultCheckDataByPrisma){
     return {
       success: false,
-      errorMessage: "Nomor anda tidak terdaftar atau anda sudah pernah menjawab quesioner, silahkan hubungi admin!"
+      errorMessage: "Sepertinya nomor anda tidak terdaftar atau sudah pernah digunakan untuk mengisi quesioner, silahkan hubungi admin!"
     }
   }
 

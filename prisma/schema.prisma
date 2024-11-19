@@ -212,7 +212,7 @@ model siswaKursusMengemudi{
   id Int @id @default(autoincrement())
   name String
   gender Gender
-  phoneNumber String @db.VarChar(12)
+  phoneNumber String @db.VarChar(13)
   status Boolean @default(false)
   createdAt DateTime @default(now())
 }

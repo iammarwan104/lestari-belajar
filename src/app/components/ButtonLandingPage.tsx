@@ -20,7 +20,7 @@ export default function ButtonLandingPage({
           {handleClickLihatKursus ? (
             <button
               type="button"
-              className="w-fit text-white text-base font-semibold hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full bg-yellow-400 px-5 py-2.5 text-center me-2 mb-2">
+              className="w-fit text-white text-base font-semibold hover:bg-cuslor-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full bg-cuslor-4 px-5 py-2.5 text-center me-2 mb-2">
               Lihat Kursus
             </button>
           ) : (
