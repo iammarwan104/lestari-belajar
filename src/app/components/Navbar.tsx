@@ -203,7 +203,7 @@ export default function Navbar({session}: {session: any}) {
                   )}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   onClick={() => handleClick("about")}
                   href="/about"
@@ -234,7 +234,7 @@ export default function Navbar({session}: {session: any}) {
                     "About"
                   )}
                 </Link>
-              </li>
+              </li> */}
               {!session ? null : (
                 <li>
                   <Link

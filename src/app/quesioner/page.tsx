@@ -67,7 +67,7 @@ export default function Page() {
   return (
     <>
       <WelcomeModal />
-      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
+      <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <form
         className="grid grid-cols-1 gap-6"
         action={action}
