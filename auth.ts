@@ -46,4 +46,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     verifyRequest: '/auth/verify-request',
     newUser: '/auth/new-user'
   },
+  cookies: {
+    sessionToken: {
+      name: '__Secure-next-auth.session-token',
+      options: {
+        httpOnly: true,
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+        partitioned: true
+      },
+    }
+}
 })
