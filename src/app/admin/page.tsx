@@ -164,8 +164,8 @@ export default async function Page() {
               </div>
             </div>
           }>
-          {/* <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
-          <PelPal datas={data} garisPerbatasan={garisPerbatasan} /> */}
+          <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
+          <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
           <TableStudents />
         </Suspense>
       </div>
