@@ -36,7 +36,7 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
     return{
         success: false,
         errors: answerQuesioner.error.flatten().fieldErrors,
-        message: 'Missing fields or someting wrong with your input, failed to send your answers',
+        message: 'Terdapat inputan yang belum diisi, pengiriman jawaban anda gagal',
         redirect: false
     }
 }
@@ -89,9 +89,8 @@ if(isInvalid){
         status: true
       }
     })
-    revalidatePath("/")
     return{
-      message:"Input anda success tersimpan",
+      message:"Jawaban anda berhasil disimpan",
       success: true,
       redirect:true
     }
@@ -102,6 +101,8 @@ if(isInvalid){
       redirect:false
       }
     
+  }finally{
+    revalidatePath("/")
   }
 }
 
