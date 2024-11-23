@@ -36,15 +36,15 @@ export default function Page() {
     }
     if (state.success === true && state.redirect === true) {
       toast.success(state.message);
-      sessionStorage.removeItem("id");
-      sessionStorage.removeItem("phone-number");
-      sessionStorage.removeItem("name");
     }
   }, [state]);
   if (state.redirect === true) {
     setTimeout(() => {
       router.push("/");
-    }, 1200);
+      sessionStorage.removeItem("id");
+      sessionStorage.removeItem("phone-number");
+      sessionStorage.removeItem("name");
+    }, 1500);
   }
 
   const [status, setStatus] = useState<boolean | undefined>(false);
@@ -66,8 +66,8 @@ export default function Page() {
 
   return (
     <>
-      <WelcomeModal />
       <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
+      <WelcomeModal />
       <form
         className="grid grid-cols-1 gap-6"
         action={action}
