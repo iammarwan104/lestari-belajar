@@ -86,3 +86,10 @@ export interface Login{
   name?: string | null 
   errorMessage? : string[] | string
 }
+
+export interface CheckAdminInterface{
+  success: boolean | null
+  username?: string | null
+  password?: string | null 
+  errorMessage? : string[] | string
+}
