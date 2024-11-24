@@ -19,12 +19,9 @@ export default function Page() {
   const [state, action] = useFormState(quesionerSubmit, initialState);
   const [handleClickBeriNilai, setHandleClickBeriNilai] = useState(true);
   const router = useRouter();
-  console.log(state);
   useEffect(() => {
+    console.log(state)
     if (state.success === false && state.redirect === false) {
-      setHandleClickBeriNilai(true);
-    }
-    if (state.success === true && state.redirect === true) {
       setHandleClickBeriNilai(true);
     }
     if (
@@ -36,16 +33,15 @@ export default function Page() {
     }
     if (state.success === true && state.redirect === true) {
       toast.success(state.message);
+      setHandleClickBeriNilai(true);
+      setTimeout(() => {
+        router.push("/");
+        sessionStorage.removeItem("id");
+        sessionStorage.removeItem("phone-number");
+        sessionStorage.removeItem("name");
+    }, 1500);
     }
   }, [state]);
-  if (state.redirect === true) {
-    setTimeout(() => {
-      router.push("/");
-      sessionStorage.removeItem("id");
-      sessionStorage.removeItem("phone-number");
-      sessionStorage.removeItem("name");
-    }, 1500);
-  }
 
   const [status, setStatus] = useState<boolean | undefined>(false);
   const getSessionId = Number(sessionStorage.getItem("id"));
@@ -66,11 +62,11 @@ export default function Page() {
 
   return (
     <>
-      <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
+      <Toaster position="top-center" toastOptions={{ duration: 5000, style: {marginTop: '1rem'} }} />
       <WelcomeModal />
       <form
         className="grid grid-cols-1 gap-6"
-        action={action}
+        action={ (formData) => action(formData)}
         onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
         <input type="hidden" name="id-siswa" defaultValue={getSessionId} />
         {/* <div>
