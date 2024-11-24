@@ -666,7 +666,6 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
       where: {
         username: resultCheckAdminZod.data.username,
         password: resultCheckAdminZod.data.password,
-        status: false
       }
     })
   
