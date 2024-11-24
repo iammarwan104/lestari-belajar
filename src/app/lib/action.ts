@@ -618,13 +618,12 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
   }
 
   export async function loginAdmin(username: string, password: string): Promise<Login>{
-  
-    console.log(username, password, " userpass")
+      const status = false;
       const hasil = await prisma.admin.findFirst({
         where: {
           username: username,
           password: password,
-          status: false
+          status: status
         }
       })
       console.log(hasil, " hasil login admin")
