@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { loginAdmin } from "../lib/action";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Navbar({session}: {session: any}) {
   // export default function Navbar() {
@@ -12,6 +14,7 @@ export default function Navbar({session}: {session: any}) {
   const [waitMcProtokoler, setWaitMcProtokoler] = useState(false);
   const [waitAbout, setWaitAbout] = useState(false);
   const [waitSignOut, setWaitSignOut] = useState(false);
+  const [showSignOutButton, setShowSignOutbutton] = useState(false)
 
   function handleClick(kursus: string){
     kursus === "komputer" && setWaitKomputer(true);
@@ -30,8 +33,31 @@ export default function Navbar({session}: {session: any}) {
     setWaitAbout(false);
     setWaitSignOut(false);
   }, [pathname]);
+
+  useEffect(() => {
+    // getDataSession
+    const { username, password } = {
+      username: JSON.parse(sessionStorage.getItem("username") as string),
+      password: JSON.parse(sessionStorage.getItem("password") as string),
+    };
+    console.log(username, password, typeof username);
+    if (username !== null && password !== null) {
+      const result = loginAdmin(username, password);
+      if(!result){
+        setShowSignOutbutton(true)
+      }
+    }
+  }, []);
+
+  function handleSignout(){
+    toast.success("Sign Out berhasil");
+    sessionStorage.removeItem("username")
+    sessionStorage.removeItem("password")
+  }
+
   return (
     <>
+      <Toaster position="top-center" toastOptions={{ duration: 5000, style: {marginTop: '1rem'} }} />
       <nav className="bg-cuslor-1 border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
@@ -235,11 +261,11 @@ export default function Navbar({session}: {session: any}) {
                   )}
                 </Link>
               </li> */}
-              {!session ? null : (
+              {showSignOutButton ? null : (
                 <li>
                   <Link
-                    onClick={() => handleClick("signOut")}
-                    href="/api/auth/signout"
+                    onClick={handleSignout}
+                    href="/signin-admin"
                     className={`${
                       pathname === "/about"
                         ? "text-cuslor-4"

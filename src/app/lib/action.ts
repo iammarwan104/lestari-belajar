@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 import { redirect } from "next/navigation";
 import { Gender, PrismaClient } from '@prisma/client'
-import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
-import { checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { CheckAdminInterface, CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
+import { checkAdminZod, checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 import { signIn } from "../../../auth";
 import { AuthError } from 'next-auth'
 
@@ -479,6 +479,8 @@ export async function getUserFromDb(username: string, password: string): Promise
     },
   })
 
+  console.log(result, " getUserfromDb")
+
   if(!result){
     throw Error('Username dan password anda salah')
   }
@@ -612,5 +614,76 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
       if(error instanceof Error){
         console.log(error)
       }
+    }
+  }
+
+  export async function loginAdmin(username: string, password: string): Promise<Login>{
+  
+    console.log(username, password, " userpass")
+      const hasil = await prisma.admin.findFirst({
+        where: {
+          username: username,
+          password: password,
+          status: false
+        }
+      })
+      console.log(hasil, " hasil login admin")
+      if(!hasil){
+      return {
+        success: false,
+    }
+    }else{
+      try {
+        return {
+          success:true
+        }
+      } catch (error) {
+        if (error instanceof AuthError) {
+          return {
+            success: false,
+            error: error.message
+          }
+        }
+        return {
+          error: "An unknown error occurred"
+        }
+      }
+  }}
+
+  export async function checkAdminSignIn(prevState: CheckAdminInterface, formData: FormData) : Promise<CheckAdminInterface>{
+    const username = await formData.get("username");
+    const password = await formData.get("password");
+    const resultCheckAdminZod = checkAdminZod.safeParse({
+      username: username,
+      password: password
+    })
+    console.log(username, password, "userpass")
+    if(resultCheckAdminZod.success === false){
+      console.log(resultCheckAdminZod?.error.flatten().fieldErrors)
+      return {
+        success: false,
+        errorMessage: resultCheckAdminZod?.error.flatten().fieldErrors.username
+      }
+    }
+    const resultCheckDataByPrisma = await prisma.admin.findFirst({
+      where: {
+        username: resultCheckAdminZod.data.username,
+        password: resultCheckAdminZod.data.password,
+        status: false
+      }
+    })
+  
+    console.log(resultCheckDataByPrisma, "resultCheckDataByPrisma")
+    if(!resultCheckDataByPrisma){
+      return {
+        success: false,
+        errorMessage: `Sepertinya admin dengan username ${resultCheckAdminZod.data.username} tidak terdaftar atau sedang aktif`
+      }
+    }
+  
+    return {
+      success: true,
+      username: String(resultCheckDataByPrisma.username),
+      password: String(resultCheckDataByPrisma.password)
     }
   }

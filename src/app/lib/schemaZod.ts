@@ -46,3 +46,8 @@ export const mySchema = z.object({
  export const checkPhoneNumberZod = z.object({
    phoneNumber: z.number({invalid_type_error: "Kami mengharapkan angka, tapi anda memasukkan huruf",required_error: "ok"}).gte(12, {message: "Inputan tidak boleh kosong atau kurang dari 12 angka, "})
  }).required()
+
+ export const checkAdminZod = z.object({
+  username: z.string(),
+  password: z.string()
+}).required()

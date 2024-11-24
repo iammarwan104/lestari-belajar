@@ -1,18 +1,25 @@
-import React, { Suspense } from "react";
-import { getAllQuesionerAnswer } from "../lib/action";
+import React, { Suspense, useEffect } from "react";
+import { getAllQuesionerAnswer, loginAdmin } from "../lib/action";
 import ScatterChart from "./components/ScatterChart";
 import PelPal from "./components/PelPal";
-import TableStudents from "./components/TableStudents";
 import { redirect } from "next/navigation";
 import { Spinner } from "flowbite-react";
 import { ScatterData } from "../lib/interface";
 import { auth } from "../../../auth";
+import { useFormState } from "react-dom";
+import AdminClient from "./components/AdminClient";
 
 export default async function Page() {
-  const session = await auth();
-  if (!session) {
-    redirect("/api/auth/signin");
-  }
+  // const [state, action] = useFormState(loginAdmin, initialState);
+
+  // const checksignin = await loginAdmin(getUsername, getPassword)
+  // if (!state.success) {
+  //   redirect("/signin-quesioner");
+  // }
+  // const session = await auth();
+  // if (!session) {
+  //   redirect("/api/auth/signin");
+  // }
 
   const {
     // kebersihan,
@@ -154,21 +161,7 @@ export default async function Page() {
   return (
     <div className="bg-cuslor-1 text-center text-2xl font-semibold px-4 pt-12">
       <h1 className="mb-6">Admin</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
-        <Suspense
-          fallback={
-            <div className="w-screen h-[60vh] flex justify-center items-center">
-              {" "}
-              <div className="flex justify-center gap-4">
-                <Spinner color={"warning"} /> <p className="mt-2">Load page.</p>
-              </div>
-            </div>
-          }>
-          <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
-          <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
-          <TableStudents />
-        </Suspense>
-      </div>
+      <AdminClient data={data} garisPerbatasan={garisPerbatasan}/>
     </div>
   );
 }
