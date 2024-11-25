@@ -32,7 +32,15 @@ export default function AdminClient({
       redirect("/signin-admin");
     }
   }, []);
+  function handleSignOut(){
+    if (confirm("Apakah anda yakin untuk keluar") === false) return;
+      sessionStorage.removeItem("username")
+      sessionStorage.removeItem("password")
+      redirect("/signin-admin")
+  }
   return (
+    <>
+    <button className="bg-cuslor-4 px-6 py-2 rounded-full mb-4 text-base font-semibold" onClick={handleSignOut}>Sign Out</button>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
       <Suspense
       fallback={
@@ -48,5 +56,6 @@ export default function AdminClient({
       <TableStudents />
     </Suspense>
     </div>
+    </>
   );
 }
