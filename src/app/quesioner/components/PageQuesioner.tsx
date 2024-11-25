@@ -15,6 +15,8 @@ export default function PageQuesioner() {
   };
   const [state, action] = useFormState(quesionerSubmit, initialState);
   const [handleClickBeriNilai, setHandleClickBeriNilai] = useState(true);
+  const [sessionId, setSessionId] = useState<number>();
+  const [status, setStatus] = useState<boolean | undefined>(false);
   const router = useRouter();
   useEffect(() => {
     console.log(state)
@@ -40,22 +42,22 @@ export default function PageQuesioner() {
     }
   }, [state]);
 
-  const [status, setStatus] = useState<boolean | undefined>(false);
-  const getSessionId = Number(sessionStorage.getItem("id"));
-  const getSessionNumber = sessionStorage.getItem("phone-number");
-  const getSessionName = sessionStorage.getItem("name");
-  async function checkStatusByID(id: number) {
-    const result = await checkPhoneNumberInQuesionerPage(id);
-    setStatus(result?.status);
-    return result;
-  }
   useEffect(() => {
+    const getSessionId = Number(sessionStorage.getItem("id"));
+    const getSessionNumber = sessionStorage.getItem("phone-number");
+    const getSessionName = sessionStorage.getItem("name");
+    setSessionId(getSessionId)
+    async function checkStatusByID(id: number) {
+      const result = await checkPhoneNumberInQuesionerPage(id);
+      setStatus(result?.status);
+      return result;
+    }
     checkStatusByID(getSessionId);
+    console.log(status);
+    if (!getSessionName || !getSessionNumber || !getSessionId) {
+      redirect("/signin-quesioner");
+    }
   }, []);
-  console.log(status);
-  if (!getSessionName || !getSessionNumber || !getSessionId) {
-    redirect("/signin-quesioner");
-  }
 
   return (
     <>
@@ -65,7 +67,7 @@ export default function PageQuesioner() {
         className="grid grid-cols-1 gap-6"
         action={ (formData) => action(formData)}
         onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
-        <input type="hidden" name="id-siswa" defaultValue={getSessionId} />
+        <input type="hidden" name="id-siswa" defaultValue={sessionId} />
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Fasilitas Mobil Kursus
