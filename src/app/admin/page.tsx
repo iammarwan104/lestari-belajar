@@ -1,26 +1,9 @@
-import React, { Suspense, useEffect } from "react";
-import { getAllQuesionerAnswer, loginAdmin } from "../lib/action";
-import ScatterChart from "./components/ScatterChart";
-import PelPal from "./components/PelPal";
-import { redirect } from "next/navigation";
-import { Spinner } from "flowbite-react";
+import React from "react";
+import { getAllQuesionerAnswer } from "../lib/action";
 import { ScatterData } from "../lib/interface";
-import { auth } from "../../../auth";
-import { useFormState } from "react-dom";
 import AdminClient from "./components/AdminClient";
 
 export default async function Page() {
-  // const [state, action] = useFormState(loginAdmin, initialState);
-
-  // const checksignin = await loginAdmin(getUsername, getPassword)
-  // if (!state.success) {
-  //   redirect("/signin-quesioner");
-  // }
-  // const session = await auth();
-  // if (!session) {
-  //   redirect("/api/auth/signin");
-  // }
-
   const {
     // kebersihan,
     kebersihanKelasMengemudi,

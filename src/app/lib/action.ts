@@ -6,9 +6,6 @@ import { redirect } from "next/navigation";
 import { Gender, PrismaClient } from '@prisma/client'
 import { CheckAdminInterface, CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
 import { checkAdminZod, checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
-import { signIn } from "../../../auth";
-import { AuthError } from 'next-auth'
-
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
   console.log(formData);
@@ -506,63 +503,63 @@ export async function getUserFromDb(username: string, password: string): Promise
   }
  }
 
-export async function login(prevState: Login, formData: FormData): Promise<Login>{
+// export async function login(prevState: Login, formData: FormData): Promise<Login>{
 
-  const username = formData.get('username') as string
-  const password = formData.get('password') as string
-  const admin = {
-    username: username,
-    password: password
-  }
+//   const username = formData.get('username') as string
+//   const password = formData.get('password') as string
+//   const admin = {
+//     username: username,
+//     password: password
+//   }
 
-  const result = mySchema.safeParse(admin)
-  if(!result.success){
-    const message = {
-      errors: result.error.flatten().fieldErrors
-    }
-    return message
-  }else{
-    const hasil = await getUserFromDb(username, password)
-    if(hasil.success === false){
-    return {
-      success: hasil.success,
-      error: hasil.error
-  }
-  }else{
-    try {
-      await signIn("credentials", {
-        ...Object.fromEntries(formData),
-        callbackUrl: "/admin",
-        redirect: true,
-      });
-      return {
-        success:true
-      }
-    } catch (error) {
-      if (error instanceof AuthError) {
-        return redirect(`${"/error-page"}?error=${error.type}`);
-      }
-      return {
-        error: "An unknown error occurred"
-      }
-    }
-}}
-}
+//   const result = mySchema.safeParse(admin)
+//   if(!result.success){
+//     const message = {
+//       errors: result.error.flatten().fieldErrors
+//     }
+//     return message
+//   }else{
+//     const hasil = await getUserFromDb(username, password)
+//     if(hasil.success === false){
+//     return {
+//       success: hasil.success,
+//       error: hasil.error
+//   }
+//   }else{
+//     try {
+//       await signIn("credentials", {
+//         ...Object.fromEntries(formData),
+//         callbackUrl: "/admin",
+//         redirect: true,
+//       });
+//       return {
+//         success:true
+//       }
+//     } catch (error) {
+//       if (error instanceof AuthError) {
+//         return redirect(`${"/error-page"}?error=${error.type}`);
+//       }
+//       return {
+//         error: "An unknown error occurred"
+//       }
+//     }
+// }}
+// }
 
-export async function handleSignIn(formData: FormData){
-  try {
-    await signIn("credentials", {
-      ...Object.fromEntries(formData),
-      callbackUrl: "/admin",
-      redirect: true,
-    });
-  } catch (error) {
-    if (error instanceof AuthError) {
-      return redirect(`${"/error-page"}?error=${error.type}`);
-    }
-    throw error;
-  }
-}
+// export async function handleSignIn(formData: FormData){
+//   try {
+//     await signIn("credentials", {
+//       ...Object.fromEntries(formData),
+//       callbackUrl: "/admin",
+//       redirect: true,
+//     });
+//   } catch (error) {
+//     if (error instanceof AuthError) {
+//       return redirect(`${"/error-page"}?error=${error.type}`);
+//     }
+//     throw error;
+//   }
+// }
 
 export async function checkPhoneNumberSignIn(prevState: CheckNumberPhone, formData: FormData) : Promise<CheckNumberPhone>{
   const phoneNumber = await Number(formData.get("phone-number"));
@@ -635,7 +632,7 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
           success:true
         }
       } catch (error) {
-        if (error instanceof AuthError) {
+        if (error instanceof Error) {
           return {
             success: false,
             error: error.message

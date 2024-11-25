@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footers from "./components/Footer";
-import { auth } from "../../auth";
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,7 +24,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
 
   return (
     <html lang="en">
@@ -34,7 +31,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="bg-[#274C77]">
-          <Navbar session={session} />
+          <Navbar />
         </header>
         <main className="bg-[#274C77]">{children}</main>
         <footer className="bg-[#274C77]">
