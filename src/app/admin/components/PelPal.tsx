@@ -124,7 +124,7 @@ export default function PelPal({
 
   return (
     <>
-      <div className="w-full h-full xl:h-[334px] bg-gray-800 p-4 rounded-lg overflow-y-scroll flex flex-col gap-4">
+      <div className="w-full h-[15rem] xl:h-[334px] bg-gray-800 p-4 rounded-lg overflow-y-scroll flex flex-col gap-4">
         {datas.map((data) =>
           penentuanStatus(
             data.name,

@@ -41,12 +41,16 @@ export default function Navbar() {
       password: JSON.parse(sessionStorage.getItem("password") as string),
     };
     console.log(username, password, typeof username);
+    async function checkAdminLogin(){
     if (username !== null && password !== null) {
-      const result = loginAdmin(username, password);
-      if(!result){
-        setShowSignOutbutton(true)
+        const result = await loginAdmin(username, password);
+        console.log(result, " navbar")
+        if(result){
+          setShowSignOutbutton(true)
+        }
       }
     }
+    checkAdminLogin()
   }, []);
 
   function handleSignout(){
@@ -261,7 +265,7 @@ export default function Navbar() {
                   )}
                 </Link>
               </li> */}
-              {showSignOutButton ? null : (
+              {!showSignOutButton ? null : (
                 <li>
                   <Link
                     onClick={handleSignout}
