@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
-import { redirect } from "next/navigation";
-import { Gender, PrismaClient } from '@prisma/client'
+const bcrypt = require('bcrypt');
+import { Gender } from '@prisma/client'
 import { CheckAdminInterface, CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
 import { checkAdminZod, checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 
@@ -653,12 +653,27 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
     })
     console.log(username, password, "userpass")
     if(resultCheckAdminZod.success === false){
-      console.log(resultCheckAdminZod?.error.flatten().fieldErrors)
       return {
         success: false,
         errorMessage: resultCheckAdminZod?.error.flatten().fieldErrors.username
       }
     }
+const saltRounds = 10;
+const myPlaintextPassword = resultCheckAdminZod.data.password;
+
+bcrypt.genSalt(saltRounds, function(err, salt: string) {
+  console.log(salt,typeof salt, " ini salt")
+  console.log(err,typeof err, " ini err 2")
+  bcrypt.hash(myPlaintextPassword, salt, function(err, hash: string) {
+    console.log(err, hash,typeof hash)
+  console.log(err,typeof err, " ini err 2")
+      // Store hash in your password DB.
+      // Load hash from your password DB.
+      bcrypt.compare(myPlaintextPassword, hash, function(err, result: boolean) {
+        console.log(result, " result compare")
+      });
+  });
+});
     const resultCheckDataByPrisma = await prisma.admin.findFirst({
       where: {
         username: resultCheckAdminZod.data.username,
@@ -666,11 +681,10 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
       }
     })
   
-    console.log(resultCheckDataByPrisma, "resultCheckDataByPrisma")
     if(!resultCheckDataByPrisma){
       return {
         success: false,
-        errorMessage: `Sepertinya admin dengan username ${resultCheckAdminZod.data.username} tidak terdaftar atau sedang aktif`
+        errorMessage: `Maaf username dan password anda salah`
       }
     }
   
@@ -680,3 +694,27 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
       password: String(resultCheckDataByPrisma.password)
     }
   }
+
+
+ export const checkDataInputanAdmin = async (username: string, password: string) => {
+  
+  const dataDariDatabase = await prisma.admin.findFirst({
+    where: {
+      username: username,
+      password: password,
+    }
+  })
+
+    if (
+      dataDariDatabase?.username !== username ||
+      dataDariDatabase?.password !== password
+    ) {
+      return {
+        valid: false
+      }
+    }else{
+      return {
+        valid: true
+      }
+    }
+}
