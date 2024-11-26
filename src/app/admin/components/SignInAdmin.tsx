@@ -1,54 +1,50 @@
 "use client";
-import { useFormState } from "react-dom";
-import { CheckAdminInterface, CheckNumberPhone } from "@/app/lib/interface";
-import { checkAdminSignIn, checkPhoneNumberSignIn } from "@/app/lib/action";
-import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import { checkDataInputanAdmin } from "@/app/lib/action";
+import toast, { Toaster } from "react-hot-toast";
 
-export default function page() {
-  const [handleClickBeriNilai, setHandleClickBeriNilai] = useState(true);
-  const [state, action] = useFormState<CheckAdminInterface, FormData>(
-    checkAdminSignIn,
-    { success: null, errorMessage: "" }
-  );
-
-  console.log(state);
+export default function SignInAdmin({
+  success,
+  setSuccess,
+}: {
+  success: any;
+  setSuccess: any;
+}) {
+  const [loadingButton, setLoadingButton] = useState<boolean>(true);
   useEffect(() => {
-    if (state?.success === false) {
-      setHandleClickBeriNilai(true);
-    }
-  }, [state]);
-  const alert = () => {
-    if (state?.success === null) {
-      return;
-    }
-    if (state?.success === false) {
-      return (
-        <div
-          className={`flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400`}
-          role="alert">
-          <svg
-            className="flex-shrink-0 inline w-4 h-4 me-3"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-          </svg>
-          <span className="sr-only">Info</span>
-          <div>{state?.errorMessage}</div>
-        </div>
-      );
+    console.log(success);
+  }, [success]);
+
+  const handleSubmit = async (formData: FormData) => {
+    const resultInput = {
+      username: formData.get("username"),
+      password: formData.get("password"),
+    };
+
+    const status = await checkDataInputanAdmin(
+      resultInput.username as string,
+      resultInput.password as string
+    );
+    if (!status.valid) {
+      setSuccess(false);
+      setLoadingButton(true);
+      toast.error("Username dan password anda salah");
     } else {
-      sessionStorage.setItem("username", JSON.stringify(state.username));
-      sessionStorage.setItem("password", JSON.stringify(state.password));
-      redirect("/admin");
+      setSuccess(true);
+      setLoadingButton(true);
     }
   };
 
   return (
-    <section className="fixed w-screen h-screen bg-cuslor-1 overflow-y-scroll">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className="w-full h-screen bg-cuslor-1">
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+          style: { marginTop: "1rem", fontSize: "1rem" },
+        }}
+      />
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-white">
@@ -66,20 +62,19 @@ export default function page() {
             </h1>
             <form
               className="space-y-4 md:space-y-6"
-              onSubmit={(prev) => setHandleClickBeriNilai(!prev)}
-              action={action}>
-              {alert()}
+              onSubmit={(prev) => setLoadingButton(!prev)}
+              action={(formData) => handleSubmit(formData)}>
               <div>
                 <label
                   htmlFor="username"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">
                   Your username
                 </label>
                 <input
                   type="text"
                   name="username"
                   id="username"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border text-base border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   autoFocus
                   required
                   aria-required
@@ -88,23 +83,23 @@ export default function page() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">
                   Your Password
                 </label>
                 <input
                   type="password"
                   name="password"
                   id="password"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border text-base border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                   aria-required
                 />
               </div>
               <button
                 type="submit"
-                disabled={!handleClickBeriNilai}
+                disabled={!loadingButton}
                 className={`w-full text-black bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>
-                {handleClickBeriNilai ? (
+                {loadingButton ? (
                   "Sign in"
                 ) : (
                   <span>
