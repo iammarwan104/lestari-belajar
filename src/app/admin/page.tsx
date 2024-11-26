@@ -143,7 +143,6 @@ export default async function Page() {
 
   return (
     <div className="bg-cuslor-1 text-center text-2xl font-semibold px-4 pt-12">
-      <h1 className="mb-6">Admin</h1>
       <AdminClient data={data} garisPerbatasan={garisPerbatasan}/>
     </div>
   );
