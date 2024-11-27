@@ -40,7 +40,6 @@ export default function Navbar() {
       username: JSON.parse(sessionStorage.getItem("username") as string),
       password: JSON.parse(sessionStorage.getItem("password") as string),
     };
-    console.log(username, password, typeof username);
     async function checkAdminLogin(){
     if (username !== null && password !== null) {
         const result = await loginAdmin(username, password);
