@@ -644,73 +644,23 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
       }
   }}
 
-//   export async function checkAdminSignIn(prevState: CheckAdminInterface, formData: FormData) : Promise<CheckAdminInterface>{
-//     const username = await formData.get("username");
-//     const password = await formData.get("password");
-//     const resultCheckAdminZod = checkAdminZod.safeParse({
-//       username: username,
-//       password: password
-//     })
-//     console.log(username, password, "userpass")
-//     if(resultCheckAdminZod.success === false){
-//       return {
-//         success: false,
-//         errorMessage: resultCheckAdminZod?.error.flatten().fieldErrors.username
-//       }
-//     }
-// const saltRounds = 10;
-// const myPlaintextPassword = resultCheckAdminZod.data.password;
-
-// bcrypt.genSalt(saltRounds, function(err, salt: string) {
-//   console.log(salt,typeof salt, " ini salt")
-//   console.log(err,typeof err, " ini err 2")
-//   bcrypt.hash(myPlaintextPassword, salt, function(err, hash: string) {
-//     console.log(err, hash,typeof hash)
-//   console.log(err,typeof err, " ini err 2")
-//       // Store hash in your password DB.
-//       // Load hash from your password DB.
-//       bcrypt.compare(myPlaintextPassword, hash, function(err, result: boolean) {
-//         console.log(result, " result compare")
-//       });
-//   });
-// });
-//     const resultCheckDataByPrisma = await prisma.admin.findFirst({
-//       where: {
-//         username: resultCheckAdminZod.data.username,
-//         password: resultCheckAdminZod.data.password,
-//       }
-//     })
-  
-//     if(!resultCheckDataByPrisma){
-//       return {
-//         success: false,
-//         errorMessage: `Maaf username dan password anda salah`
-//       }
-//     }
-  
-//     return {
-//       success: true,
-//       username: String(resultCheckDataByPrisma.username),
-//       password: String(resultCheckDataByPrisma.password)
-//     }
-//   }
-
-
  export const checkDataInputanAdmin = async (username: string, password: string) => {
-  
-  const dataDariDatabase = await prisma.admin.findFirst({
-    where: {
-      username: username,
-      password: password,
-    }
-  })
+  const dataDariDatabase = await prisma.admin.findMany()
 
-    if (
-      dataDariDatabase?.username !== username ||
-      dataDariDatabase?.password !== password
-    ) {
+    if(dataDariDatabase[0]?.username !== username){
       return {
-        valid: false
+        valid: false,
+        message: "Username anda salah"
+      }
+    }
+
+  const match = await bcrypt.compare(password, dataDariDatabase[0]?.password);
+
+  console.log(match, " hasil match");
+    if (!match) {
+      return {
+        valid: false,
+        message: "Password anda salah"
       }
     }else{
       return {

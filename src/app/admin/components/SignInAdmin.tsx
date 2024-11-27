@@ -25,10 +25,10 @@ export default function SignInAdmin({
       resultInput.username as string,
       resultInput.password as string
     );
-    if (!status.valid) {
+    if (!status?.valid) {
       setSuccess(false);
       setLoadingButton(true);
-      toast.error("Username dan password anda salah");
+      toast.error(status?.message as string);
     } else {
       setSuccess(true);
       setLoadingButton(true);

@@ -58,7 +58,6 @@ const ScatterChart = ({
     if (chartId.current !== null) {
       return;
     }
-    console.log(datas.length)
     const data = {
       datasets: [
         {
