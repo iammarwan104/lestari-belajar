@@ -1,9 +1,6 @@
 "use client";
-// import { updateDataSiswa } from "@/app/lib/action";
-// import { DataSiswa, tambahDataSiswaInterface } from "@/app/lib/interface";
-import { Button, Label, Modal, Radio } from "flowbite-react";
+import { Button, Modal } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
 
 export default function WelcomeModal() {
   const [openModal, setOpenModal] = useState(true);

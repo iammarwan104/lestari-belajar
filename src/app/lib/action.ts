@@ -8,7 +8,7 @@ import { CheckAdminInterface, CheckNumberPhone, Item, Login, tambahDataSiswaInte
 import { checkAdminZod, checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
-  console.log(formData);
+
   const answerQuesioner = quesionerValidation.safeParse({
            // staff lembaga kursus start
 
@@ -37,25 +37,20 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
         redirect: false
     }
 }
-
 const scriptRegex = /(<script.*?>[\s\S]*?<\/script>|\b(eval|setTimeout|setInterval)\(.*?\)|data:image\/svg\+xml;.*?base64.*?>)/gi;
 const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_administrasi as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_jadwal_belajar as string);
-
 
 if(isInvalid){
     return{
         success: false,
-        message : "Karakter tidak valid terdeteksi. Harap masukkan hanya karakter yang diizinkan",
+        message : "Karakter tidak valid terdeteksi. Harap jangan berlebihan dalam memberikan tanda baca.",
         redirect: false
     }
 }
-
   try {
-
     const komentarEtikaSopanSantun= answerQuesioner?.data.komentar_etika_sopan_santun;
     const komentarPelayananJadwalBelajar= answerQuesioner?.data.komentar_pelayanan_jadwal_belajar;
     const komentarPelayananAdministrasi= answerQuesioner?.data.komentar_pelayanan_administrasi;
-
 
     await prisma.etika_SopanSantun.create({
       data : {
@@ -64,6 +59,7 @@ if(isInvalid){
         komentar: komentarEtikaSopanSantun || null,
       }
     });
+
     await prisma.pelayanan_administrasi.create({
       data : {
         kepentingan: answerQuesioner.data.kepentingan_pelayanan_administrasi,
@@ -71,6 +67,7 @@ if(isInvalid){
         komentar: komentarPelayananAdministrasi || null,
       }
     });
+
     await prisma.pelayanan_jadwal_belajar.create({
       data : {
         kepentingan: answerQuesioner.data.kepentingan_pelayanan_jadwal_belajar,
@@ -78,6 +75,7 @@ if(isInvalid){
         komentar: komentarPelayananJadwalBelajar || null,
       }
     });
+
     await prisma.siswaKursusMengemudi.update({
       where: {
         id: answerQuesioner.data.id_siswa,
@@ -235,7 +233,6 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
     gender: siswa.gender as string,
     phoneNumber: siswa.number as string
   })
-  console.log(dataSiswa, dataSiswa.error?.flatten().fieldErrors)
 
   if(dataSiswa.success === false){
     return {
@@ -300,7 +297,6 @@ export async function updateDataSiswa( prevState: tambahDataSiswaInterface, form
       errors: dataSiswa.error.flatten().fieldErrors
     }
   }
-  console.log(dataSiswa)
 
   await prisma.siswaKursusMengemudi.update({
     where:{
@@ -367,7 +363,6 @@ export async function deleteSiswa(id: number){
 
 export async function getDataSiswa(page: number){
   try {
-    // console.log(page, " page in action")
     const totalData = await prisma.siswaKursusMengemudi.count()
     const take = 10
     const totalPage = Math.ceil(totalData/take)
@@ -385,7 +380,6 @@ export async function getDataSiswa(page: number){
     return {success: true, data: datas, totalSiswa: totalData,totalPages : totalPage}
   } catch (error) {
     if(error instanceof Error){
-      // console.error(error.message, " error message ini action");
       return {success: false, message : error.message}
     }
   }
@@ -476,8 +470,6 @@ export async function getUserFromDb(username: string, password: string): Promise
     },
   })
 
-  console.log(result, " getUserfromDb")
-
   if(!result){
     throw Error('Username dan password anda salah')
   }
@@ -503,79 +495,18 @@ export async function getUserFromDb(username: string, password: string): Promise
   }
  }
 
-// export async function login(prevState: Login, formData: FormData): Promise<Login>{
-
-//   const username = formData.get('username') as string
-//   const password = formData.get('password') as string
-//   const admin = {
-//     username: username,
-//     password: password
-//   }
-
-//   const result = mySchema.safeParse(admin)
-//   if(!result.success){
-//     const message = {
-//       errors: result.error.flatten().fieldErrors
-//     }
-//     return message
-//   }else{
-//     const hasil = await getUserFromDb(username, password)
-//     if(hasil.success === false){
-//     return {
-//       success: hasil.success,
-//       error: hasil.error
-//   }
-//   }else{
-//     try {
-//       await signIn("credentials", {
-//         ...Object.fromEntries(formData),
-//         callbackUrl: "/admin",
-//         redirect: true,
-//       });
-//       return {
-//         success:true
-//       }
-//     } catch (error) {
-//       if (error instanceof AuthError) {
-//         return redirect(`${"/error-page"}?error=${error.type}`);
-//       }
-//       return {
-//         error: "An unknown error occurred"
-//       }
-//     }
-// }}
-// }
-
-// export async function handleSignIn(formData: FormData){
-//   try {
-//     await signIn("credentials", {
-//       ...Object.fromEntries(formData),
-//       callbackUrl: "/admin",
-//       redirect: true,
-//     });
-//   } catch (error) {
-//     if (error instanceof AuthError) {
-//       return redirect(`${"/error-page"}?error=${error.type}`);
-//     }
-//     throw error;
-//   }
-// }
-
 export async function checkPhoneNumberSignIn(prevState: CheckNumberPhone, formData: FormData) : Promise<CheckNumberPhone>{
   const phoneNumber = await Number(formData.get("phone-number"));
   const resultCheckPhoneNumberZod = checkPhoneNumberZod.safeParse({
     phoneNumber: phoneNumber
   })
-  console.log(phoneNumber, "phoneNumber")
   if(resultCheckPhoneNumberZod.success === false){
-    console.log(resultCheckPhoneNumberZod?.error.flatten().fieldErrors)
     return {
       success: false,
       errorMessage: resultCheckPhoneNumberZod?.error.flatten().fieldErrors.phoneNumber
     }
   }
   const addZero = `${0}${resultCheckPhoneNumberZod.data.phoneNumber}`;
-  console.log(addZero, typeof addZero);
   const resultCheckDataByPrisma = await prisma.siswaKursusMengemudi.findFirst({
     where: {
       phoneNumber: addZero,
@@ -583,7 +514,6 @@ export async function checkPhoneNumberSignIn(prevState: CheckNumberPhone, formDa
     }
   })
 
-  console.log(resultCheckDataByPrisma, "resultCheckDataByPrisma")
   if(!resultCheckDataByPrisma){
     return {
       success: false,
@@ -621,7 +551,6 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
           password: password
         }
       })
-      console.log(hasil, " hasil login admin")
       if(!hasil){
       return {
         success: false,
@@ -655,8 +584,6 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
     }
 
   const match = await bcrypt.compare(password, dataDariDatabase[0]?.password);
-
-  console.log(match, " hasil match");
     if (!match) {
       return {
         valid: false,
