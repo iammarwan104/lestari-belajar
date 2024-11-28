@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import Quesioner from "./Quesioner";
 import { redirect, useRouter } from "next/navigation";
@@ -19,7 +19,6 @@ export default function PageQuesioner() {
   const [status, setStatus] = useState<boolean | undefined>(false);
   const router = useRouter();
   useEffect(() => {
-    console.log(state)
     if (state.success === false && state.redirect === false) {
       setHandleClickBeriNilai(true);
     }
@@ -53,7 +52,6 @@ export default function PageQuesioner() {
       return result;
     }
     checkStatusByID(getSessionId);
-    console.log(status);
     if (!getSessionName || !getSessionNumber || !getSessionId) {
       redirect("/signin-quesioner");
     }
@@ -61,11 +59,11 @@ export default function PageQuesioner() {
 
   return (
     <>
-      <Toaster position="top-center" toastOptions={{ duration: 5000, style: {marginTop: '1rem'} }} />
+      <Toaster position="top-center" toastOptions={{ duration: 3000, style: {marginTop: '1rem'} }} />
       <WelcomeModal />
       <form
         className="grid grid-cols-1 gap-6"
-        action={ (formData) => action(formData)}
+        action={action}
         onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
         <input type="hidden" name="id-siswa" defaultValue={sessionId} />
         {/* <div>

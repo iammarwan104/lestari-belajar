@@ -12,7 +12,6 @@ export default function FormSignIn() {
     { success: null, phoneNumber: null, errorMessage: "" }
   );
 
-  console.log(state);
   useEffect(() => {
     if (state?.success === false) {
       setHandleClickBeriNilai(true);
