@@ -18,6 +18,14 @@ export default function PageQuesioner() {
   const [sessionId, setSessionId] = useState<number>();
   const [status, setStatus] = useState<boolean | undefined>(false);
   const router = useRouter();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    action(formData);
+    setHandleClickBeriNilai(!handleClickBeriNilai)
+  };
+
   useEffect(() => {
     if (state.success === false && state.redirect === false) {
       setHandleClickBeriNilai(true);
@@ -63,8 +71,8 @@ export default function PageQuesioner() {
       <WelcomeModal />
       <form
         className="grid grid-cols-1 gap-6"
-        action={action}
-        onSubmit={(prev) => setHandleClickBeriNilai(!prev)}>
+        // action={action}
+        onSubmit={handleSubmit}>
         <input type="hidden" name="id-siswa" defaultValue={sessionId} />
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
