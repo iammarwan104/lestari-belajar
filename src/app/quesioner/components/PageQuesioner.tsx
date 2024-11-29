@@ -1,11 +1,14 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import Quesioner from "./Quesioner";
 import { redirect, useRouter } from "next/navigation";
 import WelcomeModal from "./WelcomeModal";
 import toast, { Toaster } from "react-hot-toast";
-import { checkPhoneNumberInQuesionerPage, quesionerSubmit } from "@/app/lib/action";
+import {
+  checkPhoneNumberInQuesionerPage,
+  quesionerSubmit,
+} from "@/app/lib/action";
 import ButtonSubmit from "./ButtonSubmit";
 
 export default function PageQuesioner() {
@@ -16,14 +19,14 @@ export default function PageQuesioner() {
   };
   const [state, formAction] = useFormState(quesionerSubmit, initialState);
   const [sessionId, setSessionId] = useState<number>();
+  const [heRespondent, setheRespondent] = useState<boolean>(false);
   const router = useRouter();
 
-  console.log(state, " state result")
-
+  console.log(state, " state result");
 
   async function checkStatusByID(id: number) {
     const result = await checkPhoneNumberInQuesionerPage(id);
-    if(result?.status){
+    if (result?.status) {
       sessionStorage.removeItem("id");
       sessionStorage.removeItem("phone-number");
       sessionStorage.removeItem("name");
@@ -36,12 +39,13 @@ export default function PageQuesioner() {
     const getSessionId = Number(sessionStorage.getItem("id"));
     const getSessionNumber = sessionStorage.getItem("phone-number");
     const getSessionName = sessionStorage.getItem("name");
-    setSessionId(getSessionId)
+    setSessionId(getSessionId);
     checkStatusByID(getSessionId);
     if (!getSessionName || !getSessionNumber || !getSessionId) {
       router.push("/signin-quesioner");
+    } else {
+      setheRespondent(true);
     }
-
   }, []);
 
   useEffect(() => {
@@ -59,17 +63,18 @@ export default function PageQuesioner() {
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("phone-number");
         sessionStorage.removeItem("name");
-    }, 1500);
+      }, 1500);
     }
   }, [state]);
 
-  return (
+  return heRespondent ? (
     <>
-      <Toaster position="top-center" toastOptions={{ duration: 3000, style: {marginTop: '1rem'} }} />
+      <Toaster
+        position="top-center"
+        toastOptions={{ duration: 3000, style: { marginTop: "1rem" } }}
+      />
       <WelcomeModal />
-      <form
-        className="grid grid-cols-1 gap-6"
-        action={formAction}>
+      <form className="grid grid-cols-1 gap-6" action={formAction}>
         <input type="hidden" name="id-siswa" defaultValue={sessionId} />
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
@@ -137,8 +142,8 @@ export default function PageQuesioner() {
             <Quesioner name="pembawaan-materi-belajar-mentor-mengemudi" />
           </div>
         </div> */}
-      <ButtonSubmit/>
+        <ButtonSubmit />
       </form>
     </>
-  );
+  ) : null;
 }
