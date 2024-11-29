@@ -20,18 +20,18 @@ export default function PelPal({
     ) {
       return (
         <div key={name} className={`p-4 rounded-lg bg-red-500`}>
-          <h1 className="text-lg font-semibold mb-4">{name}</h1>
+          <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
             {komentars.some((index) => index !== null) ? (
               komentars.map((komentar, index) => {
                 return !komentar ? null : (
-                  <p key={index} className="p-2 rounded-lg border text-base">
+                  <p key={index} className="p-2 text-white rounded-lg border text-base">
                     {komentar}
                   </p>
                 );
               })
             ) : (
-              <p className="p-2 rounded-lg border text-base">
+              <p className="p-2 rounded-lg text-white border text-base">
                 Tidak ada komentar
               </p>
             )}
@@ -47,18 +47,18 @@ export default function PelPal({
         <div
           key={name}
           className={`text-lg font-semibold p-4 rounded-lg bg-green-400`}>
-          <h1 className="text-lg font-semibold mb-4">{name}</h1>
+          <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
             {komentars.some((index) => index !== null) ? (
               komentars.map((komentar, index) => {
                 return !komentar ? null : (
-                  <p key={index} className="p-2 rounded-lg border text-base">
+                  <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
                   </p>
                 );
               })
             ) : (
-              <p className="p-2 rounded-lg border text-base">
+              <p className="p-2 rounded-lg text-white border text-base">
                 Tidak ada komentar
               </p>
             )}
@@ -74,18 +74,18 @@ export default function PelPal({
         <div
           key={name}
           className={`text-lg font-semibold p-4 rounded-lg bg-yellow-300`}>
-          <h1 className="text-lg font-semibold mb-4">{name}</h1>
+          <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
             {komentars.some((index) => index !== null) ? (
               komentars.map((komentar, index) => {
                 return !komentar ? null : (
-                  <p key={index} className="p-2 rounded-lg border text-base">
+                  <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
                   </p>
                 );
               })
             ) : (
-              <p className="p-2 rounded-lg border text-base">
+              <p className="p-2 rounded-lg text-white border text-base">
                 Tidak ada komentar
               </p>
             )}
@@ -106,13 +106,13 @@ export default function PelPal({
             {komentars.some((index) => index !== null) ? (
               komentars.map((komentar, index) => {
                 return !komentar ? null : (
-                  <p key={index} className="p-2 rounded-lg border text-base">
+                  <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
                   </p>
                 );
               })
             ) : (
-              <p className="p-2 rounded-lg border text-base">
+              <p className="p-2 rounded-lg text-white border text-base">
                 Tidak ada komentar
               </p>
             )}

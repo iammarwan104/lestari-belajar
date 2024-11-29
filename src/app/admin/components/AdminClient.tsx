@@ -26,9 +26,9 @@ export default function AdminClient({
     {
       success ? (
         <>
-      <h1 className="mb-6">Admin</h1>
+      <h1 className="mb-6 text-white">Admin</h1>
         <button
-          className="bg-cuslor-4 px-6 py-2 rounded-full mb-4 text-base font-semibold"
+          className="bg-cuslor-4 px-6 py-2 text-white rounded-full mb-4 text-base font-semibold"
           onClick={handleSignOut}>
           Sign Out
         </button>

@@ -1,3 +1,4 @@
+"use client"
 import { Dispatch, SetStateAction } from "react";
 
 export default function StarRating({name, id, value, rating, setRating}: {name : string, id : string, value: number, rating: number, setRating: Dispatch<SetStateAction<number>>}) {
