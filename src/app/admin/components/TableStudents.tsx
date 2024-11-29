@@ -105,7 +105,7 @@ export default function TebleStudents() {
         <div className="flex justify-center">
         <ComponentPagination totalPages={totalPages} />
         </div>
-        <p className="mt-2 text-center">{totalSiswa} siswa terdaftar</p>
+        <p className="mt-2 text-white font-semibold text-center">{totalSiswa} siswa terdaftar</p>
       </div>
     </>
   );

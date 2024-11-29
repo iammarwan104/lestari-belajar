@@ -84,6 +84,7 @@ if(isInvalid){
         status: true
       }
     })
+
     return{
       message:"Jawaban anda berhasil disimpan",
       success: true,
@@ -227,6 +228,7 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
     gender : formData.get("gender"),
     number : formData.get("phoneNumber"),
   }
+  console.log(siswa)
   try{
   const dataSiswa = tambahDataSiswaSchema.safeParse({
     nama: siswa.nama as string,
@@ -249,7 +251,7 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
       status: false,
     }
   })
-
+  console.log("debug 1")
   return {
     success: true,
     data : {
@@ -259,6 +261,7 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
     }
   }
 }catch(error){
+  console.log("debug 2")
     if(error instanceof Error){
       return {
         success: false,
