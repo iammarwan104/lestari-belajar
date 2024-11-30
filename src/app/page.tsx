@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import ButtonLandingPage from "./components/ButtonLandingPage";
 
 export default function Home() {
