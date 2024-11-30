@@ -593,8 +593,54 @@ export async function checkPhoneNumberInQuesionerPage(id: number){
         message: "Password anda salah"
       }
     }else{
+      await prisma.admin.update({
+        where : {
+          id: 1
+        },
+        data:{
+          status: true
+        }
+      })
       return {
-        valid: true
+        valid: true,
+        username: dataDariDatabase[0].username
       }
     }
+}
+
+export async function checkStatusAdminServer(username: string){
+  const findAdmin = await prisma.admin.findFirst({
+    where:{
+      username: username,
+      status: true
+    }
+  })
+
+  if(findAdmin){
+    return {active: true}
+  }else{ 
+    return{active: false}
+  }
+}
+
+export async function signOutdmin(username: string){
+  const findAdmin = await prisma.admin.findFirst({
+    where:{
+      username: username,
+      status: true
+    }
+  })
+
+  if(findAdmin){
+    const changeStatus = await prisma.admin.update({
+      where:{
+        id: 1
+      },
+      data: {
+        status: false
+      }
+    })
+  }else{ 
+    return{active: false}
+  }
 }

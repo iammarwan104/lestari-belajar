@@ -3,6 +3,7 @@ import { deleteSiswa } from "@/app/lib/action";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import ButtonSubmit from "./ButtonSubmit";
 
 export default function DeleteSiswaButton({ id }: { id: number }) {
   const DeleteSiswaById = deleteSiswa.bind(null, id);
@@ -21,10 +22,7 @@ export default function DeleteSiswaButton({ id }: { id: number }) {
           }
         });
       }}>
-      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
-      <Button type="submit" className="bg-red-500 hover:bg-red-600">
-        Delete
-      </Button>
+      <ButtonSubmit text={"Hapus"} />
     </form>
   );
 }

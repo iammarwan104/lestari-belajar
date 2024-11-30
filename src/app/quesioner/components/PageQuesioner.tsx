@@ -72,7 +72,7 @@ export default function PageQuesioner() {
     <>
       <Toaster
         position="top-center"
-        toastOptions={{ duration: 3000, style: { marginTop: "1rem" } }}
+        toastOptions={{ duration: 1500, style: { marginTop: "1rem" } }}
       />
       <WelcomeModal />
       <form className="grid grid-cols-1 gap-6" action={formAction}>
