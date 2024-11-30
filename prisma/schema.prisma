@@ -200,6 +200,7 @@ model admin{
   id Int @id @default(autoincrement()) 
   username String
   password String
+  status Boolean @default(true)
   createdAt DateTime @default(now())
 }
 
