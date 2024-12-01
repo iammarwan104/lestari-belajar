@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { checkDataInputanAdmin } from "@/app/lib/action";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function SignInAdmin({
   success,

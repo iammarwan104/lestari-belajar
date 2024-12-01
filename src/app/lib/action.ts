@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 const bcrypt = require('bcrypt');
 import { Gender } from '@prisma/client'
-import { CheckAdminInterface, CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
-import { checkAdminZod, checkPhoneNumberZod, mySchema, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
+import { checkPhoneNumberZod, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
 

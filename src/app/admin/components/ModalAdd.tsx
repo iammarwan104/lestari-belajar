@@ -3,7 +3,7 @@ import { tambahDataSiswaInterface } from "@/app/lib/interface";
 import { Button, Label, Modal, Radio } from "flowbite-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ButtonSubmit from "./ButtonSubmit";
 
 export default function ModalAdd() {

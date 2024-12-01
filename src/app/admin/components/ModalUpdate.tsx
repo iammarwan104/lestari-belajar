@@ -1,9 +1,9 @@
 import { updateDataSiswa } from "@/app/lib/action";
 import { DataSiswa, tambahDataSiswaInterface } from "@/app/lib/interface";
-import { Button, Label, Modal, Radio } from "flowbite-react";
+import { Label, Modal, Radio } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ButtonSubmit from "./ButtonSubmit";
 
 export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {

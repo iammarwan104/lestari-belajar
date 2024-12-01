@@ -5,7 +5,7 @@ import useSWR from "swr";
 import ModalAdd from "./ModalAdd";
 import DeleteSiswaButton from "./DeleteSiswaButton";
 import ModalUpdate from "./ModalUpdate";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import ComponentPagination from "./Pagination";
 import { Button, Spinner } from "flowbite-react";
 import SearchInput from "./SearchInput";
