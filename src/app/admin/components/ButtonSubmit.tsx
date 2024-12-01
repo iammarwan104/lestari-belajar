@@ -9,7 +9,7 @@ export default function ButtonSubmit({text}: {text:string}) {
       type="submit"
       aria-disabled={pending}
       disabled={pending}
-      className={`w-full text-white ${text === "Hapus"? " bg-red-400 hover:bg-red-500 focus:ring-red-400":" bg-cuslor-4 hover:bg-yellow-500 focus:ring-yellow-400"} focus:ring-4 font-semibold rounded-lg text-center text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none`}>
+      className={`w-full text-white ${text === "Hapus"? " bg-red-500 hover:bg-red-600 focus:ring-red-500":" bg-cuslor-4 hover:bg-yellow-500 focus:ring-yellow-400"} focus:ring-4 font-semibold rounded-lg text-center text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none`}>
       {!pending ? (
         `${text}`
       ) : (
