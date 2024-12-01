@@ -32,7 +32,7 @@ export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {
     <>
       <button
         onClick={() => setOpenModal(true)}
-        className="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
         Update
       </button>
 

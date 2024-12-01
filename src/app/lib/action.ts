@@ -110,7 +110,7 @@ export async function getAllQuesionerAnswer(){
       const rataRataKinerja = (totalKinerja / arr.length).toFixed(1);
       let fiveKomentar: (string|null)[] = [];
       arr.map((data, index) => {
-          index >= (arr.length - 5) ? fiveKomentar.push(data.komentar) : null
+          index >= (arr.length - 10) ? fiveKomentar.push(data.komentar) : null
       })
       return {
           nama : name,

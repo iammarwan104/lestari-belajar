@@ -37,11 +37,11 @@ export default function ModalAdd() {
 
   return (
     <>
-      <Button
+      <button
         onClick={() => setOpenModal(true)}
-        className="bg-green-400 hover:bg-green-500 font-semibold">
+        className="bg-blue-400 hover:bg-blue-500 text-white font-semibold rounded-lg text-sm px-5 py-2.5 focus:outline-none">
         Tambah
-      </Button>
+      </button>
 
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Tambah Data Siswa</Modal.Header>
