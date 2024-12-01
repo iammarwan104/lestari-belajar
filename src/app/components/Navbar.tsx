@@ -2,11 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { loginAdmin } from "../lib/action";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 export default function Navbar() {
-  // export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [waitDashboard, setWaitDashboard] = useState(false);
   const [waitMengemudi, setWaitMengemudi] = useState(false);

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import Quesioner from "./Quesioner";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import WelcomeModal from "./WelcomeModal";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -22,8 +22,6 @@ export default function PageQuesioner() {
   const [sessionId, setSessionId] = useState<number>();
   const [heRespondent, setheRespondent] = useState<boolean>(false);
   const router = useRouter();
-
-  console.log(state, " state result");
 
   async function checkStatusByID(id: number) {
     const result = await checkPhoneNumberInQuesionerPage(id);

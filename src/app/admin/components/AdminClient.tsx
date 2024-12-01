@@ -61,8 +61,8 @@ export default function AdminClient({
                 </div>
               </div>
             }>
-            {/* <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
-            <PelPal datas={data} garisPerbatasan={garisPerbatasan} /> */}
+            <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
+            <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
             <TableStudents />
           </Suspense>
         </div>
