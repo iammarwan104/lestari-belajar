@@ -21,15 +21,15 @@ export default function PaketBelajar() {
   }
     , {
       gambar:["/image/komplit.webp"],
-      name: "Komplit",
+      name: "Lengkap",
       harga: "Rp. 1.300.000.00",
-      materidanKeterangan: ["Pengenalan OS Windows","Materi Dasar hingga lanjutan (MS Word, MS Excel, MS Power Point)", "Tips & trik", "10 X Pertemuan", "2 Jam Perhari", "Ruangan ber-AC", "Sertifikat (Syarat & ketentuan berlaku)"]
+      materidanKeterangan: ["Pengenalan OS Windows","Materi Dasar hingga lanjutan (MS Word, MS Excel, MS Power Point)", "Tips & trik", "24 X Pertemuan", "2 Jam Perhari", "Ruangan ber-AC", "Sertifikat (Syarat & ketentuan berlaku)"]
   }
   , {
     gambar:["/image/desain-grafis-logo.webp"],
     name: "Desain Grafis",
     harga: "Rp. 1.500.000.00",
-    materidanKeterangan: ["Materi Dasar hingga lanjutan (Photoshop & Corel Draw)", "Tips & trik", "10 X Pertemuan", "2 Jam Perhari", "Ruangan ber-AC", "Sertifikat (Syarat & ketentuan berlaku)"]
+    materidanKeterangan: ["Materi Dasar hingga lanjutan (Photoshop & Corel Draw)", "Tips & trik", "20 X Pertemuan", "2 Jam Perhari", "Ruangan ber-AC", "Sertifikat (Syarat & ketentuan berlaku)"]
 }
 ]
   return (

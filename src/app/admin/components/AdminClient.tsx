@@ -27,18 +27,15 @@ export default function AdminClient({
 
   async function checkStatusAdmin(username: string){
     const result = await checkStatusAdminServer(username)
-    console.log(result, " hasil ceck");
     if(result) setSuccess(true)
   }
   useEffect(()=>{
     const getUsernameSession = sessionStorage.getItem("username");
     if(getUsernameSession){
-      console.log(getUsernameSession, " session");
       setUsernameSession(getUsernameSession)
       checkStatusAdmin(getUsernameSession)
     }
   },[])
-  console.log(usernameSession, " diluar useEffect")
 
   return (
     <>
