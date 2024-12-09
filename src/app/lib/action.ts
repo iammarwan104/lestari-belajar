@@ -10,6 +10,19 @@ import { checkPhoneNumberZod, quesionerValidation, tambahDataSiswaSchema, update
 export async function quesionerSubmit(prevState: any, formData: FormData) {
 
   const answerQuesioner = quesionerValidation.safeParse({
+
+           // mobil kursus start
+
+           kepentingan_kebersihan_mobil: Number(formData.get('kepentingan-kebersihan-mobil')),
+           kinerja_kebersihan_mobil : Number(formData.get('kinerja-kebersihan-mobil')),
+           komentar_kebersihan_mobil : formData.get('komentar-kebersihan-mobil'),
+ 
+           kepentingan_performa_mobil: Number(formData.get('kepentingan-performa-mobil')),
+           kinerja_performa_mobil : Number(formData.get('kinerja-performa-mobil')),
+           komentar_performa_mobil : formData.get('komentar-performa-mobil'),
+
+           // mobil kursus end
+
            // staff lembaga kursus start
 
            kepentingan_etika_sopan_santun: Number(formData.get('kepentingan-etika-sopan-santun')),
@@ -25,6 +38,19 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            komentar_pelayanan_jadwal_belajar : formData.get('komentar-pelayanan-jadwal-belajar'),
            
            // staff lembaga kursus end
+
+           // staff lembaga kursus start
+
+           kepentingan_etika_sopan_santun_mentor: Number(formData.get('kepentingan-etika-sopan-santun-mentor-mengemudi')),
+           kinerja_etika_sopan_santun_mentor : Number(formData.get('kinerja-etika-sopan-santun-mentor-mengemudi')),
+           komentar_etika_sopan_santun_mentor : formData.get('komentar-etika-sopan-santun-mentor-mengemudi'),
+
+           kepentingan_pembawaan_materi_belajar_mentor: Number(formData.get('kepentingan-pembawaan-materi-belajar-mentor-mengemudi')),
+           kinerja_pembawaan_materi_belajar_mentor : Number(formData.get('kinerja-pembawaan-materi-belajar-mentor-mengemudi')),
+           komentar_pembawaan_materi_belajar_mentor : formData.get('komentar-pembawaan-materi-belajar-mentor-mengemudi'),
+           
+           // staff lembaga kursus end
+
           id_siswa : Number(formData.get("id-siswa"))
 
   });
@@ -38,7 +64,7 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
     }
 }
 const scriptRegex = /(<script.*?>[\s\S]*?<\/script>|\b(eval|setTimeout|setInterval)\(.*?\)|data:image\/svg\+xml;.*?base64.*?>)/gi;
-const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_administrasi as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_jadwal_belajar as string);
+const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_administrasi as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_jadwal_belajar as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_performa_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_pembawaan_materi_belajar_mentor as string);
 
 if(isInvalid){
     return{
@@ -48,9 +74,30 @@ if(isInvalid){
     }
 }
   try {
+    const komentarKebersihanMobil= answerQuesioner?.data.komentar_kebersihan_mobil;
+    const komentarPerformaMobil= answerQuesioner?.data.komentar_performa_mobil;
     const komentarEtikaSopanSantun= answerQuesioner?.data.komentar_etika_sopan_santun;
     const komentarPelayananJadwalBelajar= answerQuesioner?.data.komentar_pelayanan_jadwal_belajar;
     const komentarPelayananAdministrasi= answerQuesioner?.data.komentar_pelayanan_administrasi;
+    const komentarEtikaSopanSantunMentor= answerQuesioner?.data.komentar_etika_sopan_santun_mentor;
+    const komentarPembawaanMateriBelajarMentor= answerQuesioner?.data.komentar_pembawaan_materi_belajar_mentor;
+
+
+    await prisma.kebersihan_mobil.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_kebersihan_mobil,
+        kinerja: answerQuesioner.data.kinerja_kebersihan_mobil,
+        komentar: komentarKebersihanMobil || null,
+      }
+    });
+
+    await prisma.performa_mobil.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_performa_mobil,
+        kinerja: answerQuesioner.data.kinerja_performa_mobil,
+        komentar: komentarPerformaMobil || null,
+      }
+    });
 
     await prisma.etika_SopanSantun.create({
       data : {
@@ -73,6 +120,22 @@ if(isInvalid){
         kepentingan: answerQuesioner.data.kepentingan_pelayanan_jadwal_belajar,
         kinerja: answerQuesioner.data.kinerja_pelayanan_jadwal_belajar,
         komentar: komentarPelayananJadwalBelajar || null,
+      }
+    });
+
+    await prisma.etika_sopan_santun_mentor.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_etika_sopan_santun_mentor,
+        kinerja: answerQuesioner.data.kinerja_etika_sopan_santun_mentor,
+        komentar: komentarEtikaSopanSantunMentor || null,
+      }
+    });
+
+    await prisma.pembawaan_materi_belajar_mentor.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_pembawaan_materi_belajar_mentor,
+        kinerja: answerQuesioner.data.kinerja_pembawaan_materi_belajar_mentor,
+        komentar: komentarPembawaanMateriBelajarMentor || null,
       }
     });
 
@@ -120,14 +183,14 @@ export async function getAllQuesionerAnswer(){
       }
   }
   const kebersihan_mobil = await prisma.kebersihan_mobil.findMany();
-  const kelengkapan_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
-  const kebersihan_kelas_mengemudi = await prisma.kebersihan_kelas_mengemudi.findMany();
-  const kelengkapan_alat_kelas_mengemudi = await prisma.kelengkapan_alat_kelas_mengemudi.findMany();
-  const performa_alat_kelas_mengemudi = await prisma.performa_alat_kelas_mengemudi.findMany();
-  const kebersihan_lembaga_kursus = await prisma.kebersihan_lembaga_kursus.findMany();
-  const kelengkapan_alat_lembaga_kursus = await prisma.kelengkapan_alat_lembaga_kursus.findMany();
-  const performa_alat_lembaga_kursus = await prisma.performa_alat_lembaga_kursus.findMany();
-  const performa_alat_mobil = await prisma.performa_alat_mobil.findMany();
+  // const kelengkapan_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
+  // const kebersihan_kelas_mengemudi = await prisma.kebersihan_kelas_mengemudi.findMany();
+  // const kelengkapan_alat_kelas_mengemudi = await prisma.kelengkapan_alat_kelas_mengemudi.findMany();
+  // const performa_alat_kelas_mengemudi = await prisma.performa_alat_kelas_mengemudi.findMany();
+  // const kebersihan_lembaga_kursus = await prisma.kebersihan_lembaga_kursus.findMany();
+  // const kelengkapan_alat_lembaga_kursus = await prisma.kelengkapan_alat_lembaga_kursus.findMany();
+  // const performa_alat_lembaga_kursus = await prisma.performa_alat_lembaga_kursus.findMany();
+  // const performa_alat_mobil = await prisma.performa_alat_mobil.findMany();
   const performa_mobil = await prisma.performa_mobil.findMany();
   const etika_sopan_santun = await prisma.etika_SopanSantun.findMany();    
   const etika_sopan_santun_mentor_mengemudi = await prisma.etika_sopan_santun_mentor.findMany();    
@@ -137,14 +200,14 @@ export async function getAllQuesionerAnswer(){
 
 
   const kordinatKebersihanMobil = getAverangeValue(kebersihan_mobil, "Kebersihan Mobil")
-  const kordinatKelengkapanAlatMobil = getAverangeValue(kelengkapan_alat_mobil, "Kelengkapan Alat Mobil")
-  const kordinatKebersihanKelasMengemudi = getAverangeValue(kebersihan_kelas_mengemudi, "Kebersihan Kelas Mengamudi")
-  const kordinatKelengkapanAlatKelasMengemudi = getAverangeValue(kelengkapan_alat_kelas_mengemudi, "Kelengkapan Alat Kelas Mengemudi")
-  const kordinatPerformaAlatKelasMengemudi = getAverangeValue(performa_alat_kelas_mengemudi, "Performa Alat Kelas Mengemudi")
-  const kordinatKebersihanLembagaKursus = getAverangeValue(kebersihan_lembaga_kursus, "Kebersihan Lembaga Kursus")
-  const kordinatKelengkapanAlatLembagaKursus = getAverangeValue(kelengkapan_alat_lembaga_kursus, "Kelengkapan Alat Lembaga Kursus")
-  const kordinatPerformaAlatLembagaKursus = getAverangeValue(performa_alat_lembaga_kursus, "Performa Alat Lembaga Kursus")
-  const kordinatPerformaAlatMobil = getAverangeValue(performa_alat_mobil, "Performa Alat Mobil")
+  // const kordinatKelengkapanAlatMobil = getAverangeValue(kelengkapan_alat_mobil, "Kelengkapan Alat Mobil")
+  // const kordinatKebersihanKelasMengemudi = getAverangeValue(kebersihan_kelas_mengemudi, "Kebersihan Kelas Mengamudi")
+  // const kordinatKelengkapanAlatKelasMengemudi = getAverangeValue(kelengkapan_alat_kelas_mengemudi, "Kelengkapan Alat Kelas Mengemudi")
+  // const kordinatPerformaAlatKelasMengemudi = getAverangeValue(performa_alat_kelas_mengemudi, "Performa Alat Kelas Mengemudi")
+  // const kordinatKebersihanLembagaKursus = getAverangeValue(kebersihan_lembaga_kursus, "Kebersihan Lembaga Kursus")
+  // const kordinatKelengkapanAlatLembagaKursus = getAverangeValue(kelengkapan_alat_lembaga_kursus, "Kelengkapan Alat Lembaga Kursus")
+  // const kordinatPerformaAlatLembagaKursus = getAverangeValue(performa_alat_lembaga_kursus, "Performa Alat Lembaga Kursus")
+  // const kordinatPerformaAlatMobil = getAverangeValue(performa_alat_mobil, "Performa Alat Mobil")
   const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
   const kordinatEtikaSopanSantun = getAverangeValue(etika_sopan_santun, "Etika dan Sopan Santun")
   const kordinatPelayananAdministrasi = getAverangeValue(pelayanan_administrasi, "Pelayanan Administrasi")
@@ -154,15 +217,15 @@ export async function getAllQuesionerAnswer(){
 
   const sumbuY = [
     kordinatKebersihanMobil.kepentingan, 
-    kordinatKelengkapanAlatMobil.kepentingan, 
-    kordinatPerformaAlatMobil.kepentingan, 
+    // kordinatKelengkapanAlatMobil.kepentingan, 
+    // kordinatPerformaAlatMobil.kepentingan, 
     kordinatPerformaMobil.kepentingan, 
-    kordinatKebersihanKelasMengemudi.kepentingan, 
-    kordinatKelengkapanAlatKelasMengemudi.kepentingan, 
-    kordinatPerformaAlatKelasMengemudi.kepentingan,
-    kordinatKebersihanLembagaKursus.kepentingan, 
-    kordinatKelengkapanAlatLembagaKursus.kepentingan, 
-    kordinatPerformaAlatLembagaKursus.kepentingan,
+    // kordinatKebersihanKelasMengemudi.kepentingan, 
+    // kordinatKelengkapanAlatKelasMengemudi.kepentingan, 
+    // kordinatPerformaAlatKelasMengemudi.kepentingan,
+    // kordinatKebersihanLembagaKursus.kepentingan, 
+    // kordinatKelengkapanAlatLembagaKursus.kepentingan, 
+    // kordinatPerformaAlatLembagaKursus.kepentingan,
     kordinatEtikaSopanSantun.kepentingan,
     kordinatPelayananAdministrasi.kepentingan,
     kordinatPelayananJadwalBelajar.kepentingan,
@@ -173,15 +236,15 @@ export async function getAllQuesionerAnswer(){
 
   const sumbux = [
     kordinatKebersihanMobil.kinerja, 
-    kordinatKelengkapanAlatMobil.kinerja, 
-    kordinatPerformaAlatMobil.kinerja, 
+    // kordinatKelengkapanAlatMobil.kinerja, 
+    // kordinatPerformaAlatMobil.kinerja, 
     kordinatPerformaMobil.kinerja, 
-    kordinatKebersihanKelasMengemudi.kinerja, 
-    kordinatKelengkapanAlatKelasMengemudi.kinerja, 
-    kordinatPerformaAlatKelasMengemudi.kinerja,
-    kordinatKebersihanLembagaKursus.kinerja, 
-    kordinatKelengkapanAlatLembagaKursus.kinerja, 
-    kordinatPerformaAlatLembagaKursus.kinerja,
+    // kordinatKebersihanKelasMengemudi.kinerja, 
+    // kordinatKelengkapanAlatKelasMengemudi.kinerja, 
+    // kordinatPerformaAlatKelasMengemudi.kinerja,
+    // kordinatKebersihanLembagaKursus.kinerja, 
+    // kordinatKelengkapanAlatLembagaKursus.kinerja, 
+    // kordinatPerformaAlatLembagaKursus.kinerja,
     kordinatEtikaSopanSantun.kinerja,
     kordinatPelayananAdministrasi.kinerja,
     kordinatPelayananJadwalBelajar.kinerja,
@@ -204,14 +267,14 @@ export async function getAllQuesionerAnswer(){
 
   return{
       kebersihanMobil: kordinatKebersihanMobil,
-      kelengkapanAlatMobil: kordinatKelengkapanAlatMobil,
-      kebersihanKelasMengemudi: kordinatKebersihanKelasMengemudi,
-      kelengkapanAlatKelasMengemudi: kordinatKelengkapanAlatKelasMengemudi,
-      performaAlatKelasMengemudi: kordinatPerformaAlatKelasMengemudi,
-      kebersihanLembagaKursus: kordinatKebersihanLembagaKursus,
-      kelengkapanAlatLembagaKursus: kordinatKelengkapanAlatLembagaKursus,
-      performaAlatLembagaKursus: kordinatPerformaAlatLembagaKursus,
-      performaAlatMobil: kordinatPerformaAlatMobil,
+      // kelengkapanAlatMobil: kordinatKelengkapanAlatMobil,
+      // kebersihanKelasMengemudi: kordinatKebersihanKelasMengemudi,
+      // kelengkapanAlatKelasMengemudi: kordinatKelengkapanAlatKelasMengemudi,
+      // performaAlatKelasMengemudi: kordinatPerformaAlatKelasMengemudi,
+      // kebersihanLembagaKursus: kordinatKebersihanLembagaKursus,
+      // kelengkapanAlatLembagaKursus: kordinatKelengkapanAlatLembagaKursus,
+      // performaAlatLembagaKursus: kordinatPerformaAlatLembagaKursus,
+      // performaAlatMobil: kordinatPerformaAlatMobil,
       performaMobil: kordinatPerformaMobil,
       etikaSopanSantun: kordinatEtikaSopanSantun,
       pelayananAdministrasi: kordinatPelayananAdministrasi,

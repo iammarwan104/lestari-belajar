@@ -1,6 +1,30 @@
 import { z } from "zod";
 
 export const quesionerValidation = z.object({
+   // mobil kursus start
+
+   kepentingan_kebersihan_mobil: z.number({required_error: "Kepentingan kebersihan mobil kursus is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
+   kinerja_kebersihan_mobil: z.number({required_error: "Kinerja kebersihan mobil kursus is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
+   komentar_kebersihan_mobil: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
+   
+   kepentingan_performa_mobil: z.number({required_error: "Kepentingan performa mobil kursus is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
+   kinerja_performa_mobil: z.number({required_error: "Kinerja performa mobil kursus is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
+   komentar_performa_mobil: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
+
+   // mobil kursus end
+
+   // mentor kursus mengemudi start
+
+   kepentingan_etika_sopan_santun_mentor: z.number({required_error: "Kepentingan etika sopan santun mentor mengemudi kursus is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
+   kinerja_etika_sopan_santun_mentor: z.number({required_error: "Kinerja etika sopan santun mentor mengemudi kursus is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
+   komentar_etika_sopan_santun_mentor: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
+   
+   kepentingan_pembawaan_materi_belajar_mentor: z.number({required_error: "Kepentingan performa pembawaan materi belajar is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
+   kinerja_pembawaan_materi_belajar_mentor: z.number({required_error: "Kinerja performa pembawaan materi belajar is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
+   komentar_pembawaan_materi_belajar_mentor: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
+
+   // mentor kursus mengemudi end
+
    // staff lembaga kursus start
 
    kepentingan_etika_sopan_santun: z.number({required_error: "Kepentingan is require", invalid_type_error: "Kepentingan must a number"}).lte(5).gte(1),

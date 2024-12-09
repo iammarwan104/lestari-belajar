@@ -75,17 +75,19 @@ export default function PageQuesioner() {
       <WelcomeModal />
       <form className="grid grid-cols-1 gap-6" action={formAction}>
         <input type="hidden" name="id-siswa" defaultValue={sessionId} />
-        {/* <div>
+        <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Fasilitas Mobil Kursus
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <Quesioner name="kebersihan-mobil" />
-            <Quesioner name="kelengkapan-alat-mobil" />
-            <Quesioner name="performa-alat-mobil" />
-            <Quesioner name="performa-mobil" />
+            <Quesioner name="kebersihan-mobil"
+              kepentingan="Seberapa penting menurut anda akan kebersihan mobil kursus"
+              kepuasan="Seberapa bersih mobil kursus yang anda lihat dan rasakan" />
+            <Quesioner name="performa-mobil"
+              kepentingan="Seberapa penting menurut anda akan performa mobil kursus"
+              kepuasan="Seberapa baik performa mobil kursus yang anda rasakan" />
         </div>
-        </div> */}
+        </div>
 
         {/* <div>
           <h1 className="text-xl font-semibold text-center mb-4">
@@ -132,15 +134,19 @@ export default function PageQuesioner() {
           </div>
         </div>
 
-        {/* <div>
+        <div>
           <h1 className="text-xl font-semibold text-center mb-4">
             Layanan Mentor kursus Mengemudi
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <Quesioner name="etika-sopan-santun-mentor-mengemudi" />
-            <Quesioner name="pembawaan-materi-belajar-mentor-mengemudi" />
+            <Quesioner name="etika-sopan-santun-mentor-mengemudi"
+              kepentingan="Seberapa penting menurut anda mentor memiliki etika & sopan santun yang baik"
+              kepuasan="Seberapa baik etika & sopan santun mentor yang telah mengajari anda" />
+            <Quesioner name="pembawaan-materi-belajar-mentor-mengemudi"
+              kepentingan="Seberapa penting menurut anda mentor dapat mengajarkan  materi belajar mengemudi dengan baik"
+              kepuasan="Seberapa baik pembawaan dan cara mentor mengajari anda" />
           </div>
-        </div> */}
+        </div>
         <ButtonSubmit />
       </form>
     </>
