@@ -10,35 +10,16 @@ import {
 export default function Pertanyaan() {
   const pertanyaanPertanyaan = [
     {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
+      pertanyaan: "Pendaftar kursus dapat dilakukan dimana ?",
+      jawaban: "Pendaftaran bisa dilakukan dengan langsung datang langsung ke kantor Lestari Belajar.",
     },
     {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
+      pertanyaan: "Apa persyaratan untuk mendaftar ?",
+      jawaban:`1. Menyerahkan pas foto 3x4 2 lembar, 2. Membawa 1 lembar fotocopy KTP (Kartu Tanda Penduduk)`
+    },{
+      pertanyaan: "Apakah instrukturnya galak ?",
+      jawaban: `Kami pastikan instrukturnya profesional, sopan dan memiliki etika yang baik. Apabila pelayanan instruktur kami kurang memuaskan silakan berikan nilai dan komentar ada pada halaman quesioner dengan mengklik text`
+    }
   ];
 
   const customTheme: CustomFlowbiteTheme = {

@@ -8,38 +8,33 @@ interface MateriKursus {
 export default function MateriKursus() {
   const materiKursus = [
     {
-      gambar: "/image/tools.png",
-      deskripsi: "Pengenalan tools kendaraan dan cara kerjanya",
+      gambar: "/image/logo-pedoman.webp",
+      deskripsi: "Pedoman Keprotokolan dan MC",
     },
     {
-      gambar: "/image/water.png",
+      gambar: "/image/logo-fungsi.webp",
       deskripsi:
-        "Pengecekan rutin ringan kendaraan (oli, battery, air radiator, air wiper)",
+        "Fungsi-Fungsi Keprotokolan",
     },
     {
-      gambar: "/image/tools.png",
-      deskripsi: "Teori start dan stop beserta prakteknya",
+      gambar: "/image/logo-tata.webp",
+      deskripsi: "Tata Keprotokolan & Kualifikasi MC",
     },
     {
-      gambar: "/image/turn-left.png",
-      deskripsi: "Teori haluan saat berkendara beserta prakteknya",
+      gambar: "/image/logo-jenis.webp",
+      deskripsi: "Jenis-Jenis Kegiatan & Pelaksanaan Upacara",
     },
     {
-      gambar: "/image/uphill.png",
-      deskripsi: "Teori tanjakan beserta prakteknya",
+      gambar: "/image/logo-vokal.webp",
+      deskripsi: "Penggunaan Bahasa, Teknik Vokal dan Ekspresi suara",
     },
     {
-      gambar: "/image/parking.png",
-      deskripsi:
-        "Teori parkir beserta prakteknya (parkir paralel, parkir L, dan parkir serong)",
+      gambar: "/image/logo-fungsi.webp",
+      deskripsi: "Fungsi, Peran & Tugas MC",
     },
     {
-      gambar: "/image/blind-spot.png",
-      deskripsi: "Teori Blind Spot area beserta prakteknya",
-    },
-    {
-      gambar: "/image/good.png",
-      deskripsi: "Pemantapan berkendara di jalan raya",
+      gambar: "/image/logo-teknik.webp",
+      deskripsi: "Teknik MC untuk acara Formal & Informal",
     },
   ];
   return (
@@ -54,8 +49,8 @@ export default function MateriKursus() {
               <div key={index} className="relative mx-auto">
                 <Image
                   src={"/kursus.svg"}
-                  width={230}
-                  height={188}
+                  width={100}
+                  height={100}
                   alt="price-large"
                   className="absolute left-1/2 -translate-x-1/2 -top-[1.6rem] md:-top-[1.4rem] lg:-top-[1.8rem] w-[60%] sm:w-[40%] md:w-[60%]"
                 />
@@ -67,7 +62,7 @@ export default function MateriKursus() {
                   className="absolute w-[1.6rem] left-1/2 -translate-x-1/2 -top-[1.2rem] md:-top-[1rem] lg:-top-[1.6rem] xl:-top-[1.2rem] md:w-[1.6rem] lg:w-[2.4rem] xl:w-[2.3rem]"
                 />
                 <div className="h-[8rem] flex justify-center items-center rounded-lg mb-8 px-2 bg-[#f5f5f5]">
-                  <p className="text-black text-center text-[12px] lg:text-[13px] lg:pt-6">
+                  <p className="text-black text-center w-full text-[12px] lg:text-[13px] lg:pt-6">
                     {materiKursus.deskripsi}
                   </p>
                 </div>

@@ -1,8 +1,5 @@
 "use client";
 import Image from "next/image";
-import HargaPaketBelajar from "./HargaPaketBelajar";
-import { RiH1 } from "react-icons/ri";
-import MateriKursus from "./MateriKursus";
 
 export interface JenisMobil {
   gambar: string;
@@ -34,8 +31,6 @@ export default function LandingPagePaketBelajar({
                 />
           </div>
         </div>
-      <HargaPaketBelajar />
-      <MateriKursus/>
     </>
   );
 }

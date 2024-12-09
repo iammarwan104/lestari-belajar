@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import HargaPaketBelajar from "./HargaPaketBelajar";
-import { RiH1 } from "react-icons/ri";
-import MateriKursus from "./MateriKursus";
+import PaketBelajar from "./PaketBelajar";
 
 export interface JenisMobil {
   gambar: string[];
@@ -15,6 +13,7 @@ export default function LandingPagePaketBelajar({
 }: {
   jenisMobil: JenisMobil;
 }) {
+
   return (
     <>
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-center md:justify-between items-center md:items-center">
@@ -29,18 +28,17 @@ export default function LandingPagePaketBelajar({
               return (
                 <Image
                   src={gambar}
-                  width={220}
-                  height={220}
+                  width={540}
+                  height={340}
                   alt={"Hero landing page"}
                   key={index}
-                  className="block w-1/3"
+                  className="block"
                 />
               );
             })}
           </div>
         </div>
-      <HargaPaketBelajar />
-      <MateriKursus/>
+        <PaketBelajar />
     </>
   );
 }

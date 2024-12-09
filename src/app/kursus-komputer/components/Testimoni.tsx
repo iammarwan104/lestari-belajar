@@ -7,31 +7,31 @@ export default function Testimoni() {
       gambar: "/image/testimony-1.webp",
       nama: "Sofyan Alfian",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Kursus Microsoft Office di Lestari Belajar sangat membantu saya meningkatkan produktivitas kerja. Materinya jelas dan praktis.",
     },
     {
       gambar: "/image/testimony-2.webp",
       nama: "Muh Ayyub Bari",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Saya sangat puas dengan kursus Excel. Sekarang saya bisa membuat analisis data dengan lebih cepat dan akurat.",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Berkat kursus Photoshop dan Corel Draw, saya bisa mewujudkan ide-ide desain saya menjadi kenyataan.",
     },
     {
       gambar: "/image/testimony-1.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Instruktur desain grafisnya sangat kreatif dan inspiratif. Saya banyak belajar teknik-teknik baru",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Kombinasi kursus Microsoft Office dan desain grafis sangat bermanfaat. Saya bisa membuat presentasi yang menarik dengan visual yang profesional.",
     },
   ];
   return (
@@ -50,7 +50,7 @@ export default function Testimoni() {
               alt="user"
               className="absolute left-1/2 -translate-x-1/2 -top-[3.6rem]"
             />
-            <div className="p-4 bg-white rounded-lg pt-14 mb-14 w-[20rem] mx-auto">
+            <div className="p-4 bg-white rounded-lg pt-14 mb-14 w-[20rem] h-[13rem] mx-auto">
               <h4 className="text-black  text-center font-semibold mb-2">
                 {user.nama}
               </h4>
