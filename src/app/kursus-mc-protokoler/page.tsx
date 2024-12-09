@@ -1,7 +1,5 @@
 import LandingPagePaketBelajar from "./components/LandingPagePaketBelajar";
 import MateriKursus from "./components/MateriKursus";
-import Mentors from "./components/Mentors";
-import Pertanyaan from "./components/Pertanyaan";
 import Testimoni from "./components/Testimoni";
 
 export default function Page() {
@@ -19,9 +17,8 @@ export default function Page() {
           return <LandingPagePaketBelajar key={index} jenisMobil={mobil} />;
         })}
       </section>
-      <Mentors />
+      <MateriKursus/>
       <Testimoni />
-      <Pertanyaan />
     </>
   );
 }

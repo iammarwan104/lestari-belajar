@@ -67,7 +67,7 @@ export default function MateriKursus() {
                   className="absolute w-[1.6rem] left-1/2 -translate-x-1/2 -top-[1.2rem] md:-top-[1rem] lg:-top-[1.6rem] xl:-top-[1.2rem] md:w-[1.6rem] lg:w-[2.4rem] xl:w-[2.6rem]"
                 />
                 <div className="h-[8rem] flex justify-center items-center rounded-lg mb-8 px-2 bg-[#f5f5f5]">
-                  <p className="text-black text-center text-[12px] lg:text-[13px] lg:pt-6">
+                  <p className="text-black text-center text-[12px] sm:text-[16px] md:text-[12px] lg:text-[13px] sm:pt-6 lg:pt-6">
                     {materiKursus.deskripsi}
                   </p>
                 </div>

@@ -7,31 +7,31 @@ export default function Testimoni() {
       gambar: "/image/testimony-1.webp",
       nama: "Sofyan Alfian",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Awalnya saya sangat gugup belajar mengemudi. Tapi berkat instruktur yang sabar dan metode pembelajaran yang menyenangkan, saya jadi cepat menguasai. Sekarang saya bisa mengemudi dengan percaya diri",
     },
     {
       gambar: "/image/testimony-2.webp",
       nama: "Muh Ayyub Bari",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Saya sangat puas dengan kursus mengemudi ini. Instrukturnya sangat profesional dan sabar. Berkat kursus ini, saya tidak hanya bisa mengemudi dengan baik, tapi juga lebih paham tentang peraturan lalu lintas",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Fasilitas mobil latihan yang nyaman dan terbaru membuat proses belajar menjadi lebih menyenangkan. Instruktur juga selalu memberikan tips-tips berkendara yang berguna",
     },
     {
       gambar: "/image/testimony-1.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Instruktur di sini benar-benar luar biasa! Beliau tidak hanya mengajarkan saya cara mengemudi, tapi juga memberikan tips-tips tentang keselamatan berkendara. Saya merasa sangat beruntung bisa belajar dari beliau",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Metode pengajaran di sini sangat efektif. Saya langsung paham dengan materi yang disampaikan. Selain itu, banyak praktek langsung di jalan sehingga saya bisa langsung mengaplikasikannya",
     },
   ];
   return (
@@ -50,7 +50,7 @@ export default function Testimoni() {
               alt="user"
               className="absolute left-1/2 -translate-x-1/2 -top-[3.6rem]"
             />
-            <div className="p-4 bg-white rounded-lg pt-14 mb-14 w-[20rem] mx-auto">
+            <div className="p-4 bg-white rounded-lg pt-14 mb-14 w-[20rem] h-[15rem] mx-auto">
               <h4 className="text-black  text-center font-semibold mb-2">
                 {user.nama}
               </h4>

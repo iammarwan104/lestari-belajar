@@ -6,39 +6,32 @@ import {
   AccordionTitle,
   Flowbite,
 } from "flowbite-react";
+import Link from "next/link";
 
 export default function Pertanyaan() {
   const pertanyaanPertanyaan = [
     {
       pertanyaan: "Rute latihannya kemana ?",
       jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
+        "Bagi siswa yang tidak memiliki dasar mengudi, maka akan diajari terlebih dahulu dasar dasar mengemudi ditempat yang sepi dari pengendara",
     },
     {
-      pertanyaan: "Rute latihannya kemana ?",
+      pertanyaan: "Bagaimana sistem belajarnya ?",
       jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
+        "Sistem Pembelajaran di Lestari Mengemudi menggunakan Sistem Privat dimana Satu Siswa Satu Mobil bukan Sistem Rombongan",
     },
     {
-      pertanyaan: "Rute latihannya kemana ?",
+      pertanyaan: "Pendaftar kursus dapat dilakukan dimana ?",
       jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
+        "Pendaftaran bisa dilakukan dengan langsung datang langsung ke kantor Lestari Belajar.",
     },
     {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
-    {
-      pertanyaan: "Rute latihannya kemana ?",
-      jawaban:
-        "pendaftarannya ?Metode Pembayarannya bisa apa saja ? Pendaftarannya dapat dilakukan dengan 2 cara yaitu datang kekantor Lestari Belaja & daftar menggunakan via Whatsapp",
-    },
+      pertanyaan: "Apa persyaratan untuk mendaftar ?",
+      jawaban:`1. Menyerahkan pas foto 3x4 2 lembar, 2. Membawa KTP (Kartu Tanda Penduduk), 3. Umur minimal 17 tahun`
+    },{
+      pertanyaan: "Apakah instrukturnya galak ?",
+      jawaban: `Kami pastikan instrukturnya profesional, sopan dan memiliki etika yang baik. Apabila pelayanan instruktur kami kurang memuaskan silakan berikan nilai dan komentar ada pada halaman quesioner dengan mengklik text`
+    }
   ];
 
   const customTheme: CustomFlowbiteTheme = {
@@ -89,7 +82,7 @@ export default function Pertanyaan() {
                   <AccordionTitle>
                     <span>{pertanyaan.pertanyaan}</span>
                   </AccordionTitle>
-                  <AccordionContent>{pertanyaan.jawaban}</AccordionContent>
+                  <AccordionContent>{pertanyaan.jawaban} {pertanyaan.jawaban.includes("halaman")? <Link href="/quesioner" className="text-cuslor-1 hover:text-blue-500 font-semibold">ini</Link>: pertanyaan.jawaban }</AccordionContent>
                 </AccordionPanel>
               );
             })}

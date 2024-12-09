@@ -7,35 +7,35 @@ export default function Testimoni() {
       gambar: "/image/testimony-1.webp",
       nama: "Sofyan Alfian",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Saya sekarang bisa membedakan berbagai jenis acara dan memilih gaya bicara yang sesuai.",
     },
     {
       gambar: "/image/testimony-2.webp",
       nama: "Muh Ayyub Bari",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Teknik-teknik yang saya pelajari di kursus ini sangat membantu saya dalam mengelola acara keluarga dengan lebih lancar",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Berkat kursus ini, saya berhasil mendapatkan pekerjaan sebagai MC di beberapa acara. Materi yang diajarkan sangat relevan dengan dunia kerja",
     },
     {
       gambar: "/image/testimony-1.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Kursus ini membuka mata saya tentang pentingnya persiapan yang matang sebelum menjadi MC. Saya sekarang bisa menyusun rundown acara dengan lebih baik dan efektif",
     },
     {
       gambar: "/image/testimony-3.webp",
       nama: "Suriadi Sulaiman",
       komentar:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quo voluptatibus ipsam dolor magni dicta necessitatibus nemo repudiandae, facere molestiae veniam ut vero?",
+        "Setelah mengikuti kursus MC & Protokoler ini, saya merasa jauh lebih percaya diri dalam berbicara di depan umum. Teknik-teknik yang diajarkan sangat bermanfaat untuk meningkatkan kemampuan public speaking saya",
     },
   ];
   return (
-    <section className="bg-cuslor-1 pt-28">
+    <section className="bg-cuslor-1">
     <h1 className="text-white mb-4 text-3xl text-center lg:text-3xl font-semibold">
       Testimoni
     </h1>
