@@ -101,7 +101,7 @@ export default function PelPal({
         <div
           key={name}
           className={`text-lg font-semibold p-4 rounded-lg bg-blue-500`}>
-          <h1 className="text-lg font-semibold mb-4">{name}</h1>
+          <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
             {komentars.some((index) => index !== null) ? (
               komentars.map((komentar, index) => {
