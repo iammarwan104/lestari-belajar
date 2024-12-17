@@ -25,7 +25,7 @@ export default function LandingPagePaketBelajar({
                 <Image
                   src={jenisMobil.gambar}
                   width={330}
-                  height={330}
+                  height={460}
                   alt={"Hero Mc & Protokoler"}
                   className="block"
                 />
