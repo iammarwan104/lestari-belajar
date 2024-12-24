@@ -62,7 +62,7 @@ export default function PageQuesioner() {
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("phone-number");
         sessionStorage.removeItem("name");
-      }, 1500);
+      }, 3000);
     }
   }, [state]);
 
@@ -70,7 +70,7 @@ export default function PageQuesioner() {
     <>
       <Toaster
         position="top-center"
-        toastOptions={{ duration: 1500, style: { marginTop: "1rem" } }}
+        toastOptions={{ duration: 3000, style: { marginTop: "1rem" } }}
       />
       <WelcomeModal />
       <form className="grid grid-cols-1 gap-6" action={formAction}>
@@ -83,9 +83,9 @@ export default function PageQuesioner() {
             <Quesioner name="kebersihan-mobil"
               kepentingan="Seberapa penting menurut anda akan kebersihan mobil kursus"
               kepuasan="Seberapa bersih mobil kursus yang anda lihat dan rasakan" />
-            {/* <Quesioner name="kelengkapan-performa-alat-mobil"
+            <Quesioner name="kelengkapan-performa-alat-mobil"
               kepentingan="Seberapa penting menurut anda akan kelengkapan dan performa alat pada mobil kursus"
-              kepuasan="Seberapa lengkap dan baik performa alat mobil kursus menurut anda" /> */}
+              kepuasan="Seberapa lengkap dan baik performa alat mobil kursus menurut anda" />
             <Quesioner name="performa-mobil"
               kepentingan="Seberapa penting menurut anda akan performa mobil kursus"
               kepuasan="Seberapa baik performa mobil kursus menurut anda" />
@@ -102,9 +102,9 @@ export default function PageQuesioner() {
               kepentingan="Seberapa penting menurut anda staff kantor melayani siswa dengan penuh sopan santun dan etika yang baik"
               kepuasan="Seberapa baik etika dan sopan santun staff kantor dalam melayani anda"
             />
-            {/* <Quesioner name="skill-komunikasi-staff-kantor"
+            <Quesioner name="skill-komunikasi-staff-kantor"
               kepentingan="Seberapa penting menurut anda staff kantor memiliki skill komunikasi yang baik"
-              kepuasan="Seberapa baik skill komunikasi staff kantor menurut anda" /> */}
+              kepuasan="Seberapa baik skill komunikasi staff kantor menurut anda" />
             <Quesioner
               name="pelayanan-informasi-jadwal-belajar"
               kepentingan="Seberapa penting menurut anda kemudahan dalam meperoleh informasi terkait kursus dan jadwal belajar"

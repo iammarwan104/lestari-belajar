@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Toaster position="top-center" toastOptions={{ duration: 5000, style: {marginTop: '1rem'} }} />
+      <Toaster position="top-center" toastOptions={{ duration: 3000, style: {marginTop: '1rem'} }} />
       <nav className="bg-cuslor-1 border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
