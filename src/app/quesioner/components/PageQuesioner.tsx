@@ -83,9 +83,9 @@ export default function PageQuesioner() {
             <Quesioner name="kebersihan-mobil"
               kepentingan="Seberapa penting menurut anda akan kebersihan mobil kursus"
               kepuasan="Seberapa bersih mobil kursus yang anda lihat dan rasakan" />
-            {/* <Quesioner name="kelengkapan-performa-alat-mobil"
+            <Quesioner name="kelengkapan-performa-alat-mobil"
               kepentingan="Seberapa penting menurut anda akan kelengkapan dan performa alat pada mobil kursus"
-              kepuasan="Seberapa lengkap dan baik performa alat mobil kursus menurut anda" /> */}
+              kepuasan="Seberapa lengkap dan baik performa alat mobil kursus menurut anda" />
             <Quesioner name="performa-mobil"
               kepentingan="Seberapa penting menurut anda akan performa mobil kursus"
               kepuasan="Seberapa baik performa mobil kursus menurut anda" />
