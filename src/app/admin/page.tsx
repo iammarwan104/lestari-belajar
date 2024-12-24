@@ -6,7 +6,7 @@ import AdminClient from "./components/AdminClient";
 export default async function Page() {
   const {
     kebersihanMobil,
-    // kelengkapanPerformaAlatMobil,
+    kelengkapanPerformaAlatMobil,
     performaMobil,
     EtikaSopanSantunStaff,
     skillKomunikasiBaikStaff,
@@ -24,12 +24,12 @@ export default async function Page() {
       y: kebersihanMobil.kepentingan,
       komentars: kebersihanMobil.komentar,
     },
-    // {
-    //   name: kelengkapanPerformaAlatMobil.nama,
-    //   x: kelengkapanPerformaAlatMobil.kinerja,
-    //   y: kelengkapanPerformaAlatMobil.kepentingan,
-    //   komentars: kelengkapanPerformaAlatMobil.komentar,
-    // },
+    {
+      name: kelengkapanPerformaAlatMobil.nama,
+      x: kelengkapanPerformaAlatMobil.kinerja,
+      y: kelengkapanPerformaAlatMobil.kepentingan,
+      komentars: kelengkapanPerformaAlatMobil.komentar,
+    },
     {
       name: performaMobil.nama,
       x: performaMobil.kinerja,
