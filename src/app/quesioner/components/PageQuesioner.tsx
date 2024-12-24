@@ -102,9 +102,9 @@ export default function PageQuesioner() {
               kepentingan="Seberapa penting menurut anda staff kantor melayani siswa dengan penuh sopan santun dan etika yang baik"
               kepuasan="Seberapa baik etika dan sopan santun staff kantor dalam melayani anda"
             />
-            <Quesioner name="skill-komunikasi-staff-kantor"
+            {/* <Quesioner name="skill-komunikasi-staff-kantor"
               kepentingan="Seberapa penting menurut anda staff kantor memiliki skill komunikasi yang baik"
-              kepuasan="Seberapa baik skill komunikasi staff kantor menurut anda" />
+              kepuasan="Seberapa baik skill komunikasi staff kantor menurut anda" /> */}
             <Quesioner
               name="pelayanan-informasi-jadwal-belajar"
               kepentingan="Seberapa penting menurut anda kemudahan dalam meperoleh informasi terkait kursus dan jadwal belajar"

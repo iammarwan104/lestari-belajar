@@ -37,9 +37,9 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            kinerja_pelayanan_informasi_jadwal_belajar : Number(formData.get('kinerja-pelayanan-informasi-jadwal-belajar')),
            komentar_pelayanan_informasi_jadwal_belajar : formData.get('komentar-pelayanan-informasi-jadwal-belajar'),
  
-           kepentingan_skill_komunikasi_staff: Number(formData.get('kepentingan-skill-komunikasi-staff-kantor')),
-           kinerja_skill_komunikasi_staff : Number(formData.get('kinerja-skill-komunikasi-staff-kantor')),
-           komentar_skill_komunikasi_staff : formData.get('komentar-skill-komunikasi-staff-kantor'),
+          //  kepentingan_skill_komunikasi_staff: Number(formData.get('kepentingan-skill-komunikasi-staff-kantor')),
+          //  kinerja_skill_komunikasi_staff : Number(formData.get('kinerja-skill-komunikasi-staff-kantor')),
+          //  komentar_skill_komunikasi_staff : formData.get('komentar-skill-komunikasi-staff-kantor'),
            
            // staff lembaga kursus end
 
@@ -90,7 +90,7 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
     // const komentarKelengkapanPerformaAlatMobil= answerQuesioner?.data.komentar_kelengkapan_performa_alat_mobil;
     const komentarPerformaMobil= answerQuesioner?.data.komentar_performa_mobil;
     const komentarEtikaSopanSantun= answerQuesioner?.data.komentar_etika_sopan_santun;
-    const komentarSkillKomunikasiStaff= answerQuesioner?.data.komentar_skill_komunikasi_staff;
+    // const komentarSkillKomunikasiStaff= answerQuesioner?.data.komentar_skill_komunikasi_staff;
     const komentarPelayananInformasiJadwalBelajar= answerQuesioner?.data.komentar_pelayanan_informasi_jadwal_belajar;
     const komentarEtikaSopanSantunMentor= answerQuesioner?.data.komentar_etika_sopan_santun_mentor;
     const komentarSkillKomunikasiMentor= answerQuesioner?.data.komentar_skill_komunikasi_mentor;
@@ -137,13 +137,13 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
       }
     });
 
-    await prisma.skill_komunikasi_baik_staff.create({
-      data : {
-        kepentingan: answerQuesioner.data.kepentingan_skill_komunikasi_staff,
-        kinerja: answerQuesioner.data.kinerja_skill_komunikasi_staff,
-        komentar: komentarSkillKomunikasiStaff || null,
-      }
-    });
+    // await prisma.skill_komunikasi_baik_staff.create({
+    //   data : {
+    //     kepentingan: answerQuesioner.data.kepentingan_skill_komunikasi_staff,
+    //     kinerja: answerQuesioner.data.kinerja_skill_komunikasi_staff,
+    //     komentar: komentarSkillKomunikasiStaff || null,
+    //   }
+    // });
 
     await prisma.etika_sopan_santun_mentor.create({
       data : {
@@ -225,7 +225,7 @@ export async function getAllQuesionerAnswer(){
   const performa_mobil = await prisma.performa_mobil.findMany();
   const etika_sopan_santun_staff = await prisma.etika_SopanSantun.findMany();    
   const etika_sopan_santun_mentor_mengemudi = await prisma.etika_sopan_santun_mentor.findMany();    
-  const skill_komunikasi_baik_staff = await prisma.skill_komunikasi_baik_staff.findMany();    
+  // const skill_komunikasi_baik_staff = await prisma.skill_komunikasi_baik_staff.findMany();    
   const skill_komunikasi_baik_mentor = await prisma.skill_komunikasi_baik.findMany();    
   const pengawasan_penuh_mentor = await prisma.pengawasan_penuh.findMany();    
   const pembawaan_materi_belajar_mentor_mengemudi = await prisma.pembawaan_materi_belajar_mentor.findMany();    
@@ -236,7 +236,7 @@ export async function getAllQuesionerAnswer(){
   const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
   const kordinatEtikaSopanSantunStaff = getAverangeValue(etika_sopan_santun_staff, "Etika dan Sopan Santun")
   const kordinatPelayananInformasiJadwalBelajar = getAverangeValue(pelayanan_informasi_jadwal_belajar, "Pelayanan Informasi Jadwal Belajar")
-  const kordinatSkillKomunikasiBaikStaff = getAverangeValue(skill_komunikasi_baik_staff, "Skill Komunikasi Staff")
+  // const kordinatSkillKomunikasiBaikStaff = getAverangeValue(skill_komunikasi_baik_staff, "Skill Komunikasi Staff")
   const kordinatEtikaSopanSantunMentorMengemudi = getAverangeValue(etika_sopan_santun_mentor_mengemudi, "Etika dan Sopan Santun Mentor Mengemudi")
   const kordinatSkillKomunikasiBaikMentor = getAverangeValue(skill_komunikasi_baik_mentor, "Skill Komunikasi Mentor")
   const kordinatPengawasanPenuhMentor = getAverangeValue(pengawasan_penuh_mentor, "Pengawasan Penuh Mentor")
@@ -247,7 +247,7 @@ export async function getAllQuesionerAnswer(){
     // kordinatKelengkapanPerformaAlatMobil.kepentingan, 
     kordinatPerformaMobil.kepentingan, 
     kordinatEtikaSopanSantunStaff.kepentingan,
-    kordinatSkillKomunikasiBaikStaff.kepentingan,
+    // kordinatSkillKomunikasiBaikStaff.kepentingan,
     kordinatPelayananInformasiJadwalBelajar.kepentingan,
     kordinatEtikaSopanSantunMentorMengemudi.kepentingan,
     kordinatSkillKomunikasiBaikMentor.kepentingan,
@@ -259,7 +259,7 @@ export async function getAllQuesionerAnswer(){
     // kordinatKelengkapanPerformaAlatMobil.kinerja, 
     kordinatPerformaMobil.kinerja, 
     kordinatEtikaSopanSantunStaff.kinerja,
-    kordinatSkillKomunikasiBaikStaff.kinerja,
+    // kordinatSkillKomunikasiBaikStaff.kinerja,
     kordinatPelayananInformasiJadwalBelajar.kinerja,
     kordinatEtikaSopanSantunMentorMengemudi.kinerja,
     kordinatSkillKomunikasiBaikMentor.kinerja,
@@ -284,7 +284,7 @@ export async function getAllQuesionerAnswer(){
     // kelengkapanPerformaAlatMobil: kordinatKelengkapanPerformaAlatMobil, 
     performaMobil: kordinatPerformaMobil, 
     EtikaSopanSantunStaff: kordinatEtikaSopanSantunStaff,
-    skillKomunikasiBaikStaff: kordinatSkillKomunikasiBaikStaff,
+    // skillKomunikasiBaikStaff: kordinatSkillKomunikasiBaikStaff,
     pelayananInformasiJadwalBelajar: kordinatPelayananInformasiJadwalBelajar,
     EtikaSopanSantunMentorMengemudi: kordinatEtikaSopanSantunMentorMengemudi,
     skillKomunikasiBaikMentor: kordinatSkillKomunikasiBaikMentor,

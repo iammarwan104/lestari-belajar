@@ -108,12 +108,12 @@ const ScatterChart = ({
           backgroundColor: penentuanStatus(datas[7].x, datas[7].y, garisPerbatasan),
           radius: 6,
         },
-        {
-          label: String([datas[8].name]),
-          data: [datas[8]],
-          backgroundColor: penentuanStatus(datas[8].x, datas[8].y, garisPerbatasan),
-          radius: 6,
-        },
+        // {
+        //   label: String([datas[8].name]),
+        //   data: [datas[8]],
+        //   backgroundColor: penentuanStatus(datas[8].x, datas[8].y, garisPerbatasan),
+        //   radius: 6,
+        // },
         // {
         //   label: String([datas[9].name]),
         //   data: [datas[9]],
