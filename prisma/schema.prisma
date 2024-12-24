@@ -113,21 +113,30 @@ model performa_mobil {
   komentar    String?
 }
 
-model etika_SopanSantun {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
-
-model pelayanan_administrasi {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
+// mentor models start
 
 model etika_sopan_santun_mentor {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
+model skill_komunikasi_baik {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
+model pengawasan_penuh {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
+model materi_mudah_dipahami {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
@@ -141,12 +150,39 @@ model pembawaan_materi_belajar_mentor {
   komentar    String?
 }
 
+// mentor models end
+
+// staff kantor models start
+
+model etika_SopanSantun {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
+model skill_komunikasi_baik_staff {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
+model pelayanan_administrasi {
+  id          Int     @id @default(autoincrement())
+  kepentingan Int
+  kinerja     Int
+  komentar    String?
+}
+
 model pelayanan_jadwal_belajar {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
   komentar    String?
 }
+
+// staff kantor models end
 
 model performa_alat_mobil {
   id          Int     @id @default(autoincrement())
