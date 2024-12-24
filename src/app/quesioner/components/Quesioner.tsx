@@ -12,7 +12,7 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
       <div className="grid grid-cols-1 md:grid-cols-2">
       <div className="grid grid-cols-2 md:grid-cols-1 md:pb-5 md:grid-rows-2 justify-center gap-6 md:gap-6">
         <div className="md:px-2 lg:px-4">
-          <h3 className="block min-h-[5rem] max-h-[12rem] md:h-fit w-full mb-4 md:mb-6 text-sm font-medium text-white">{kepentingan}</h3>
+          <h3 className="block min-h-[5rem] max-h-[12rem] md:h-fit w-full mb-4 md:mb-6 text-sm md:text-base font-medium text-white">{kepentingan}</h3>
           <div className="grid grid-cols-5 mt-2 items-center">
             {skeletonArray.map((star) => (
               <StarRating
@@ -27,7 +27,7 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
           </div>
         </div>
         <div className="md:px-2 lg:px-4" >
-          <h3 className="min-h-[5rem] max-h-[12rem] md:h-fit md:min-h-fit block mb-4 md:mb-6 text-sm font-medium text-white">{kepuasan}</h3>
+          <h3 className="min-h-[5rem] max-h-[12rem] md:h-fit md:min-h-fit block mb-4 md:mb-6 text-sm md:text-base font-medium text-white">{kepuasan}</h3>
           <div className="grid grid-cols-5 items-center">
             {skeletonArray.map((star) => (
               <StarRating
