@@ -17,9 +17,9 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            kinerja_kebersihan_mobil : Number(formData.get('kinerja-kebersihan-mobil')),
            komentar_kebersihan_mobil : formData.get('komentar-kebersihan-mobil'),
 
-           kepentingan_kelengkapan_performa_alat_mobil: Number(formData.get('kepentingan-kelengkapan-performa-alat-mobil')),
-           kinerja_kelengkapan_performa_alat_mobil : Number(formData.get('kinerja-kelengkapan-performa-alat-mobil')),
-           komentar_kelengkapan_performa_alat_mobil : formData.get('komentar-kelengkapan-performa-alat-mobil'),
+          //  kepentingan_kelengkapan_performa_alat_mobil: Number(formData.get('kepentingan-kelengkapan-performa-alat-mobil')),
+          //  kinerja_kelengkapan_performa_alat_mobil : Number(formData.get('kinerja-kelengkapan-performa-alat-mobil')),
+          //  komentar_kelengkapan_performa_alat_mobil : formData.get('komentar-kelengkapan-performa-alat-mobil'),
  
            kepentingan_performa_mobil: Number(formData.get('kepentingan-performa-mobil')),
            kinerja_performa_mobil : Number(formData.get('kinerja-performa-mobil')),
@@ -76,7 +76,7 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
     }
 }
 const scriptRegex = /(<script.*?>[\s\S]*?<\/script>|\b(eval|setTimeout|setInterval)\(.*?\)|data:image\/svg\+xml;.*?base64.*?>)/gi;
-const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_informasi_jadwal_belajar as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_staff as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_kelengkapan_performa_alat_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_performa_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_pembawaan_materi_belajar_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_pengawasan_penuh_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_mentor as string);
+const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_informasi_jadwal_belajar as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_staff as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_performa_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_pembawaan_materi_belajar_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_pengawasan_penuh_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_mentor as string);
 
 if(isInvalid){
     return{
@@ -87,7 +87,7 @@ if(isInvalid){
 }
   try {
     const komentarKebersihanMobil= answerQuesioner?.data.komentar_kebersihan_mobil;
-    const komentarKelengkapanPerformaAlatMobil= answerQuesioner?.data.komentar_kelengkapan_performa_alat_mobil;
+    // const komentarKelengkapanPerformaAlatMobil= answerQuesioner?.data.komentar_kelengkapan_performa_alat_mobil;
     const komentarPerformaMobil= answerQuesioner?.data.komentar_performa_mobil;
     const komentarEtikaSopanSantun= answerQuesioner?.data.komentar_etika_sopan_santun;
     const komentarSkillKomunikasiStaff= answerQuesioner?.data.komentar_skill_komunikasi_staff;
@@ -105,13 +105,13 @@ if(isInvalid){
       }
     });
 
-        await prisma.kelengkapan_alat_mobil.create({
-      data : {
-        kepentingan: answerQuesioner.data.kepentingan_kelengkapan_performa_alat_mobil,
-        kinerja: answerQuesioner.data.kinerja_kelengkapan_performa_alat_mobil,
-        komentar: komentarKelengkapanPerformaAlatMobil || null,
-      }
-    });
+    //     await prisma.kelengkapan_alat_mobil.create({
+    //   data : {
+    //     kepentingan: answerQuesioner.data.kepentingan_kelengkapan_performa_alat_mobil,
+    //     kinerja: answerQuesioner.data.kinerja_kelengkapan_performa_alat_mobil,
+    //     komentar: komentarKelengkapanPerformaAlatMobil || null,
+    //   }
+    // });
 
     await prisma.performa_mobil.create({
       data : {
@@ -221,7 +221,7 @@ export async function getAllQuesionerAnswer(){
       }
   }
   const kebersihan_mobil = await prisma.kebersihan_mobil.findMany();
-  const kelengkapan_performa_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
+  // const kelengkapan_performa_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
   const performa_mobil = await prisma.performa_mobil.findMany();
   const etika_sopan_santun_staff = await prisma.etika_SopanSantun.findMany();    
   const etika_sopan_santun_mentor_mengemudi = await prisma.etika_sopan_santun_mentor.findMany();    
@@ -232,7 +232,7 @@ export async function getAllQuesionerAnswer(){
   const pelayanan_informasi_jadwal_belajar = await prisma.pelayanan_administrasi.findMany();    
 
   const kordinatKebersihanMobil = getAverangeValue(kebersihan_mobil, "Kebersihan Mobil")
-  const kordinatKelengkapanPerformaAlatMobil = getAverangeValue(kelengkapan_performa_alat_mobil, "Kelengkapan Performa Alat Mobil")
+  // const kordinatKelengkapanPerformaAlatMobil = getAverangeValue(kelengkapan_performa_alat_mobil, "Kelengkapan Performa Alat Mobil")
   const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
   const kordinatEtikaSopanSantunStaff = getAverangeValue(etika_sopan_santun_staff, "Etika dan Sopan Santun")
   const kordinatPelayananInformasiJadwalBelajar = getAverangeValue(pelayanan_informasi_jadwal_belajar, "Pelayanan Informasi Jadwal Belajar")
@@ -244,7 +244,7 @@ export async function getAllQuesionerAnswer(){
 
   const sumbuY = [
     kordinatKebersihanMobil.kepentingan, 
-    kordinatKelengkapanPerformaAlatMobil.kepentingan, 
+    // kordinatKelengkapanPerformaAlatMobil.kepentingan, 
     kordinatPerformaMobil.kepentingan, 
     kordinatEtikaSopanSantunStaff.kepentingan,
     kordinatSkillKomunikasiBaikStaff.kepentingan,
@@ -256,7 +256,7 @@ export async function getAllQuesionerAnswer(){
 
   const sumbux = [
     kordinatKebersihanMobil.kinerja, 
-    kordinatKelengkapanPerformaAlatMobil.kinerja, 
+    // kordinatKelengkapanPerformaAlatMobil.kinerja, 
     kordinatPerformaMobil.kinerja, 
     kordinatEtikaSopanSantunStaff.kinerja,
     kordinatSkillKomunikasiBaikStaff.kinerja,
@@ -281,7 +281,7 @@ export async function getAllQuesionerAnswer(){
 
   return{
     kebersihanMobil: kordinatKebersihanMobil, 
-    kelengkapanPerformaAlatMobil: kordinatKelengkapanPerformaAlatMobil, 
+    // kelengkapanPerformaAlatMobil: kordinatKelengkapanPerformaAlatMobil, 
     performaMobil: kordinatPerformaMobil, 
     EtikaSopanSantunStaff: kordinatEtikaSopanSantunStaff,
     skillKomunikasiBaikStaff: kordinatSkillKomunikasiBaikStaff,
