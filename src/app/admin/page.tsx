@@ -9,7 +9,7 @@ export default async function Page() {
     // kelengkapanPerformaAlatMobil,
     performaMobil,
     EtikaSopanSantunStaff,
-    skillKomunikasiBaikStaff,
+    // skillKomunikasiBaikStaff,
     pelayananInformasiJadwalBelajar,
     EtikaSopanSantunMentorMengemudi,
     skillKomunikasiBaikMentor,
@@ -42,12 +42,12 @@ export default async function Page() {
       y: EtikaSopanSantunStaff.kepentingan,
       komentars: EtikaSopanSantunStaff.komentar,
     },
-    {
-      name: skillKomunikasiBaikStaff.nama,
-      x: skillKomunikasiBaikStaff.kinerja,
-      y: skillKomunikasiBaikStaff.kepentingan,
-      komentars: skillKomunikasiBaikStaff.komentar,
-    },
+    // {
+    //   name: skillKomunikasiBaikStaff.nama,
+    //   x: skillKomunikasiBaikStaff.kinerja,
+    //   y: skillKomunikasiBaikStaff.kepentingan,
+    //   komentars: skillKomunikasiBaikStaff.komentar,
+    // },
     {
       name: pelayananInformasiJadwalBelajar.nama,
       x: pelayananInformasiJadwalBelajar.kinerja,

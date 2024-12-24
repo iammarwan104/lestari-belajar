@@ -43,9 +43,9 @@ export const quesionerValidation = z.object({
    kinerja_etika_sopan_santun: z.number({required_error: "Kinerja is require", invalid_type_error: "Kinerja must a number"}).lte(5).gte(1),
    komentar_etika_sopan_santun: z.string({invalid_type_error: "Kinerja must a string"}).optional(),
 
-   kepentingan_skill_komunikasi_staff: z.number({required_error: "Kepentingan skill komunikasi staff is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
-   kinerja_skill_komunikasi_staff: z.number({required_error: "Kinerja skill komunikasi staff is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
-   komentar_skill_komunikasi_staff: z.string({invalid_type_error: "komentar skill komunikasi staff must a string"}).optional(),
+  //  kepentingan_skill_komunikasi_staff: z.number({required_error: "Kepentingan skill komunikasi staff is require", invalid_type_error: "Penilaian kepentingan must a number"}).lte(5).gte(1),
+  //  kinerja_skill_komunikasi_staff: z.number({required_error: "Kinerja skill komunikasi staff is require", invalid_type_error: "Penilaian Kinerja must a number"}).lte(5).gte(1),
+  //  komentar_skill_komunikasi_staff: z.string({invalid_type_error: "komentar skill komunikasi staff must a string"}).optional(),
 
 
    kepentingan_pelayanan_informasi_jadwal_belajar: z.number({required_error: "Kepentingan pelayanan informasi jadwal belajar is require", invalid_type_error: "Kepentingan must a number"}).lte(5).gte(1),
