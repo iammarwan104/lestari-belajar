@@ -67,8 +67,6 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
 
   });
 
-  console.log(answerQuesioner.error)
-
   if (!answerQuesioner.success) {
     return{
         success: false,
@@ -233,7 +231,6 @@ export async function getAllQuesionerAnswer(){
   const pembawaan_materi_belajar_mentor_mengemudi = await prisma.pembawaan_materi_belajar_mentor.findMany();    
   const pelayanan_informasi_jadwal_belajar = await prisma.pelayanan_administrasi.findMany();    
 
-
   const kordinatKebersihanMobil = getAverangeValue(kebersihan_mobil, "Kebersihan Mobil")
   const kordinatKelengkapanPerformaAlatMobil = getAverangeValue(kelengkapan_performa_alat_mobil, "Kelengkapan Performa Alat Mobil")
   const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
@@ -256,7 +253,6 @@ export async function getAllQuesionerAnswer(){
     kordinatSkillKomunikasiBaikMentor.kepentingan,
     kordinatPengawasanPenuhMentor.kepentingan,
     kordinatPembawaanMateriBelajarMentorMengemudi.kepentingan]
-
 
   const sumbux = [
     kordinatKebersihanMobil.kinerja, 
@@ -304,7 +300,6 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
     gender : formData.get("gender"),
     number : formData.get("phoneNumber"),
   }
-  console.log(siswa)
   try{
   const dataSiswa = tambahDataSiswaSchema.safeParse({
     nama: siswa.nama as string,
@@ -327,7 +322,6 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
       status: false,
     }
   })
-  console.log("debug 1")
   return {
     success: true,
     data : {
@@ -337,7 +331,6 @@ export async function tambahDataSiswa(prevState: tambahDataSiswaInterface, formD
     }
   }
 }catch(error){
-  console.log("debug 2")
     if(error instanceof Error){
       return {
         success: false,
