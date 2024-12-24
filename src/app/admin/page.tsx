@@ -6,10 +6,10 @@ import AdminClient from "./components/AdminClient";
 export default async function Page() {
   const {
     kebersihanMobil,
-    // kelengkapanPerformaAlatMobil,
+    kelengkapanPerformaAlatMobil,
     performaMobil,
     EtikaSopanSantunStaff,
-    // skillKomunikasiBaikStaff,
+    skillKomunikasiBaikStaff,
     pelayananInformasiJadwalBelajar,
     EtikaSopanSantunMentorMengemudi,
     skillKomunikasiBaikMentor,
@@ -24,12 +24,12 @@ export default async function Page() {
       y: kebersihanMobil.kepentingan,
       komentars: kebersihanMobil.komentar,
     },
-    // {
-    //   name: kelengkapanPerformaAlatMobil.nama,
-    //   x: kelengkapanPerformaAlatMobil.kinerja,
-    //   y: kelengkapanPerformaAlatMobil.kepentingan,
-    //   komentars: kelengkapanPerformaAlatMobil.komentar,
-    // },
+    {
+      name: kelengkapanPerformaAlatMobil.nama,
+      x: kelengkapanPerformaAlatMobil.kinerja,
+      y: kelengkapanPerformaAlatMobil.kepentingan,
+      komentars: kelengkapanPerformaAlatMobil.komentar,
+    },
     {
       name: performaMobil.nama,
       x: performaMobil.kinerja,
@@ -42,12 +42,12 @@ export default async function Page() {
       y: EtikaSopanSantunStaff.kepentingan,
       komentars: EtikaSopanSantunStaff.komentar,
     },
-    // {
-    //   name: skillKomunikasiBaikStaff.nama,
-    //   x: skillKomunikasiBaikStaff.kinerja,
-    //   y: skillKomunikasiBaikStaff.kepentingan,
-    //   komentars: skillKomunikasiBaikStaff.komentar,
-    // },
+    {
+      name: skillKomunikasiBaikStaff.nama,
+      x: skillKomunikasiBaikStaff.kinerja,
+      y: skillKomunikasiBaikStaff.kepentingan,
+      komentars: skillKomunikasiBaikStaff.komentar,
+    },
     {
       name: pelayananInformasiJadwalBelajar.nama,
       x: pelayananInformasiJadwalBelajar.kinerja,

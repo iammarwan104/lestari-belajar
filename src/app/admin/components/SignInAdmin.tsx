@@ -39,13 +39,6 @@ export default function SignInAdmin({
 
   return (
     <section className="w-full h-screen bg-cuslor-1">
-      {/* <Toaster
-        position="top-center"
-        toastOptions={{
-          duration: 3000,
-          style: { marginTop: "1rem", fontSize: "1rem" },
-        }}
-      /> */}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a
           href="#"

@@ -17,9 +17,9 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            kinerja_kebersihan_mobil : Number(formData.get('kinerja-kebersihan-mobil')),
            komentar_kebersihan_mobil : formData.get('komentar-kebersihan-mobil'),
 
-          //  kepentingan_kelengkapan_performa_alat_mobil: Number(formData.get('kepentingan-kelengkapan-performa-alat-mobil')),
-          //  kinerja_kelengkapan_performa_alat_mobil : Number(formData.get('kinerja-kelengkapan-performa-alat-mobil')),
-          //  komentar_kelengkapan_performa_alat_mobil : formData.get('komentar-kelengkapan-performa-alat-mobil'),
+           kepentingan_kelengkapan_performa_alat_mobil: Number(formData.get('kepentingan-kelengkapan-performa-alat-mobil')),
+           kinerja_kelengkapan_performa_alat_mobil : Number(formData.get('kinerja-kelengkapan-performa-alat-mobil')),
+           komentar_kelengkapan_performa_alat_mobil : formData.get('komentar-kelengkapan-performa-alat-mobil'),
  
            kepentingan_performa_mobil: Number(formData.get('kepentingan-performa-mobil')),
            kinerja_performa_mobil : Number(formData.get('kinerja-performa-mobil')),
@@ -37,9 +37,9 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
            kinerja_pelayanan_informasi_jadwal_belajar : Number(formData.get('kinerja-pelayanan-informasi-jadwal-belajar')),
            komentar_pelayanan_informasi_jadwal_belajar : formData.get('komentar-pelayanan-informasi-jadwal-belajar'),
  
-          //  kepentingan_skill_komunikasi_staff: Number(formData.get('kepentingan-skill-komunikasi-staff-kantor')),
-          //  kinerja_skill_komunikasi_staff : Number(formData.get('kinerja-skill-komunikasi-staff-kantor')),
-          //  komentar_skill_komunikasi_staff : formData.get('komentar-skill-komunikasi-staff-kantor'),
+           kepentingan_skill_komunikasi_staff: Number(formData.get('kepentingan-skill-komunikasi-staff-kantor')),
+           kinerja_skill_komunikasi_staff : Number(formData.get('kinerja-skill-komunikasi-staff-kantor')),
+           komentar_skill_komunikasi_staff : formData.get('komentar-skill-komunikasi-staff-kantor'),
            
            // staff lembaga kursus end
 
@@ -75,22 +75,22 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
         redirect: false
     }
 }
-// const scriptRegex = /(<script.*?>[\s\S]*?<\/script>|\b(eval|setTimeout|setInterval)\(.*?\)|data:image\/svg\+xml;.*?base64.*?>)/gi;
-// const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_informasi_jadwal_belajar as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_staff as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_performa_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_pembawaan_materi_belajar_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_pengawasan_penuh_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_mentor as string);
+const scriptRegex = /(<script.*?>[\s\S]*?<\/script>|\b(eval|setTimeout|setInterval)\(.*?\)|data:image\/svg\+xml;.*?base64.*?>)/gi;
+const isInvalid = scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun as string) || scriptRegex.test(answerQuesioner.data?.komentar_pelayanan_informasi_jadwal_belajar as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_staff as string) || scriptRegex.test(answerQuesioner.data?.komentar_kebersihan_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_performa_mobil as string)|| scriptRegex.test(answerQuesioner.data?.komentar_etika_sopan_santun_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_kelengkapan_performa_alat_mobil as string) || scriptRegex.test(answerQuesioner.data?.komentar_pembawaan_materi_belajar_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_pengawasan_penuh_mentor as string) || scriptRegex.test(answerQuesioner.data?.komentar_skill_komunikasi_mentor as string);
 
-// if(isInvalid){
-//     return{
-//         success: false,
-//         message : "Karakter tidak valid terdeteksi. Harap jangan berlebihan dalam memberikan tanda baca.",
-//         redirect: false
-//     }
-// }
+if(isInvalid){
+    return{
+        success: false,
+        message : "Karakter tidak valid terdeteksi. Harap jangan berlebihan dalam memberikan tanda baca.",
+        redirect: false
+    }
+}
   try {
     const komentarKebersihanMobil= answerQuesioner?.data.komentar_kebersihan_mobil;
-    // const komentarKelengkapanPerformaAlatMobil= answerQuesioner?.data.komentar_kelengkapan_performa_alat_mobil;
+    const komentarKelengkapanPerformaAlatMobil= answerQuesioner?.data.komentar_kelengkapan_performa_alat_mobil;
     const komentarPerformaMobil= answerQuesioner?.data.komentar_performa_mobil;
     const komentarEtikaSopanSantun= answerQuesioner?.data.komentar_etika_sopan_santun;
-    // const komentarSkillKomunikasiStaff= answerQuesioner?.data.komentar_skill_komunikasi_staff;
+    const komentarSkillKomunikasiStaff= answerQuesioner?.data.komentar_skill_komunikasi_staff;
     const komentarPelayananInformasiJadwalBelajar= answerQuesioner?.data.komentar_pelayanan_informasi_jadwal_belajar;
     const komentarEtikaSopanSantunMentor= answerQuesioner?.data.komentar_etika_sopan_santun_mentor;
     const komentarSkillKomunikasiMentor= answerQuesioner?.data.komentar_skill_komunikasi_mentor;
@@ -105,13 +105,13 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
       }
     });
 
-    //     await prisma.kelengkapan_alat_mobil.create({
-    //   data : {
-    //     kepentingan: answerQuesioner.data.kepentingan_kelengkapan_performa_alat_mobil,
-    //     kinerja: answerQuesioner.data.kinerja_kelengkapan_performa_alat_mobil,
-    //     komentar: komentarKelengkapanPerformaAlatMobil || null,
-    //   }
-    // });
+        await prisma.kelengkapan_alat_mobil.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_kelengkapan_performa_alat_mobil,
+        kinerja: answerQuesioner.data.kinerja_kelengkapan_performa_alat_mobil,
+        komentar: komentarKelengkapanPerformaAlatMobil || null,
+      }
+    });
 
     await prisma.performa_mobil.create({
       data : {
@@ -137,13 +137,13 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
       }
     });
 
-    // await prisma.skill_komunikasi_baik_staff.create({
-    //   data : {
-    //     kepentingan: answerQuesioner.data.kepentingan_skill_komunikasi_staff,
-    //     kinerja: answerQuesioner.data.kinerja_skill_komunikasi_staff,
-    //     komentar: komentarSkillKomunikasiStaff || null,
-    //   }
-    // });
+    await prisma.skill_komunikasi_baik_staff.create({
+      data : {
+        kepentingan: answerQuesioner.data.kepentingan_skill_komunikasi_staff,
+        kinerja: answerQuesioner.data.kinerja_skill_komunikasi_staff,
+        komentar: komentarSkillKomunikasiStaff || null,
+      }
+    });
 
     await prisma.etika_sopan_santun_mentor.create({
       data : {
@@ -221,22 +221,22 @@ export async function getAllQuesionerAnswer(){
       }
   }
   const kebersihan_mobil = await prisma.kebersihan_mobil.findMany();
-  // const kelengkapan_performa_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
+  const kelengkapan_performa_alat_mobil = await prisma.kelengkapan_alat_mobil.findMany();
   const performa_mobil = await prisma.performa_mobil.findMany();
   const etika_sopan_santun_staff = await prisma.etika_SopanSantun.findMany();    
   const etika_sopan_santun_mentor_mengemudi = await prisma.etika_sopan_santun_mentor.findMany();    
-  // const skill_komunikasi_baik_staff = await prisma.skill_komunikasi_baik_staff.findMany();    
+  const skill_komunikasi_baik_staff = await prisma.skill_komunikasi_baik_staff.findMany();    
   const skill_komunikasi_baik_mentor = await prisma.skill_komunikasi_baik.findMany();    
   const pengawasan_penuh_mentor = await prisma.pengawasan_penuh.findMany();    
   const pembawaan_materi_belajar_mentor_mengemudi = await prisma.pembawaan_materi_belajar_mentor.findMany();    
   const pelayanan_informasi_jadwal_belajar = await prisma.pelayanan_administrasi.findMany();    
 
   const kordinatKebersihanMobil = getAverangeValue(kebersihan_mobil, "Kebersihan Mobil")
-  // const kordinatKelengkapanPerformaAlatMobil = getAverangeValue(kelengkapan_performa_alat_mobil, "Kelengkapan Performa Alat Mobil")
+  const kordinatKelengkapanPerformaAlatMobil = getAverangeValue(kelengkapan_performa_alat_mobil, "Kelengkapan Performa Alat Mobil")
   const kordinatPerformaMobil = getAverangeValue(performa_mobil, "Performa Mobil")
   const kordinatEtikaSopanSantunStaff = getAverangeValue(etika_sopan_santun_staff, "Etika dan Sopan Santun")
   const kordinatPelayananInformasiJadwalBelajar = getAverangeValue(pelayanan_informasi_jadwal_belajar, "Pelayanan Informasi Jadwal Belajar")
-  // const kordinatSkillKomunikasiBaikStaff = getAverangeValue(skill_komunikasi_baik_staff, "Skill Komunikasi Staff")
+  const kordinatSkillKomunikasiBaikStaff = getAverangeValue(skill_komunikasi_baik_staff, "Skill Komunikasi Staff")
   const kordinatEtikaSopanSantunMentorMengemudi = getAverangeValue(etika_sopan_santun_mentor_mengemudi, "Etika dan Sopan Santun Mentor Mengemudi")
   const kordinatSkillKomunikasiBaikMentor = getAverangeValue(skill_komunikasi_baik_mentor, "Skill Komunikasi Mentor")
   const kordinatPengawasanPenuhMentor = getAverangeValue(pengawasan_penuh_mentor, "Pengawasan Penuh Mentor")
@@ -244,10 +244,10 @@ export async function getAllQuesionerAnswer(){
 
   const sumbuY = [
     kordinatKebersihanMobil.kepentingan, 
-    // kordinatKelengkapanPerformaAlatMobil.kepentingan, 
+    kordinatKelengkapanPerformaAlatMobil.kepentingan, 
     kordinatPerformaMobil.kepentingan, 
     kordinatEtikaSopanSantunStaff.kepentingan,
-    // kordinatSkillKomunikasiBaikStaff.kepentingan,
+    kordinatSkillKomunikasiBaikStaff.kepentingan,
     kordinatPelayananInformasiJadwalBelajar.kepentingan,
     kordinatEtikaSopanSantunMentorMengemudi.kepentingan,
     kordinatSkillKomunikasiBaikMentor.kepentingan,
@@ -256,10 +256,10 @@ export async function getAllQuesionerAnswer(){
 
   const sumbux = [
     kordinatKebersihanMobil.kinerja, 
-    // kordinatKelengkapanPerformaAlatMobil.kinerja, 
+    kordinatKelengkapanPerformaAlatMobil.kinerja, 
     kordinatPerformaMobil.kinerja, 
     kordinatEtikaSopanSantunStaff.kinerja,
-    // kordinatSkillKomunikasiBaikStaff.kinerja,
+    kordinatSkillKomunikasiBaikStaff.kinerja,
     kordinatPelayananInformasiJadwalBelajar.kinerja,
     kordinatEtikaSopanSantunMentorMengemudi.kinerja,
     kordinatSkillKomunikasiBaikMentor.kinerja,
@@ -281,10 +281,10 @@ export async function getAllQuesionerAnswer(){
 
   return{
     kebersihanMobil: kordinatKebersihanMobil, 
-    // kelengkapanPerformaAlatMobil: kordinatKelengkapanPerformaAlatMobil, 
+    kelengkapanPerformaAlatMobil: kordinatKelengkapanPerformaAlatMobil, 
     performaMobil: kordinatPerformaMobil, 
     EtikaSopanSantunStaff: kordinatEtikaSopanSantunStaff,
-    // skillKomunikasiBaikStaff: kordinatSkillKomunikasiBaikStaff,
+    skillKomunikasiBaikStaff: kordinatSkillKomunikasiBaikStaff,
     pelayananInformasiJadwalBelajar: kordinatPelayananInformasiJadwalBelajar,
     EtikaSopanSantunMentorMengemudi: kordinatEtikaSopanSantunMentorMengemudi,
     skillKomunikasiBaikMentor: kordinatSkillKomunikasiBaikMentor,
