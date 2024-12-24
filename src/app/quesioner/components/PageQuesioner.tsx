@@ -83,33 +83,14 @@ export default function PageQuesioner() {
             <Quesioner name="kebersihan-mobil"
               kepentingan="Seberapa penting menurut anda akan kebersihan mobil kursus"
               kepuasan="Seberapa bersih mobil kursus yang anda lihat dan rasakan" />
+            <Quesioner name="kelengkapan-performa-alat-mobil"
+              kepentingan="Seberapa penting menurut anda akan kelengkapan dan performa alat pada mobil kursus"
+              kepuasan="Seberapa lengkap dan baik performa alat mobil kursus menurut anda" />
             <Quesioner name="performa-mobil"
               kepentingan="Seberapa penting menurut anda akan performa mobil kursus"
-              kepuasan="Seberapa baik performa mobil kursus yang anda rasakan" />
+              kepuasan="Seberapa baik performa mobil kursus menurut anda" />
         </div>
         </div>
-
-        {/* <div>
-          <h1 className="text-xl font-semibold text-center mb-4">
-            Fasilitas Kelas Mengemudi
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <Quesioner name="kebersihan-kelas-mengemudi" />
-            <Quesioner name="kelengkapan-alat-kelas-mengemudi" />
-            <Quesioner name="performa-alat-kelas-mengemudi" />
-          </div>
-        </div>
-
-        <div>
-          <h1 className="text-xl font-semibold text-center mb-4">
-            Fasilitas Lembaga Kursus
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <Quesioner name="kebersihan-lembaga-kursus" />
-            <Quesioner name="kelengkapan-alat-lembaga-kursus" />
-            <Quesioner name="performa-alat-lembaga-kursus" />
-          </div>
-        </div> */}
 
         <div>
           <h1 className="text-xl font-semibold text-center mb-4 text-white">
@@ -117,19 +98,17 @@ export default function PageQuesioner() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             <Quesioner
-              name="etika-sopan-santun"
-              kepentingan="Seberapa penting menurut anda staff kantor melayani siswa dengan penuh sopan santun"
-              kepuasan="Seberapa baik sopan santun staff kantor dalam melayani anda"
+              name="etika-sopan-santun-staff"
+              kepentingan="Seberapa penting menurut anda staff kantor melayani siswa dengan penuh sopan santun dan etika yang baik"
+              kepuasan="Seberapa baik etika dan sopan santun staff kantor dalam melayani anda"
             />
+            <Quesioner name="skill-komunikasi-staff-kantor"
+              kepentingan="Seberapa penting menurut anda staff kantor memiliki skill komunikasi yang baik"
+              kepuasan="Seberapa baik skill komunikasi staff kantor menurut anda" />
             <Quesioner
-              name="pelayanan-administrasi"
-              kepentingan="Seberapa penting bagi anda staff kantor memberi pelayanan administrasi yang baik"
-              kepuasan="Seberapa baik staff kantor memberi pelayanan administrasi kepada anda"
-            />
-            <Quesioner
-              name="pelayanan-jadwal-belajar"
-              kepentingan="Seberapa penting menurut anda kemudahan dalam menghubungi staff kantor untuk memperoleh informasi terkait kursus mengemudi seperti jadwal belajar, konsultasi, dll"
-              kepuasan="Seberapa mudah yang anda rasakan dalam menghubungi staff kantor untuk memperoleh informasi terkait kursus mengemudi"
+              name="pelayanan-informasi-jadwal-belajar"
+              kepentingan="Seberapa penting menurut anda kemudahan dalam meperoleh informasi terkait kursus dan jadwal belajar"
+              kepuasan="Seberapa mudah menurut anda dalam memperoleh informasi terkait kursus dan jadwal belajar"
             />
           </div>
         </div>
@@ -140,11 +119,17 @@ export default function PageQuesioner() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             <Quesioner name="etika-sopan-santun-mentor-mengemudi"
-              kepentingan="Seberapa penting menurut anda mentor memiliki etika & sopan santun yang baik"
+              kepentingan="Seberapa penting menurut anda mentor mengajari siswa dengan penuh sopan santun dan etika yang baik"
               kepuasan="Seberapa baik etika & sopan santun mentor yang telah mengajari anda" />
+            <Quesioner name="skill-komunikasi-mentor-mengemudi"
+              kepentingan="Seberapa penting menurut anda mentor memiliki skill komunikasi yang baik"
+              kepuasan="Seberapa baik skill komunikasi mentor menurut anda" />
+            <Quesioner name="pengawasan-penuh-mentor-mengemudi"
+              kepentingan="Seberapa penting menurut anda mentor memberi pengawasan penuh kepada siswa saat proses belajar mengajar"
+              kepuasan="Seberapa penuh pengawasan mentor saat mengajari anda" />
             <Quesioner name="pembawaan-materi-belajar-mentor-mengemudi"
-              kepentingan="Seberapa penting menurut anda mentor dapat mengajarkan  materi belajar mengemudi dengan baik"
-              kepuasan="Seberapa baik pembawaan dan cara mentor mengajari anda" />
+              kepentingan="Seberapa penting menurut anda mentor mampu memberi pemahaman yang mudah terkait materi belajar"
+              kepuasan="Seberapa mudah kah yang anda rasakan dalam memahami materi belajar yang diajarkan oleh mentor" />
           </div>
         </div>
         <ButtonSubmit />

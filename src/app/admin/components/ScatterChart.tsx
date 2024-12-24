@@ -102,84 +102,24 @@ const ScatterChart = ({
           backgroundColor: penentuanStatus(datas[6].x, datas[6].y, garisPerbatasan),
           radius: 6,
         },
-        // {
-        //   label: String([datas[7].name]),
-        //   data: [datas[7]],
-        //   backgroundColor: penentuanStatus(datas[7].x, datas[7].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[8].name]),
-        //   data: [datas[8]],
-        //   backgroundColor: penentuanStatus(datas[8].x, datas[8].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[9].name]),
-        //   data: [datas[9]],
-        //   backgroundColor: penentuanStatus(datas[9].x, datas[9].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[10].name]),
-        //   data: [datas[10]],
-        //   backgroundColor: penentuanStatus(datas[10].x, datas[10].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[11].name]),
-        //   data: [datas[11]],
-        //   backgroundColor: penentuanStatus(datas[11].x, datas[11].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[12].name]),
-        //   data: [datas[12]],
-        //   backgroundColor: penentuanStatus(datas[12].x, datas[12].y, garisPerbatasan),
-        //   radius: 6,
-        // },        
-        // {
-        //   label: String([datas[13].name]),
-        //   data: [datas[13]],
-        //   backgroundColor: penentuanStatus(datas[13].x, datas[13].y, garisPerbatasan),
-        //   radius: 6,
-        // },        
-        // {
-        //   label: String([datas[14].name]),
-        //   data: [datas[14]],
-        //   backgroundColor: penentuanStatus(datas[14].x, datas[14].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[15].name]),
-        //   data: [datas[15]],
-        //   backgroundColor: penentuanStatus(datas[15].x, datas[15].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[16].name]),
-        //   data: [datas[16]],
-        //   backgroundColor: penentuanStatus(datas[16].x, datas[16].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[17].name]),
-        //   data: [datas[17]],
-        //   backgroundColor: penentuanStatus(datas[17].x, datas[17].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[18].name]),
-        //   data: [datas[18]],
-        //   backgroundColor: penentuanStatus(datas[18].x, datas[18].y, garisPerbatasan),
-        //   radius: 6,
-        // },
-        // {
-        //   label: String([datas[19].name]),
-        //   data: [datas[19]],
-        //   backgroundColor: penentuanStatus(datas[19].x, datas[19].y, garisPerbatasan),
-        //   radius: 6,
-        // },
+        {
+          label: String([datas[7].name]),
+          data: [datas[7]],
+          backgroundColor: penentuanStatus(datas[7].x, datas[7].y, garisPerbatasan),
+          radius: 6,
+        },
+        {
+          label: String([datas[8].name]),
+          data: [datas[8]],
+          backgroundColor: penentuanStatus(datas[8].x, datas[8].y, garisPerbatasan),
+          radius: 6,
+        },
+        {
+          label: String([datas[9].name]),
+          data: [datas[9]],
+          backgroundColor: penentuanStatus(datas[9].x, datas[9].y, garisPerbatasan),
+          radius: 6,
+        }
       ],
     };
 

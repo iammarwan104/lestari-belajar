@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Mentors() {
   const mentors = [
-    { gambar: "/image/mengemudi-1.webp", nama: "Syamsul Alam" },
-    { gambar: "/image/mengemudi-2.webp", nama: "Samsumarlin" },
+    { gambar: "/image/mengemudi-3.webp", nama: "Syamsul Alam" },
+    { gambar: "/image/mengemudi-4.webp", nama: "Samsumarlin" },
   ];
   return (
     <>
