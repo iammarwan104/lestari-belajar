@@ -462,7 +462,7 @@ export async function getDataSiswa(page: number){
     // logic data skip result 0, 5, 10, 15, ...
     let skipData;
     if(page >= 1){
-        skipData = (page - 1) * 5;
+        skipData = (page - 1) * 10;
     }
 
     // logic if input search is empty
@@ -470,7 +470,7 @@ export async function getDataSiswa(page: number){
         const dataCount = await prisma.siswaKursusMengemudi.count()
         const getStudents = await prisma.siswaKursusMengemudi.findMany({
         skip: skipData,
-        take: 5
+        take: 10
         })
     
         if(!getStudents){
@@ -483,7 +483,7 @@ export async function getDataSiswa(page: number){
             success: true,
             data: getStudents,
             totalSiswa: dataCount,
-            totalPages : Math.ceil(dataCount/5)
+            totalPages : Math.ceil(dataCount/10)
         }
     }
 
@@ -507,7 +507,7 @@ export async function getDataSiswa(page: number){
             }
         },
         skip: skipData,
-        take: 5
+        take: 10
     })
 
     if(!getStudentsQuery){
@@ -521,7 +521,7 @@ export async function getDataSiswa(page: number){
             success: true,
             data: getStudentsQuery,
             totalSiswa: dataCount,
-            totalPages : Math.ceil(dataCount/5)
+            totalPages : Math.ceil(dataCount/10)
         }
     }else{
         return{

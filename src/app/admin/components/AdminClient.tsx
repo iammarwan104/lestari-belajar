@@ -8,6 +8,7 @@ import TableStudents from "./TableStudents";
 import { useRouter } from "next/navigation";
 import SignInAdmin from "./SignInAdmin";
 import { checkStatusAdminServer } from "@/app/lib/action";
+import TableAnalysis from "./TableAnalysis";
 
 export default function AdminClient({
   data,
@@ -58,8 +59,9 @@ export default function AdminClient({
                 </div>
               </div>
             }>
-            <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} />
+            <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} /> 
             <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
+            <TableAnalysis datas={data} garisPerbatasan={garisPerbatasan} />
             <TableStudents />
           </Suspense>
         </div>

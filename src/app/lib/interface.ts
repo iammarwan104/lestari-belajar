@@ -93,3 +93,9 @@ export interface CheckAdminInterface{
   password?: string | null 
   errorMessage? : string[] | string
 }
+
+export interface ScatterData {
+  name: string;
+  x: number;
+  y: number;
+}
