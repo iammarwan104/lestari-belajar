@@ -23,6 +23,12 @@ model Products {
   image String?
 }
 
+model TaskFinish {
+  id Int @id @default(autoincrement()) 
+  nama String
+  timeFinish String
+}
+
 model Anggota {
   nis String @id
   name String

@@ -2,21 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Chart } from "chart.js/auto";
 import annotationPlugin from "chartjs-plugin-annotation";
-import { GarisPerbatasan } from "@/app/lib/interface";
+import { GarisPerbatasan, ScatterData } from "@/app/lib/interface";
 Chart.register(annotationPlugin);
-
-interface ScatterData {
-  name: string;
-  x: number;
-  y: number;
-}
-
-interface Option {
-  scales: {
-    x: { type: string; position: string };
-    y: { type: string; position: string };
-  };
-}
 
 const ScatterChart = ({
   datas,
