@@ -99,3 +99,15 @@ export interface ScatterData {
   x: number;
   y: number;
 }
+
+// area belajar
+export interface TambahScheduleInterface{
+  success: boolean|null
+  errorMessage?: string|null
+}
+
+export interface TaskFormat {
+  data?: { id: number; image: string | null; nama: string; price: string }[];
+  success: boolean;
+  errorMessage?: string;
+}

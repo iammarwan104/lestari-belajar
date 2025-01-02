@@ -5,7 +5,7 @@ import Testimoni from "./components/Testimoni";
 export default function Page() {
   const jenisMobil = [
     {
-      gambar: "/image/hero-mc.webp",
+      gambar: "/image/hero-mc-2.webp",
       nama: "MC & Protokoler",
       deskripsi: "Anda akan diajarkan menggunakan aplikasi yang sering digunakan didunia perkantoran,anda akan menerima materiyang berstandar nasional serta diajari oleh mentor mentor yang berpengalaman"
     }

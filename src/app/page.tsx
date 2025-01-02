@@ -17,10 +17,10 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center md:justify-end">
           <Image
-            src={"/image/hero-landing-page.webp"}
+            src={"/image/hero-dashboard.webp"}
             fetchPriority={"high"}
-            width={462}
-            height={464}
+            width={417}
+            height={440}
             priority
             alt={"Hero landing page"}
             className="block"
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center md:justify-start">
           <Image
-            src={"/image/hero-kursus-mengemudi.webp"}
+            src={"/image/hero-mengemudi.webp"}
             width={462}
             height={464}
             alt={"Hero landing page"}
@@ -175,7 +175,7 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center md:justify-end">
           <Image
-            src={"/image/hero-kursus-komputer.webp"}
+            src={"/image/hero-komputer.webp"}
             width={462}
             height={464}
             alt={"Hero landing page"}
@@ -254,7 +254,7 @@ export default function Home() {
         </div>
         <div className="w-full flex justify-center md:justify-start">
           <Image
-            src={"/image/hero-kursus-mc-Protokol.webp"}
+            src={"/image/hero-mc-1.webp"}
             width={462}
             height={464}
             alt={"Hero landing page"}

@@ -4,8 +4,9 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "./prismaClient";
 const bcrypt = require('bcrypt');
 import { Gender } from '@prisma/client'
-import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface } from "./interface";
+import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface, TambahScheduleInterface, TaskFormat } from "./interface";
 import { checkPhoneNumberZod, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
+import { redirect } from "next/navigation";
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
 
@@ -712,4 +713,249 @@ export async function signOutdmin(username: string){
   }else{ 
     return{active: false}
   }
+}
+
+
+// bagian belajar
+
+export async function tambahSchedule(prevState: any, formData: FormData):Promise<TambahScheduleInterface>{
+const tangkapSchedule = {
+    nama: formData.get("schedule"),
+    waktu: formData.get("time"),
+    tanggal: formData.get("date"),
+}
+try {
+    await prisma.products.create({
+        data:{
+        nama: tangkapSchedule.nama as string,
+        price: tangkapSchedule.waktu as string,
+        image: tangkapSchedule.tanggal as string
+    }
+})
+return{
+    success: true,
+    errorMessage: null
+  }
+} catch (error) {
+    if(error instanceof Error){
+        console.error(error);
+        
+        return {
+            success: false,
+            errorMessage: error.message
+        }
+    }else{
+        return{
+            success: false,
+            errorMessage: "Error tidak diketahui"
+        }
+    }
+}finally{
+  revalidatePath("/todoList")
+  redirect("/todoList")
+}
+}
+
+export async function ubahSchedule(prevState: any, formData: FormData):Promise<TambahScheduleInterface>{
+  const tangkapSchedule = {
+      nama: formData.get("name"),
+      waktu: formData.get("time"),
+      tanggal: formData.get("date"),
+      id: Number(formData.get("id")),
+  }
+  console.log(tangkapSchedule);
+  
+  try {
+      await prisma.products.update({
+        where: {
+          id: tangkapSchedule.id
+        },
+          data:{
+          nama: tangkapSchedule.nama as string,
+          price: tangkapSchedule.waktu as string,
+          image: tangkapSchedule.tanggal as string
+      }
+  })
+  return{
+      success: true,
+      errorMessage: null
+    }
+  } catch (error) {
+      if(error instanceof Error){
+          console.error(error);
+          
+          return {
+              success: false,
+              errorMessage: error.message
+          }
+      }else{
+          return{
+              success: false,
+              errorMessage: "Error tidak diketahui"
+          }
+      }
+  }finally{
+    revalidatePath("/todoList")
+    redirect("/todoList")
+  }
+  }
+
+export async function getSchedule():Promise<TaskFormat>{
+  try {
+    const datas = await prisma.products.findMany()
+    return {
+      data:datas,
+      success: true
+    }
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error);
+      
+      return {
+          success: false,
+          errorMessage: error.message
+      }
+  }else{
+      return{
+          success: false,
+          errorMessage: "Error tidak diketahui"
+      }
+  }
+  }
+}
+
+export async function getTaskById(idTask: number){
+  try {
+    
+  const data = await prisma.products.findUnique({
+    where:{
+      id: idTask
+    }
+  })
+  return {
+    data: data,
+    success: true
+  }
+} catch (error) {
+  if(error instanceof Error){
+    console.error(error);
+    
+    return {
+        success: false,
+        errorMessage: error.message
+    }
+}else{
+    return{
+        success: false,
+        errorMessage: "Error tidak diketahui"
+    }
+}
+}
+}
+
+export async function deleteSchedule(id: number){
+  try {
+    await prisma.products.delete({
+      where:{
+        id:id
+      }
+    })
+    revalidatePath("/todoList")
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error);
+      
+      return {
+          success: false,
+          errorMessage: error.message
+      }
+  }else{
+      return{
+          success: false,
+          errorMessage: "Error tidak diketahui"
+      }
+  }
+  }
+}
+
+export async function deleteScheduleFinish(id: number){
+  try {
+    await prisma.taskFinish.delete({
+      where:{
+        id:id
+      }
+    })
+    revalidatePath("/todoList")
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error);
+      
+      return {
+          success: false,
+          errorMessage: error.message
+      }
+  }else{
+      return{
+          success: false,
+          errorMessage: "Error tidak diketahui"
+      }
+  }
+  }
+}
+
+export async function taskFinish(id: number, name:string, timeFinish:string){
+  try {
+    console.log(id, name, timeFinish);
+    
+    await prisma.products.delete({
+      where:{
+        id:id
+      }
+    })
+
+    await prisma.taskFinish.create({
+      data:{
+        nama:name,
+        timeFinish: timeFinish
+      }
+    })
+    revalidatePath("/todoList")
+  } catch (error) {
+    if(error instanceof Error){
+      console.error(error);
+      
+      return {
+          success: false,
+          errorMessage: error.message
+      }
+  }else{
+      return{
+          success: false,
+          errorMessage: "Error tidak diketahui"
+      }
+  }
+  }
+}
+
+export async function getTaskFinish(){
+  try {
+    const taskFinish = await prisma.taskFinish.findMany();
+    return{
+      data:taskFinish,
+      success: true
+    }
+} catch (error) {
+  if(error instanceof Error){
+    console.error(error);
+    return {
+        success: false,
+        errorMessage: error.message
+    }
+}else{
+    return{
+        success: false,
+        errorMessage: "Error tidak diketahui"
+    }
+}
+}
 }
