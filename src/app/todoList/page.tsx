@@ -1,4 +1,5 @@
-import { getSchedule, getTaskFinish } from "../lib/action";
+import { getDataSiswa, getSchedule, getTaskFinish } from "../lib/action";
+import Latihan from "./components/Latihan";
 import ListFinish from "./components/ListFinish";
 import TaskList from "./components/TaskList";
 
@@ -10,6 +11,7 @@ export default async function page() {
     <>
         <TaskList datas={schedule.data}/>
         <ListFinish datas={taskFinish.data}/>
+        <Latihan/>
     </>
   );
 }
