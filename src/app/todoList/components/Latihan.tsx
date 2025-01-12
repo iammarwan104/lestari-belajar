@@ -62,7 +62,7 @@ export default function Latihan() {
   const handlingReduction = () => {
     setPage(() => {
     const newPage = Math.max(kopi - 1, 1);
-    router.push(`/todoList?page=${newPage}`);
+    router.push(`/todoList?page=${newPage}`, {scroll:false});
       return newPage;
     });
   };
@@ -70,7 +70,7 @@ export default function Latihan() {
   const handlingAddiction = () => {
     setPage(() => {
       const newPage = kopi + 1;
-      router.push(`/todoList?page=${newPage}`);
+      router.push(`/todoList?page=${newPage}`, {scroll:false});
       return newPage;
     });
   };

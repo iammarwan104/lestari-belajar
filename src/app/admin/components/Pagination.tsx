@@ -19,7 +19,7 @@ export default function ComponentPagination({
     setCurrentPage(page);
   };
   useEffect(() => {
-    router.push(`/admin?page=${currentPage}&query=${query||""}`)
+    router.push(`/admin?page=${currentPage}&query=${query||""}`, {scroll:false})
   }, [currentPage]);
 
   return (

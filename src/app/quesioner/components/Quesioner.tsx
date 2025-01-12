@@ -9,8 +9,8 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
   return (
     <div className="bg-cuslor-2 rounded-lg p-2 text-center">
       <h2 className="uppercase mb-2 text-white">{name.replace("-", " ")}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-      <div className="grid grid-cols-2 md:grid-cols-1 md:pb-5 md:grid-rows-2 justify-center gap-6 md:gap-6">
+      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-2 md:pb-5 justify-center gap-4">
         <div className="md:px-2 lg:px-4">
           <h3 className="block min-h-[5rem] max-h-[12rem] md:h-fit w-full mb-4 md:mb-6 text-sm md:text-base font-medium text-white">{kepentingan}</h3>
           <div className="grid grid-cols-5 mt-2 items-center">
@@ -42,7 +42,7 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <label
           htmlFor={`komentar-${name}`}
           className="block mb-2 mt-6 md:mt-0 text-sm font-medium text-white">
@@ -57,7 +57,7 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
           className="block p-2.5 w-full md:h-[86%] lg:h-[75%] xl:h-[80%] text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
           placeholder="Ini boleh tidak di isi, namun kami akan sangat senang jika anda berkenan untuk memberikan alasan atau komentar anda"
         />
-      </div>
+      </div> */}
     </div>
     </div>
   );

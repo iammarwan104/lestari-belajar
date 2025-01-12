@@ -92,7 +92,7 @@ export default function Home() {
           </div>
           <ButtonLandingPage
             lokasi={"/kursus-mengemudi"}
-            penilaian={"/quesioner"}
+            penilaian={"/hasil-penilaian"}
           />
         </div>
         <div className="w-full flex justify-center md:justify-start">
@@ -170,7 +170,7 @@ export default function Home() {
           </div>
           <ButtonLandingPage
             lokasi={"/kursus-komputer"}
-            penilaian={"/quesioner"}
+            penilaian={"/belum-tersedia"}
           />
         </div>
         <div className="w-full flex justify-center md:justify-end">
@@ -249,7 +249,7 @@ export default function Home() {
 
           <ButtonLandingPage
             lokasi={"/kursus-mc-protokoler"}
-            penilaian={"/quesioner"}
+            penilaian={"/belum-tersedia"}
           />
         </div>
         <div className="w-full flex justify-center md:justify-start">
