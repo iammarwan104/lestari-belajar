@@ -1,5 +1,4 @@
 "use client"
-
 import { deleteScheduleFinish } from "@/app/lib/action";
 import { Trash2 } from "lucide-react";
 
@@ -15,9 +14,10 @@ export default function ListFinish({datas}:{datas:{
     }
     deleteTask()
   }
+
   return (
     <>
-      <div className="w-1/2 mx-auto pt-6">
+      <div className="w-[90%] md:w-1/2 mx-auto pt-6">
       <h1 className="text-center text-xl font-semibold mb-4">List Schedule Selesai</h1>
         <div className="relative min-h-fit max-h-[20rem] overflow-y-scroll overflow-x-auto rounded-xl">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

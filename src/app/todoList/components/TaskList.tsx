@@ -29,7 +29,7 @@ export default function TaskList({
   }
   return (
     <>
-      <div className="w-1/2 mx-auto">
+      <div className="w-[90%] md:w-1/2 mx-auto">
         <h1 className="text-center text-xl font-semibold mb-2">
           List Schedule
         </h1>
@@ -73,6 +73,9 @@ export default function TaskList({
                       </th>
                       <td className="px-6 py-4">{item.price}</td>
                       <td className="px-6 py-4 flex gap-4 justify-end">
+                        <span onClick={()=> handleFinish(item.id, item.nama)} className="rounded-lg py-2.5 px-3 hover:bg-neutral-600 hover:text-green-500">
+                          <Check />
+                        </span>
                         <Link
                           href={`todoList/update?id=${item.id}`}
                           className="rounded-lg py-2.5 px-3 hover:bg-neutral-600 hover:text-cuslor-4">
@@ -80,9 +83,6 @@ export default function TaskList({
                         </Link>
                         <span onClick={()=> handleDelete(item.id)} className="rounded-lg py-2.5 px-3 hover:bg-neutral-600 hover:text-red-500">
                           <Trash2 />
-                        </span>
-                        <span onClick={()=> handleFinish(item.id, item.nama)} className="rounded-lg py-2.5 px-3 hover:bg-neutral-600 hover:text-green-500">
-                          <Check />
                         </span>
                       </td>
                     </tr>

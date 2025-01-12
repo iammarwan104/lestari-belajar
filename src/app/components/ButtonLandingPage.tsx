@@ -55,7 +55,7 @@ export default function ButtonLandingPage({
             <button
               type="button"
               className="w-fit text-white text-base font-semibold bg-cuslor-4 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 rounded-full px-5 py-2.5 text-center me-2 mb-2 bg-color-400 ">
-              Beri Penilaian
+              Lihat Penilaian
             </button>
           ) : (
             <button

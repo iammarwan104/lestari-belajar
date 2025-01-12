@@ -11,7 +11,7 @@ export default function SearchInput() {
   const { replace } = useRouter();
   const query = searchParams.get("query");
   useEffect(() => {
-      replace(`${pathname}?page=${1}&query=${value || ""}`);
+      replace(`${pathname}?page=${1}&query=${value || ""}`,{scroll:false});
   }, [value]);
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
