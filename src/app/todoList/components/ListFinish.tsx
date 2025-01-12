@@ -1,3 +1,4 @@
+"use client"
 import { deleteScheduleFinish } from "@/app/lib/action";
 import { Trash2 } from "lucide-react";
 
