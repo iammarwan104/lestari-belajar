@@ -1,9 +1,5 @@
-"use client"
-
 import { deleteScheduleFinish } from "@/app/lib/action";
 import { Trash2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import {requestForToken} from "@/app/config/firebase.js"
 
 export default function ListFinish({datas}:{datas:{
   id: number;
@@ -18,21 +14,6 @@ export default function ListFinish({datas}:{datas:{
     deleteTask()
   }
 
-  const [token, setToken] = useState("");
-
-  useEffect(() => {
-    const getToken = async () => {
-      const permission = await Notification.requestPermission();
-      if (permission === "granted") {
-        const token = await requestForToken();
-        if (token) {
-          setToken(token);
-        }
-      }
-    };
-
-    getToken();
-  }, []);
   return (
     <>
       <div className="w-[90%] md:w-1/2 mx-auto pt-6">
