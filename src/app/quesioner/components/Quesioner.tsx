@@ -7,13 +7,13 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
   const [ratingKepentingan, setRatingKepentingan]=useState(0)
   const [ratingKinerja, setRatingKinerja]=useState(0)
   return (
-    <div className="bg-cuslor-2 rounded-lg p-2 text-center">
+    <div className="bg-cuslor-2 rounded-lg px-2 py-4 h-fit text-center">
       <h2 className="uppercase mb-2 text-white">{name.replace("-", " ")}</h2>
       <div className="grid grid-cols-1">
-      <div className="grid grid-cols-2 md:pb-5 justify-center gap-4">
-        <div className="md:px-2 lg:px-4">
-          <h3 className="block min-h-[5rem] max-h-[12rem] md:h-fit w-full mb-4 md:mb-6 text-sm md:text-base font-medium text-white">{kepentingan}</h3>
-          <div className="grid grid-cols-5 mt-2 items-center">
+      <div className="grid grid-cols-2 pb-5 justify-center gap-2 md:gap-1 lg:gap-4">
+        <div className="flex flex-col justify-between lg:px-4 h-[8.2rem] sm:h-[6rem] md:h-[10rem] lg:h-[8.2rem] xl:h-[6.4rem]">
+          <h3 className="w-full text-sm md:text-base font-medium text-white">{kepentingan}</h3>
+          <div className="grid grid-cols-5 mt-2 px-2 sm:px-12 md:px-3 xl:px-12 items-center">
             {skeletonArray.map((star) => (
               <StarRating
                 key={star}
@@ -26,9 +26,9 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
             ))}
           </div>
         </div>
-        <div className="md:px-2 lg:px-4" >
-          <h3 className="min-h-[5rem] max-h-[12rem] md:h-fit md:min-h-fit block mb-4 md:mb-6 text-sm md:text-base font-medium text-white">{kepuasan}</h3>
-          <div className="grid grid-cols-5 items-center">
+        <div className="flex flex-col justify-between lg:px-4 h-[8.2rem] sm:h-[6rem]  md:h-[10rem] lg:h-[8.2rem] xl:h-[6.4rem]" >
+          <h3 className="w-full text-sm md:text-base font-medium text-white">{kepuasan}</h3>
+          <div className="grid grid-cols-5 px-2 sm:px-12 md:px-3 xl:px-12 items-center">
             {skeletonArray.map((star) => (
               <StarRating
                 key={star}
