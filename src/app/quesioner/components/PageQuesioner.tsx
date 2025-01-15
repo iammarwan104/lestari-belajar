@@ -73,7 +73,7 @@ export default function PageQuesioner() {
         toastOptions={{ duration: 3000, style: { marginTop: "1rem" } }}
       />
       <WelcomeModal />
-      <form className="grid grid-cols-1 gap-6" action={formAction}>
+      <form className="grid grid-cols-1 gap-6 px-4 xl:px-8" action={formAction}>
         <input type="hidden" name="id-siswa" defaultValue={sessionId} />
         <div>
           <h1 className="text-xl font-semibold text-center mb-4">
