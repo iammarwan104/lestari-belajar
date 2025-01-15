@@ -56,7 +56,8 @@ export default function Navbar() {
               </span>
             </Link>
             {pathname === "/signin-quesioner" ||
-            pathname === "/quesioner" ? null : (
+            pathname === "/quesioner"||
+            pathname === "/admin" ? null : (
               <Link
                 href={"/quesioner"}
                 className="hidden lg:inline"
@@ -287,7 +288,8 @@ export default function Navbar() {
           </div>
         </div>
         {pathname === "/signin-quesioner" ||
-        pathname === "/quesioner" ? null : (
+        pathname === "/quesioner"||
+        pathname === "/admin" ? null : (
           <div className="w-fit mx-auto flex justify-center lg:hidden">
             <Link
               href={"/quesioner"}
