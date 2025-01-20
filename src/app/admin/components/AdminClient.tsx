@@ -49,19 +49,21 @@ export default function AdminClient({
           onClick={handleSignOut}>
           Sign Out
         </button>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
+        <div className="">
           <Suspense
             fallback={
-              <div className="w-screen h-[60vh] flex justify-center items-center">
+              <div className="w-screen h-[60vh]">
                 {" "}
                 <div className="flex justify-center gap-4">
                   <Spinner color={"warning"} /> <p className="mt-2">Load page.</p>
                 </div>
               </div>
             }>
+              <div className="flex flex-col md:flex-row overflow-x-scroll justify-center items-center gap-4 mb-4">
             <ScatterChart datas={data} garisPerbatasan={garisPerbatasan} /> 
-            <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
             <TableAnalysis datas={data} garisPerbatasan={garisPerbatasan} />
+              </div>
+            <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
             <TableStudents />
           </Suspense>
         </div>

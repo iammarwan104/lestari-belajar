@@ -42,22 +42,40 @@ export default function Quesioner({ name,kepentingan, kepuasan }: { name: string
           </div>
         </div>
       </div>
-      {/* <div>
+      <div className="flex justify-between gap-2 md:gap-1 lg:gap-4 md:mt-2 mb-4">
+      <div className="w-full">
         <label
-          htmlFor={`komentar-${name}`}
+          htmlFor={`komentar-kepentingan-${name}`}
           className="block mb-2 mt-6 md:mt-0 text-sm font-medium text-white">
-          Komentar Anda
+          Komentar kepentingan
         </label>
-        <textarea
-          id={`komentar-${name}`}
-          name={`komentar-${name}`}
-          rows={4}
+        <input
+          type="text"
+          id={`komentar-kepentingan-${name}`}
+          name={`komentar-kepentingan-${name}`}
           minLength={3}
           maxLength={100}
-          className="block p-2.5 w-full md:h-[86%] lg:h-[75%] xl:h-[80%] text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
-          placeholder="Ini boleh tidak di isi, namun kami akan sangat senang jika anda berkenan untuk memberikan alasan atau komentar anda"
+          className="block p-2.5 w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
+          placeholder="Optional"
         />
-      </div> */}
+      </div>
+      <div className="w-full">
+        <label
+          htmlFor={`komentar-kinerja-${name}`}
+          className="block mb-2 mt-6 md:mt-0 text-sm font-medium text-white">
+          Komentar kinerja
+        </label>
+        <input
+          type="text"
+          id={`komentar-kinerja-${name}`}
+          name={`komentar-kinerja-${name}`}
+          minLength={3}
+          maxLength={100}
+          className="block p-2.5 w-full text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-cuslor-1 focus:border-cusring-cuslor-1 dark:border-gray-600 dark:focus:ring-cuslor-1 dark:focus:border-cusring-cuslor-1"
+          placeholder="Optional"
+        />
+      </div>
+      </div>
     </div>
     </div>
   );

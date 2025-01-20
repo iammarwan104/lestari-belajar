@@ -10,15 +10,19 @@ export default function TableAnalysis({
   const statusQuadrants = [
     {
       status: "Concentrate Here",
+      color: "bg-red-500",
       message: "Layanan ini kepentingannya tinggi namun kepuasannya rendah",
     },{
       status: "Keep up the good work",
+      color: "bg-green-500",
       message: "Layanan ini kepentingan dan kepuasannya tinggi",
     }, {
       status: "Low Priority",
+      color : "bg-yellow-500",
       message: "Layanan ini kepentingan dan kepuasannya rendah",
     }, {
       status: "Possible Overkill",
+      color: "bg-blue-500",
       message: "Layanan ini kepentingannya rendah namun kepuasannya tinggi",
     },
 ];
@@ -27,7 +31,7 @@ export default function TableAnalysis({
     nilaiX: number,
     nilaiY: number,
     garisPerbatasan: GarisPerbatasan,
-    quadrants: {status: string, message: string}[]
+    quadrants: {status: string, message: string, color: string}[]
   ) {
     if (
       nilaiX <= garisPerbatasan.sumbuX === true &&
@@ -35,7 +39,10 @@ export default function TableAnalysis({
     )
       return (
         <>
-          <td className="px-6 py-4 whitespace-nowrap">{quadrants[0]?.status}</td>
+          <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
+          <div className={`h-2 w-5 ${quadrants[0].color}`}></div>
+            {quadrants[0]?.status}
+            </td>
           <td className="px-6 py-4 whitespace-nowrap">{quadrants[0]?.message}</td>
         </>
       );
@@ -45,7 +52,10 @@ export default function TableAnalysis({
     )
     return (
         <>
-          <td className="px-6 py-4 whitespace-nowrap">{quadrants[1]?.status}</td>
+          <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
+          <div className={`h-2 w-5 ${quadrants[1].color}`}></div>
+            {quadrants[1]?.status}
+            </td>
           <td className="px-6 py-4 whitespace-nowrap">{quadrants[1]?.message}</td>
         </>
       );
@@ -55,7 +65,10 @@ export default function TableAnalysis({
     )
     return (
         <>
-          <td className="px-6 py-4 whitespace-nowrap">{quadrants[2]?.status}</td>
+          <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
+          <div className={`h-2 w-5 ${quadrants[2].color}`}></div>
+            {quadrants[2]?.status}
+            </td>
           <td className="px-6 py-4 whitespace-nowrap">{quadrants[2]?.message}</td>
         </>
       );
@@ -65,13 +78,16 @@ export default function TableAnalysis({
     )
     return (
         <>
-          <td className="px-6 py-4 whitespace-nowrap">{quadrants[3]?.status}</td>
+          <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
+          <div className={`h-2 w-5 ${quadrants[3].color}`}></div>
+            {quadrants[3]?.status}
+            </td>
           <td className="px-6 py-4 whitespace-nowrap">{quadrants[3]?.message}</td>
         </>
       );
   }
   return (
-      <div className="min-h-fit max-h-[20rem] overflow-y-scroll md:col-start-1 md:col-end-3 overflow-x-auto rounded-xl mb-2">
+      <div className="min-h-fit w-full max-h-[20.6rem] overflow-y-scroll md:col-start-1 md:col-end-3 overflow-x-auto rounded-xl mb-2">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

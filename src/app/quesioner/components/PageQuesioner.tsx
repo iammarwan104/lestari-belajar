@@ -58,7 +58,7 @@ export default function PageQuesioner() {
     if (state.success === true && state.redirect === true) {
       toast.success(state.message);
       setTimeout(() => {
-        router.push("/");
+        router.push("/hasil-analisis");
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("phone-number");
         sessionStorage.removeItem("name");

@@ -7,12 +7,12 @@ interface quesionerSubmitInitial{
       }
 }
 
-
 export interface Item {
   id: number,
   kepentingan: number,
   kinerja: number,
-  komentar: string | null
+  komentar_kepentingan: string | null
+  komentar_kinerja: string | null
 }
 
 export interface DataSiswa {
@@ -51,19 +51,13 @@ export interface tambahDataSiswaInterface{
   name: string;
   x: number;
   y: number;
-  komentars: (string|null)[];
+  komentar_kepentingan: (string|null)[];
+  komentar_kinerja: (string|null)[];
 }
 
 export interface GarisPerbatasan {
   sumbuY : number;
   sumbuX: number;
-}
-
-export interface Item {
-  id: number,
-  kepentingan: number,
-  kinerja: number,
-  komentar: string | null
 }
 
 export interface Login{

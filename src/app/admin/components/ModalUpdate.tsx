@@ -44,7 +44,7 @@ export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {
             <div>
               <label
                 htmlFor="nama-siswa"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                className="block mb-2 text-sm font-medium text-white">
                 Nama Siswa
               </label>
               <input
@@ -62,7 +62,7 @@ export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {
             </div>
             <div>
               <fieldset className="flex max-w-md flex-col gap-4">
-                <legend className="mb-4 text-black">Jenis Kelamin</legend>
+                <legend className="mb-4 text-white">Jenis Kelamin</legend>
                 <div className="flex items-center gap-2">
                   <Radio id="pria" name="gender" value="Pria" defaultChecked={dataSiswa.gender === "Pria"? true : false} />
                   <Label htmlFor="pria">Pria</Label>
@@ -76,7 +76,7 @@ export default function ModalUpdate({dataSiswa} : {dataSiswa: DataSiswa}) {
             <div>
               <label
                 htmlFor="phoneNumber"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                className="block mb-2 text-sm font-medium text-white">
                 Nomor Hp
               </label>
               <input

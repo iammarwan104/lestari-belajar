@@ -15,7 +15,10 @@ export default function TebleStudents() {
   const queryParams = params.get("query");
   const pageParams = params.get("page");
 
-  const fetcher = () => fetch(`/api/siswa?page=${pageParams || 1}&query=${queryParams}`).then((res) => res.json());
+  const fetcher = () =>
+    fetch(`/api/siswa?page=${pageParams || 1}&query=${queryParams}`).then(
+      (res) => res.json()
+    );
   const { data, error, isLoading } = useSWR(
     `/api/siswa?page=${pageParams || 1}&query=${queryParams}`,
     fetcher
@@ -48,6 +51,7 @@ export default function TebleStudents() {
   }
   const totalPages = data.totalPages;
   const totalSiswa = data.totalSiswa;
+
   return (
     <>
       <div className="md:col-start-1 md:col-end-3">
@@ -77,35 +81,45 @@ export default function TebleStudents() {
               </tr>
             </thead>
             <tbody>
-              {data.data?.map((item: DataSiswa, index: number) => {
-                return (
-                  <tr
-                    key={index}
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th
-                      scope="row"
-                      className="w-[5rem] px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.name}
-                    </th>
-                    <td className="px-6 py-4">{item.gender}</td>
-                    <td className="px-6 py-4">{item.phoneNumber}</td>
-                    <td className="px-6 py-4">
-                      {!item.status ? "Belum" : "Sudah"}
-                    </td>
-                    <td className="px-6 py-4 flex gap-4">
-                      <ModalUpdate dataSiswa={item} />
-                      <DeleteSiswaButton id={item.id} />
-                    </td>
-                  </tr>
-                );
-              })}
+              {data.data.length === 0 ? (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <td colSpan={5} className="px-6 py-4 col-span-5 text-center">
+                    Maaf, Siswa dengan nama "{queryParams}" tidak ditemukan
+                  </td>
+                </tr>
+              ) : (
+                data.data?.map((item: DataSiswa, index: number) => {
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th
+                        scope="row"
+                        className="w-[5rem] px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.name}
+                      </th>
+                      <td className="px-6 py-4">{item.gender}</td>
+                      <td className="px-6 py-4">{item.phoneNumber}</td>
+                      <td className="px-6 py-4">
+                        {!item.status ? "Belum" : "Sudah"}
+                      </td>
+                      <td className="px-6 py-4 flex gap-4">
+                        <ModalUpdate dataSiswa={item} />
+                        <DeleteSiswaButton id={item.id} />
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
             </tbody>
           </table>
         </div>
         <div className="flex justify-center">
-        <ComponentPagination totalPages={totalPages} />
+          <ComponentPagination totalPages={totalPages} />
         </div>
-        <p className="mt-2 text-white font-semibold text-center">{totalSiswa} siswa terdaftar</p>
+        <p className="mt-2 text-white font-semibold text-center">
+          {totalSiswa} siswa terdaftar
+        </p>
       </div>
     </>
   );

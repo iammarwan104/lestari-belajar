@@ -29,94 +29,20 @@ model TaskFinish {
   timeFinish String
 }
 
-model Anggota {
-  nis String @id
-  name String
-  address String
-  gender Gender
-  class String
-  faculty String
-  books Pinjam[]
-}
-
-model Pinjam{
-  id Int @id @default(autoincrement())
-  pickUpDate DateTime @default(now())
-  returnDate DateTime
-  idBook Int
-  book Books @relation(fields: [idBook], references: [id])
-  nisAnggota String
-  nis Anggota @relation(fields: [nisAnggota], references: [nis])
-}
-
-model Books{
-  id Int @id @default(autoincrement())
-  name String
-  publicationYear Int
-  language String
-  pages Int
-  idCategory Int
-  category Category @relation(fields: [idCategory], references: [id])
-  anggota Pinjam[]
-}
-
-model Category {
-  id Int @id @default(autoincrement())
-  name String
-  posts Books[]
-}
-
-model Author {
-  id Int @id @default(autoincrement())
-  name String
-}
-
-model Publishers {
-  id Int @id @default(autoincrement())
-  name String
-}
-
-
-model kebersihan_kelas_mengemudi {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
-
 model kebersihan_mobil {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
-}
-
-model kebersihan_lembaga_kursus {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
-
-model kelengkapan_alat_lembaga_kursus {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
-
-model performa_alat_lembaga_kursus {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model performa_mobil {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 // mentor models start
@@ -125,35 +51,32 @@ model etika_sopan_santun_mentor {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model skill_komunikasi_baik {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model pengawasan_penuh {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
-}
-
-model materi_mudah_dipahami {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model pembawaan_materi_belajar_mentor {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 // mentor models end
@@ -164,58 +87,42 @@ model etika_SopanSantun {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model skill_komunikasi_baik_staff {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model pelayanan_administrasi {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model pelayanan_jadwal_belajar {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 // staff kantor models end
-
-model performa_alat_mobil {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
 
 model kelengkapan_alat_mobil {
   id          Int     @id @default(autoincrement())
   kepentingan Int
   kinerja     Int
-  komentar    String?
-}
-
-model kelengkapan_alat_kelas_mengemudi {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
-}
-
-model performa_alat_kelas_mengemudi {
-  id          Int     @id @default(autoincrement())
-  kepentingan Int
-  kinerja     Int
-  komentar    String?
+  komentar_kepentingan    String?
+  komentar_kinerja    String?
 }
 
 model skor_kuesioners {
