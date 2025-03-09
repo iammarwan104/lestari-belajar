@@ -22,20 +22,20 @@ const ScatterChart = ({
     garisPerbatasan: GarisPerbatasan
   ) {
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     ) return "#f05252"
     if (
-        nilaiX <= garisPerbatasan.sumbuX === false &&
-        nilaiY <= garisPerbatasan.sumbuY === false
+        nilaiX >= garisPerbatasan.sumbuX === true &&
+        nilaiY >= garisPerbatasan.sumbuY === true
       ) return "#31c48d"
       if (
-        nilaiX <= garisPerbatasan.sumbuX === true &&
-        nilaiY <= garisPerbatasan.sumbuY === true
+        nilaiX >= garisPerbatasan.sumbuX === false &&
+        nilaiY >= garisPerbatasan.sumbuY === false
       ) return "#faca15"
       if (
-        nilaiX <= garisPerbatasan.sumbuX === false &&
-        nilaiY <= garisPerbatasan.sumbuY === true
+        nilaiX >= garisPerbatasan.sumbuX === true &&
+        nilaiY >= garisPerbatasan.sumbuY === false
       ) return "#3f83f8"
   }
 
@@ -145,13 +145,13 @@ const ScatterChart = ({
       scales: {
         x: {
           beginAtZero: false,
-          min: 3,
-          max: 6,
+          min: 4.8,
+          max: 5,
         },
         y: {
           beginAtZero: false,
-          min: 3,
-          max: 6,
+          min: 4.8,
+          max: 5,
         },
       },
     };

@@ -30,7 +30,7 @@ export default function PageQuesioner() {
       sessionStorage.removeItem("phone-number");
       sessionStorage.removeItem("name");
       toast.success("Jawaban anda berhasil disimpan");
-      router.push("/");
+      router.push("/hasil-analisis");
     }
   }
 

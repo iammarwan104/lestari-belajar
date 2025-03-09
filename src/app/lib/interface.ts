@@ -51,8 +51,8 @@ export interface tambahDataSiswaInterface{
   name: string;
   x: number;
   y: number;
-  komentar_kepentingan: (string|null)[];
-  komentar_kinerja: (string|null)[];
+  komentar_kepentingan?: (string|null)[];
+  komentar_kinerja?: (string|null)[];
 }
 
 export interface GarisPerbatasan {

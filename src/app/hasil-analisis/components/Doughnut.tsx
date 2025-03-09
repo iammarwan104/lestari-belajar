@@ -26,23 +26,23 @@ export default function DoughnutChart({datas, garisPerbatasan}:{datas:ScatterDat
   
     datas.forEach((index) => {
       if (
-        index.x <= garisPerbatasan.sumbuX &&
-        index.y > garisPerbatasan.sumbuY
+        index.x >= garisPerbatasan.sumbuX === false &&
+        index.y >= garisPerbatasan.sumbuY === true
       ) {
         merahCount++;
       } else if (
-        index.x > garisPerbatasan.sumbuX &&
-        index.y > garisPerbatasan.sumbuY
+        index.x >= garisPerbatasan.sumbuX === true &&
+        index.y >= garisPerbatasan.sumbuY === true
       ) {
         hijauCount++;
       } else if (
-        index.x <= garisPerbatasan.sumbuX &&
-        index.y <= garisPerbatasan.sumbuY
+        index.x >= garisPerbatasan.sumbuX === false &&
+        index.y >= garisPerbatasan.sumbuY === false
       ) {
         kuningCount++;
       } else if (
-        index.x > garisPerbatasan.sumbuX &&
-        index.y <= garisPerbatasan.sumbuY
+        index.x >= garisPerbatasan.sumbuX === true &&
+        index.y >= garisPerbatasan.sumbuY === false
       ) {
         biruCount++;
       }

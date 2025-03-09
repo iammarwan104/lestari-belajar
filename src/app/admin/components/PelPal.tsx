@@ -12,18 +12,18 @@ export default function PelPal({
     nilaiX: number,
     nilaiY: number,
     garisPerbatasan: GarisPerbatasan,
-    komentar_kepentingan: (string | null)[],
+    komentar_kepentingan: (string | null)[] | undefined,
   ) {
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     ) {
       return (
         <div key={name} className={`p-4 rounded-lg bg-red-500`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kepentingan.some((index) => index !== null) ? (
-              komentar_kepentingan.map((komentar, index) => {
+            {komentar_kepentingan?.some((index) => index !== null) ? (
+              komentar_kepentingan?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 text-white rounded-lg border text-base">
                     {komentar}
@@ -40,8 +40,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === true &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     ) {
       return (
         <div
@@ -49,8 +49,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-green-400`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kepentingan.some((index) => index !== null) ? (
-              komentar_kepentingan.map((komentar, index) => {
+            {komentar_kepentingan?.some((index) => index !== null) ? (
+              komentar_kepentingan?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -67,8 +67,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === false
     ) {
       return (
         <div
@@ -76,8 +76,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-yellow-300`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kepentingan.some((index) => index !== null) ? (
-              komentar_kepentingan.map((komentar, index) => {
+            {komentar_kepentingan?.some((index) => index !== null) ? (
+              komentar_kepentingan?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -94,8 +94,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX >= garisPerbatasan.sumbuX === true &&
+      nilaiY >= garisPerbatasan.sumbuY === false
     ) {
       return (
         <div
@@ -103,8 +103,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-blue-500`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kepentingan.some((index) => index !== null) ? (
-              komentar_kepentingan.map((komentar, index) => {
+            {komentar_kepentingan?.some((index) => index !== null) ? (
+              komentar_kepentingan?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -127,18 +127,18 @@ export default function PelPal({
     nilaiX: number,
     nilaiY: number,
     garisPerbatasan: GarisPerbatasan,
-    komentar_kinerja: (string | null)[],
+    komentar_kinerja: (string | null)[] | undefined,
   ) {
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     ) {
       return (
         <div key={name} className={`p-4 rounded-lg bg-red-500`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kinerja.some((index) => index !== null) ? (
-              komentar_kinerja.map((komentar, index) => {
+            {komentar_kinerja?.some((index) => index !== null) ? (
+              komentar_kinerja?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 text-white rounded-lg border text-base">
                     {komentar}
@@ -155,8 +155,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === true &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     ) {
       return (
         <div
@@ -164,8 +164,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-green-400`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kinerja.some((index) => index !== null) ? (
-              komentar_kinerja.map((komentar, index) => {
+            {komentar_kinerja?.some((index) => index !== null) ? (
+              komentar_kinerja?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -182,8 +182,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === false
     ) {
       return (
         <div
@@ -191,8 +191,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-yellow-300`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kinerja.some((index) => index !== null) ? (
-              komentar_kinerja.map((komentar, index) => {
+            {komentar_kinerja?.some((index) => index !== null) ? (
+              komentar_kinerja?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -209,8 +209,8 @@ export default function PelPal({
       );
     }
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX < garisPerbatasan.sumbuX === true &&
+      nilaiY < garisPerbatasan.sumbuY === false
     ) {
       return (
         <div
@@ -218,8 +218,8 @@ export default function PelPal({
           className={`text-lg font-semibold p-4 rounded-lg bg-blue-500`}>
           <h1 className="text-lg text-white font-semibold mb-4">{name}</h1>
           <div className="min-h-fit max-h-[10rem] overflow-y-scroll flex flex-col gap-2">
-            {komentar_kinerja.some((index) => index !== null) ? (
-              komentar_kinerja.map((komentar, index) => {
+            {komentar_kinerja?.some((index) => index !== null) ? (
+              komentar_kinerja?.map((komentar, index) => {
                 return !komentar ? null : (
                   <p key={index} className="p-2 rounded-lg text-white border text-base">
                     {komentar}
@@ -247,7 +247,7 @@ export default function PelPal({
             data.x,
             data.y,
             garisPerbatasan,
-            data.komentar_kinerja,
+            data.komentar_kepentingan,
           )
         )}
       </div>

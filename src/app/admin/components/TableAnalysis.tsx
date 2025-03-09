@@ -34,8 +34,8 @@ export default function TableAnalysis({
     quadrants: {status: string, message: string, color: string}[]
   ) {
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     )
       return (
         <>
@@ -47,8 +47,8 @@ export default function TableAnalysis({
         </>
       );
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === false
+      nilaiX >= garisPerbatasan.sumbuX === true &&
+      nilaiY >= garisPerbatasan.sumbuY === true
     )
     return (
         <>
@@ -60,8 +60,8 @@ export default function TableAnalysis({
         </>
       );
     if (
-      nilaiX <= garisPerbatasan.sumbuX === true &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX >= garisPerbatasan.sumbuX === false &&
+      nilaiY >= garisPerbatasan.sumbuY === false
     )
     return (
         <>
@@ -73,8 +73,8 @@ export default function TableAnalysis({
         </>
       );
     if (
-      nilaiX <= garisPerbatasan.sumbuX === false &&
-      nilaiY <= garisPerbatasan.sumbuY === true
+      nilaiX >= garisPerbatasan.sumbuX === true &&
+      nilaiY >= garisPerbatasan.sumbuY === false
     )
     return (
         <>

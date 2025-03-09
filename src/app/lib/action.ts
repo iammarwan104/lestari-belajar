@@ -227,16 +227,18 @@ export async function quesionerSubmit(prevState: any, formData: FormData) {
 export async function getAllQuesionerAnswer(){
   function getAverangeValue(arr: Item[], name: string): {kepentingan: number, kinerja: number, nama: string, komentar_kepentingan: (string|null)[], komentar_kinerja: (string|null)[]}{
       const totalKepentingan = arr.reduce((sum: number, item) => sum + item.kepentingan, 0)
-      const rataRataKepentingan = (totalKepentingan / arr.length).toFixed(1);
+      const rataRataKepentingan = (totalKepentingan / arr.length).toFixed(2);
       const totalKinerja = arr.reduce((sum: number, item) => sum + item.kinerja, 0)
-      const rataRataKinerja = (totalKinerja / arr.length).toFixed(1);
+      const rataRataKinerja = (totalKinerja / arr.length).toFixed(2);
+      console.log(arr.length);
+      
       let fiveKomentar_kepentingan: (string|null)[] = [];
       arr.map((data, index) => {
-        index >= (arr.length - 10) ? fiveKomentar_kepentingan.push(data.komentar_kepentingan) : null
+        index >= (arr.length - 171) ? fiveKomentar_kepentingan.push(data.komentar_kepentingan) : null
       })
       let fiveKomentar_kinerja: (string|null)[] = [];
       arr.map((data, index) => {
-        index >= (arr.length - 10) ? fiveKomentar_kinerja.push(data.komentar_kinerja) : null
+        index >= (arr.length - 171) ? fiveKomentar_kinerja.push(data.komentar_kinerja) : null
       })
       return {
           nama : name,
@@ -294,9 +296,9 @@ export async function getAllQuesionerAnswer(){
 
   function getSumbuYX(sumbuY: number[], sumbuX: number[]): {sumbuY : number, sumbuX: number}{
       const totalSumbuY = sumbuY.reduce((sum: number, item) => sum + item, 0)
-      const rataRataSumbuY = (totalSumbuY / sumbuY.length).toFixed(1);
+      const rataRataSumbuY = (totalSumbuY / sumbuY.length).toFixed(2);
       const totalSumbuX = sumbuX.reduce((sum: number, item) => sum + item, 0)
-      const rataRataSumbuX = (totalSumbuX / sumbuX.length).toFixed(1);
+      const rataRataSumbuX = (totalSumbuX / sumbuX.length).toFixed(2);
       return {
           sumbuY : Number(rataRataSumbuY),
           sumbuX: Number(rataRataSumbuX)

@@ -22,7 +22,6 @@ export default function Navbar() {
     kursus === "signOut" && setWaitSignOut(true);
   }
   const pathname = usePathname();
-  console.log(pathname);
 
   useEffect(() => {
     setShowNavbar(false);
