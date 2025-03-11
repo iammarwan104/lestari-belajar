@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import SignInAdmin from "./SignInAdmin";
 import { checkStatusAdminServer } from "@/app/lib/action";
 import TableAnalysis from "./TableAnalysis";
+import DownloadDataQuesioner from "./DownloadDataQuesioner";
 
 export default function AdminClient({
   data,
@@ -65,6 +66,7 @@ export default function AdminClient({
               </div>
             <PelPal datas={data} garisPerbatasan={garisPerbatasan} />
             <TableStudents />
+            <DownloadDataQuesioner />
           </Suspense>
         </div>
         </>

@@ -1,0 +1,3 @@
+DATABASE_URL="postgresql://postgres.ebsulmsfdflmqtegieoq:RDDZwuKToCsGSFNe@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.ebsulmsfdflmqtegieoq:RDDZwuKToCsGSFNe@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+AUTH_SECRET="1LT5wMbcLaeZTIy4EbLEO5xCajQdvhhSu07wno9PjaA=" # Added by `npx auth`. Read more: https://cli.authjs.dev

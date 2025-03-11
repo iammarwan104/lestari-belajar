@@ -230,7 +230,6 @@ export async function getAllQuesionerAnswer(){
       const rataRataKepentingan = (totalKepentingan / arr.length).toFixed(2);
       const totalKinerja = arr.reduce((sum: number, item) => sum + item.kinerja, 0)
       const rataRataKinerja = (totalKinerja / arr.length).toFixed(2);
-      console.log(arr.length);
       
       let fiveKomentar_kepentingan: (string|null)[] = [];
       arr.map((data, index) => {
@@ -985,4 +984,196 @@ export async function getTaskFinish(){
     }
 }
 }
+}
+
+export async function getKepentinganData(){
+  try {
+    const [arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10] = await Promise.all([
+      prisma.kebersihan_mobil.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.kelengkapan_alat_mobil.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.performa_mobil.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+
+      prisma.etika_SopanSantun.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik_staff.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+
+      prisma.pelayanan_administrasi.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.etika_sopan_santun_mentor.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik_staff.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.pengawasan_penuh.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+      prisma.pembawaan_materi_belajar_mentor.findMany({
+        select: {
+          kepentingan: true,
+        },
+      }),
+    ]);
+    const data1 = arr1.map((item) => item.kepentingan);
+    const data2 = arr2.map((item) => item.kepentingan);
+    const data3 = arr3.map((item) => item.kepentingan);
+    const data4 = arr4.map((item) => item.kepentingan);
+    const data5 = arr5.map((item) => item.kepentingan);
+    const data6 = arr6.map((item) => item.kepentingan);
+    const data7 = arr7.map((item) => item.kepentingan);
+    const data8 = arr8.map((item) => item.kepentingan);
+    const data9 = arr9.map((item) => item.kepentingan);
+    const data10 = arr10.map((item) => item.kepentingan);
+    
+    // Menggabungkan hasil ke dalam format yang diinginkan
+    const result = data1.map((kepentingan1, index) => ({
+      kepentingan1,
+      kepentingan2: data2[index],
+      kepentingan3: data3[index],
+      kepentingan4: data4[index],
+      kepentingan5: data5[index],
+      kepentingan6: data6[index],
+      kepentingan7: data7[index],
+      kepentingan8: data8[index],
+      kepentingan9: data9[index],
+      kepentingan10: data10[index],
+    }));
+    return result;
+    
+  } catch (error) {
+    console.error(error);
+    
+  }
+}
+
+export async function getKinerjaData(){
+  try {
+    const [arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10] = await Promise.all([
+      prisma.kebersihan_mobil.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.kelengkapan_alat_mobil.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.performa_mobil.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+
+      prisma.etika_SopanSantun.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik_staff.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+
+      prisma.pelayanan_administrasi.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.etika_sopan_santun_mentor.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik_staff.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.pengawasan_penuh.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+      prisma.pembawaan_materi_belajar_mentor.findMany({
+        select: {
+          kinerja: true,
+        },
+      }),
+    ]);
+    const data1 = arr1.map((item) => item.kinerja);
+    const data2 = arr2.map((item) => item.kinerja);
+    const data3 = arr3.map((item) => item.kinerja);
+    const data4 = arr4.map((item) => item.kinerja);
+    const data5 = arr5.map((item) => item.kinerja);
+    const data6 = arr6.map((item) => item.kinerja);
+    const data7 = arr7.map((item) => item.kinerja);
+    const data8 = arr8.map((item) => item.kinerja);
+    const data9 = arr9.map((item) => item.kinerja);
+    const data10 = arr10.map((item) => item.kinerja);
+    
+    // Menggabungkan hasil ke dalam format yang diinginkan
+    const result = data1.map((kinerja1, index) => ({
+      kinerja1,
+      kinerja2: data2[index],
+      kinerja3: data3[index],
+      kinerja4: data4[index],
+      kinerja5: data5[index],
+      kinerja6: data6[index],
+      kinerja7: data7[index],
+      kinerja8: data8[index],
+      kinerja9: data9[index],
+      kinerja10: data10[index],
+    }));
+    return result;
+    
+  } catch (error) {
+    console.error(error);
+    
+  }
+}
+
+export async function getData(){
+  try {
+    let data = await prisma.kebersihan_mobil.findMany({
+      select:{
+        kepentingan:true,
+        kinerja:true
+      }
+    })
+    return data;
+    
+  } catch (error) {
+    console.error(error);
+    
+  }
 }
