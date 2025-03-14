@@ -44,9 +44,9 @@ export default function DownloadDataQuesioner() {
   };
   
   return(
-    <div className="w-[90vw] md:w-[30vw] mx-auto flex gap-4 mt-4">
-      <button onClick={handleDownloadDataKepentingan} className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-semibold rounded-lg text-base px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>Unduh Kepentingan</button>
-      <button onClick={handleDownloadDataKinerja} className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-semibold rounded-lg text-base px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>Unduh Kinerja</button>
+    <div className="w-[90vw] md:w-[30vw] lg:w-[35vw] mx-auto flex gap-4 mt-4">
+      <button onClick={handleDownloadDataKepentingan} className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-semibold rounded-full text-base px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>Unduh Kepentingan</button>
+      <button onClick={handleDownloadDataKinerja} className={`w-full text-white bg-cuslor-4 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-semibold rounded-full text-base px-5 py-2.5 me-2 mb-2 dark:hover:bg-yellow-400 focus:outline-none dark:focus:ring-yellow-400`}>Unduh Kinerja</button>
     </div>
   )
 }

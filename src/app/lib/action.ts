@@ -7,6 +7,7 @@ import { Gender } from '@prisma/client'
 import { CheckNumberPhone, Item, Login, tambahDataSiswaInterface, TambahScheduleInterface, TaskFormat } from "./interface";
 import { checkPhoneNumberZod, quesionerValidation, tambahDataSiswaSchema, updateDataSiswaSchema } from "./schemaZod";
 import { redirect } from "next/navigation";
+import { promise } from "zod";
 
 export async function quesionerSubmit(prevState: any, formData: FormData) {
 
@@ -1175,5 +1176,111 @@ export async function getData(){
   } catch (error) {
     console.error(error);
     
+  }
+}
+
+export async function getTingkatKesesuaian(){
+  try{
+    const getAllData = await Promise.all([
+      prisma.kebersihan_mobil.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.kelengkapan_alat_mobil.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.performa_mobil.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+
+      prisma.etika_SopanSantun.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik_staff.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+
+      prisma.pelayanan_administrasi.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.etika_sopan_santun_mentor.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.skill_komunikasi_baik.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.pengawasan_penuh.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+      prisma.pembawaan_materi_belajar_mentor.findMany({
+        select: {
+          kepentingan: true,
+          kinerja: true,
+        },
+      }),
+    ])
+    // return [{
+    //   data1: data1,
+    //   data2: data2,
+    //   data3: data3,
+    //   data4: data4,
+    //   data5: data5,
+    //   data6: data6,
+    //   data7: data7,
+    //   data8: data8,
+    //   data9: data9,
+    //   data10: data10,
+    // }]
+    interface DataTingkatKesesuaian{
+      name : string;
+      process: string;
+      result: string;
+    }
+    let arrDataTingkatKesesuaian : DataTingkatKesesuaian[] = [];
+    const arrServicesName = ["Kebersihan mobil", "Kelengkapan & performa alat mobil", "Performa Mobil", "Etika & sopan santun karyawan", "Skill komunikasi karyawan", "Pelayanan informasi & jadwal belajar", "Etika & sopan santun mentor", "Skill komunikasi mentor", "Pegawasan penuh mentor", "Kompetensi mentor"];
+
+    getAllData.map((itemNilai, index)=>{
+    // hp = Hasil penjumlahan nilai
+    const hpnKepentingan = itemNilai.reduce((sum, item)=> sum + item.kepentingan, 0);
+    const hpnKinerja = itemNilai.reduce((sum, item)=> sum + item.kinerja, 0);
+    const hpTingkatKesesuaian = ((hpnKinerja/hpnKepentingan)*100)+0.0003333333;
+    const formatDataReturn = {
+      name : arrServicesName[index],
+      process: `(${hpnKinerja} / ${hpnKepentingan}) x ${100}% = ${hpTingkatKesesuaian}`,
+      result: hpTingkatKesesuaian.toFixed(2)
+    }
+    arrDataTingkatKesesuaian.push(formatDataReturn);
+  })
+return arrDataTingkatKesesuaian;
+  }catch(error){
+    if(error instanceof Error){
+      console.error(error);
+    }
   }
 }
