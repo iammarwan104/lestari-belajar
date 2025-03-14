@@ -1260,7 +1260,7 @@ export async function getTingkatKesesuaian(){
     interface DataTingkatKesesuaian{
       name : string;
       process: string;
-      result: string;
+      result: number;
     }
     let arrDataTingkatKesesuaian : DataTingkatKesesuaian[] = [];
     const arrServicesName = ["Kebersihan mobil", "Kelengkapan & performa alat mobil", "Performa Mobil", "Etika & sopan santun karyawan", "Skill komunikasi karyawan", "Pelayanan informasi & jadwal belajar", "Etika & sopan santun mentor", "Skill komunikasi mentor", "Pegawasan penuh mentor", "Kompetensi mentor"];
@@ -1273,7 +1273,7 @@ export async function getTingkatKesesuaian(){
     const formatDataReturn = {
       name : arrServicesName[index],
       process: `(${hpnKinerja} / ${hpnKepentingan}) x ${100}% = ${hpTingkatKesesuaian}`,
-      result: hpTingkatKesesuaian.toFixed(2)
+      result: Number(hpTingkatKesesuaian.toFixed(2))
     }
     arrDataTingkatKesesuaian.push(formatDataReturn);
   })
